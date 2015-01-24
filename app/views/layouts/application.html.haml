@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title= FastTrade
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    /[if lt IE 9]
+      <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+  %body
+  
+    /= render 'layouts/header'
+    .container
+      - flash.each do |msg_type, msg|
+        %div{class: "alert alert-#{msg_type}"}
+          %i.fa.fa-exclamation-triangle.fa-lg
+          = msg
+          %i.fa.fa-exclamation-triangle.fa-lg
+      = yield
+      = debug(params) if Rails.env.development?
+    /= render 'layouts/footer'
