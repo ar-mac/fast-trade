@@ -1,0 +1,3 @@
+pl:
+  flash:
+    no_user_error: 'Wybrany użytkownik nie istnieje'
