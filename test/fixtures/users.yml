@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tom:
+  name: 'Tom'
+  password_digest: <%= BCrypt::Password.create('asdfasdf') %>
+  region: 'Śląskie'
+  active: true
+  admin: false
+
+admin:
+  name: 'Admin'
+  password_digest: <%= BCrypt::Password.create('asdfasdf') %>
+  region: 'Śląskie'
+  active: true
+  admin: true
