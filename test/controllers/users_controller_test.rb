@@ -1,10 +1,18 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+  
+  def setup
+    @user = users(:tom)
+    @admin = users(:admin)
+  end
+  
   test "should get show" do
-    get :show
+    get :show, id: @user.id
     assert_response :success
   end
+  
+  
 
   test "should get index" do
     get :index
@@ -17,8 +25,10 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, id: @user.id
     assert_response :success
   end
+  
+  
 
 end
