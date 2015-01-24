@@ -40,6 +40,7 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    breadcrumbs_on_rails (2.3.0)
     builder (3.2.2)
     byebug (3.4.0)
       columnize (~> 0.8)
@@ -226,6 +227,7 @@ DEPENDENCIES
   better_errors
   bootstrap-sass
   bootstrap-will_paginate
+  breadcrumbs_on_rails
   byebug (= 3.4.0)
   coffee-rails (~> 4.0.0)
   faker
