@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   private
     
     def get_user
-      @user = User.find_by(params[:id])
+      @user = User.find_by(id: params[:id])
       
       # temporary implementation (do it in the cleaner way)
       if !@user
@@ -45,7 +45,10 @@ class UsersController < ApplicationController
     end
     
     def get_admin
-      
+      #if !current_user.admin?
+      #  flash[:danger] = I18n.t('flash.user_not_admin_error')
+      #  redirect_to request.env['HTTP_REFERER'] || root_path
+      #end
     end
   
 end
