@@ -4,10 +4,15 @@ pl:
     user_not_admin_error: 'Nie możesz tego zrobić'
     
   elements:
+    welcome: 'Witaj w serwisie "Fast Trade".'
+    jumbo: 'Możesz tu wystawiać ogłoszednia... itd.'
     user_info: 'Dane konta'
     user_offers: 'Oferty użytkownika'
+    or: 'albo'
     
   links:
+    register: 'Zarejestruj się'
+    login: 'Zaloguj'
     
   activerecord:
     attributes:

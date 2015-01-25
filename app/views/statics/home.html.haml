@@ -1,0 +1,8 @@
+.jumbotron
+  %h1= t('elements.welcome')
+  %p= t('elements.jumbo')
+  = link_to t('links.register'), '#', class: 'btn btn-primary'
+  %span= t('elements.or')
+  = link_to t('links.login'), '#', class: 'btn btn-primary'
+
+/= render 'shared/search_form'
