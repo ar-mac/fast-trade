@@ -8,7 +8,7 @@
       %li.list-group-item
         %b= t('activerecord.attributes.user.region')
         = @user.region
-    /- if current_user?(@user)
+    /- if current_user?(@user) #current_user_buttons function in user helper
     .btn-group-vertical
       = link_to t('links.profile.edit'), edit_user_path(@user), class: 'btn btn-default'
       = link_to t('links.profile.destroy'), user_path(@user), method: :delete, class: 'btn btn-danger', data: {confirm: t('links.profile.confirm_destroy')}
