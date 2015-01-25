@@ -12,7 +12,16 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
   
-  
+  test 'should not get pages with inexisting user' do
+    get :show, id: 0
+    assert_redirected_to root_path
+    get :edit, id: 0
+    assert_redirected_to root_path
+    post :update, id: 0
+    assert_redirected_to root_path
+    delete :destroy, id: 0
+    assert_redirected_to root_path
+  end
 
   test "should get index" do
     get :index
