@@ -1,0 +1,19 @@
+.form-search {
+  margin: 10px auto auto;
+  width: 250px;
+  padding: 20px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  .form-field {
+    width: 210px;
+  }
+}
+
+.full-width-label {
+  width: 100%;
+}
+
+.empty-newline {
+  content: "";
+  display: block;
+}

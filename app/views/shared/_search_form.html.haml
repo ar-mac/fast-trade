@@ -1,0 +1,17 @@
+.form-search
+  = form_tag('/offers', method: :get) do
+    .form-field
+      = label_tag :d_min, t('links.search.by_more_than_valid'), class: 'full-width-label'
+      = date_select :d_min, nil, start_year: Date.today.year, include_blank: true, class: 'form-control'
+    .form-field
+      = label_tag :d_max, t('links.search.by_less_than_valid'), class: 'full-width-label'
+      = date_select :d_max, nil, start_year: Date.today.year, include_blank: true,  class: 'form-control'
+    .form-field
+      = label_tag :category, t('links.search.by_category')
+      /= select_tag :c_id, options_from_collection_for_select(Category.all, "id", "name"), {include_blank: true, class: 'form-control'}
+    .form-field
+      = label_tag :region, t('links.search.by_region'), class: 'full-width-label'
+      = select_tag :region, options_for_select(User::REGIONS), {include_blank: true, class: 'form-control'}
+    
+    
+    = submit_tag t('links.search.submit'), class: 'btn btn-default'
