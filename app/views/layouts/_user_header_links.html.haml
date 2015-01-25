@@ -1,0 +1,23 @@
+- if logged_in?
+  %ul.nav.navbar-nav.navbar-right
+    %li.dropdown
+      %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        = t('links.own_offers')
+        %span.caret
+      %ul.dropdown-menu{:role => "menu"}
+        %li= link_to t('links.show'), '#'
+        %li.divider
+        %li= link_to t('links.add'), '#'
+    %li.dropdown
+      %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        = t('links.profile')
+        %span.caret
+      %ul.dropdown-menu{:role => "menu"}
+        %li= link_to t('links.show'), '#'
+        %li= link_to t('links.settings'), '#'
+        %li.divider
+        %li= link_to t('links.log_out'), '#'
+- else
+  %ul.nav.navbar-nav.navbar-right
+    %li= link_to t('links.register'), '#'
+    %li= link_to t('links.login'), '#'

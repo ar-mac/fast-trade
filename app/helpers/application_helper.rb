@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   #all code below will go to SessionsController
     
     def log_in(user)
