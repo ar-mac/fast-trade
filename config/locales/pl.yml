@@ -11,6 +11,7 @@ pl:
     or: 'albo'
     
   links:
+    fast_trade: 'Fast Trade'
     register: 'Zarejestruj się'
     login: 'Zaloguj'
     
