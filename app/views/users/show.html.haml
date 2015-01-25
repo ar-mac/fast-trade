@@ -1,2 +1,24 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+.row
+  .col-md-4
+    %h2.custom-h2= t('links.profile.info')
+    %ul.list-group
+      %li.list-group-item
+        %b= t('activerecord.attributes.user.name')
+        = @user.name
+      %li.list-group-item
+        %b= t('activerecord.attributes.user.region')
+        = @user.region
+    /- if current_user?(@user)
+    .btn-group-vertical
+      = link_to t('links.profile.edit'), edit_user_path(@user), class: 'btn btn-default'
+      = link_to t('links.profile.destroy'), user_path(@user), method: :delete, class: 'btn btn-danger', data: {confirm: t('links.profile.confirm_destroy')}
+    .btn-group.pull-right
+      /= link_to t('links.offers.add_offer'), new_offer_path, class: 'btn btn-default'
+  .col-md-8
+    %h2.custom-h2= t('links.offers.main')
+    /- if current_user?(@user)
+    %ul.nav.nav-tabs
+    /= offert_status_nav_for(@user, (0..3))
+    .list-group
+      /= render @offers
+      /= will_paginate @offers
