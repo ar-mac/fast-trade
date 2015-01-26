@@ -4,10 +4,15 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:tom)
+    @other = users(:bob)
     @admin = users(:admin)
   end
   
   test 'showing proper_user profile' do
+    get user_path(@user)
+    assert_redirected_to root_path
+    
+    log_in_as(@user)
     get user_path(@user)
     assert_select "title", "FastTrade"
     assert_select "li.list-group-item", /#{@user.name}/, count: 1

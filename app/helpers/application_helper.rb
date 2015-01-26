@@ -11,12 +11,12 @@ module ApplicationHelper
       log_in(user)
     end
     
-    def log_out(user)
+    def log_out
       session.delete(:user_id)
-      forget(user)
+      forget
     end
     
-    def forget(user)
+    def forget
       cookies.delete(:user_id)
     end
     

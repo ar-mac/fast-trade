@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   
+  before_action :current, only: [:show, :edit, :update, :destroy]
   before_action :get_user, only: [:show, :edit, :update, :destroy]
   before_action :get_admin, only: :index
-  #before_action :current, only: [:show, :edit, :update, :destroy]
   #before_action :no_user, only: [:new, :create]
   
   def show

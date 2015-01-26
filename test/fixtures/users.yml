@@ -6,6 +6,13 @@ tom:
   region: 'Śląskie'
   active: true
   admin: false
+  
+bob:
+  name: 'Bob'
+  password_digest: <%= BCrypt::Password.create('asdfasdf') %>
+  region: 'Śląskie'
+  active: true
+  admin: false
 
 admin:
   name: 'Admin'
