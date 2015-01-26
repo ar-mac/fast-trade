@@ -55,14 +55,6 @@ class UsersController < ApplicationController
       end
     end
     
-    def no_user
-      if logged_in?
-        flash[:danger] = I18n.t('flash.logged_error')
-        # temporary redirect should redirect back
-        redirect_to root_path
-      end
-    end
-    
     def admin_auth
       if current_user.nil? || !current_user.admin?
         flash[:danger] = I18n.t('flash.user_not_admin_error')
