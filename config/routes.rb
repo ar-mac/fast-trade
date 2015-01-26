@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   put 'admin/users/:id' => 'users#update'
 	delete 'admin/users/:id' => 'users#destroy'
 	
+	get 'login' => 'sessions#new', as: :login
+	post 'login' => 'sessions#create', as: :sessions
+	delete 'logout' => 'sessions#destroy', as: :logout
+	
 end
