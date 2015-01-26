@@ -1,0 +1,27 @@
+.form-search {
+  margin: 10px auto auto;
+  width: 250px;
+  padding: 20px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  .form-field {
+    width: 210px;
+  }
+}
+
+.form {
+  margin: 10px auto auto;
+  padding: 1px 25px 15px 25px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  .form-field {
+    margin-bottom: 10px;
+  }
+  .field_with_errors {
+    color: #b22;
+  }
+}
+
+.full-width-label {
+  width: 100%;
+}
