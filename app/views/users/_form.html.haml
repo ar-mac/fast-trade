@@ -1,0 +1,30 @@
+- edit = false if edit.nil?
+= form_for(@user) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-field
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-field
+    = f.label :region, t('activerecord.attributes.user.region')
+    = f.select :region, User::REGIONS, { prompt: t('elements.user.choose_region') }, { class: 'form-control' }
+  - if edit
+    .well
+      .form-field
+        = label_tag :old_password, t('elements.user.old_password')
+        = password_field_tag :old_password, nil, class: 'form-control'
+      .form-field
+        = f.label :password, t('elements.user.new_password')
+        = f.password_field :password, class: 'form-control'
+      .form-field
+        = f.label :password_confirmation, t('elements.user.password_confirm')
+        = f.password_field :password_confirmation, class: 'form-control'
+  - else
+    .form-field
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+    .form-field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
+    
+  = f.submit edit ? t('links.accept_edit') : t('links.user.register'),  class: 'btn btn-default'
+  = link_to t('links.cancel'), root_path, class: 'btn btn-danger pull-right'

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   
   def no_user
     if logged_in?
-      flash[:danger] = I18n.t('flash.logged_error')
+      flash[:danger] = I18n.t('flash.error.logged')
       # temporary redirect should redirect back
       redirect_to root_path
     end

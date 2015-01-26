@@ -1,12 +1,16 @@
 pl:
   flash:
-    no_user_error: 'Wybrany użytkownik nie istnieje'
-    non_logged_error: 'Musisz być zalogowany'
-    logged_error: 'Nie możesz być zalogowany'
-    user_not_admin_error: 'Nie możesz tego zrobić'
-    wrong_login_credentials: 'Niepoprawny login/hasło'
-    successful_login: 'Zalogowano'
-    successful_logout: 'Wylogowano'
+    error:
+      no_user: 'Wybrany użytkownik nie istnieje'
+      non_logged: 'Musisz być zalogowany'
+      logged: 'Nie możesz być zalogowany'
+      user_not_admin: 'Nie możesz tego zrobić'
+      login_credentials: 'Niepoprawny login/hasło'
+    successful:
+      login: 'Zalogowano'
+      logout: 'Wylogowano'
+      profile_update: 'Zapisano zmiany'
+      user_creation: 'Konto zostało utworzone'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
@@ -16,10 +20,18 @@ pl:
     user:
       info: 'Dane konta'
       offers: 'Oferty użytkownika'
+      choose_region: 'Wybierz region'
+      delete_confirmation: 'Jesteś pewny, że chcesz usunąć konto?'
+      delete_description: "Jeżeli chcesz usunąć swoje konto, to użyj poniższego przycisku pamiętaj jednak, że ta operacja jest nieodwracalna. Usunięte zostaną również wszystkie Twoje ogłoszenia"
+      old_password: 'Dotychczasowe hasło'
+      new_password: 'Nowe hasło'
+      password_confirm: 'Potwierdzenie nowego hasła'
     admin:
       buttons: 'Adminowskie'
     forms:
       new_session: 'Logowanie do serwisu'
+      edit_user: 'Edycja profilu'
+      create_user: 'Rejestracja'
     
   links:
     fast_trade: 'Fast Trade'
@@ -28,6 +40,7 @@ pl:
       login: 'Zaloguj'
       log_out: 'Wyloguj'
       profile: 'Profil'
+      delete_account: 'Usuń konto'
     offer:
       own: 'Własne oferty'
       pending: 'Oczekujące'
@@ -43,6 +56,7 @@ pl:
     offers: 'Oferty'
     users: 'Użytkownicy'
     edit: 'Edytuj'
+    accept_edit: 'Zachowaj zmiany'
     destroy: 'Usuń'
     cancel: 'Odrzuć'
     admin_options: 'Administracyjne'

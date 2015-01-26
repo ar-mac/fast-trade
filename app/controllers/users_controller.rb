@@ -16,11 +16,17 @@ class UsersController < ApplicationController
   end
 
   def new
-    
+    @user = User.new
   end
   
   def create
-    
+    @user = User.new(user_params)
+    if @user.save
+      log_in(@user)
+      redirect_to @user, flash: {success: I18n.t('flash.successful.user_creation')}
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -28,7 +34,19 @@ class UsersController < ApplicationController
   end
   
   def update
+    # implement admin edit
     
+    #password change
+    unless @user.authenticate(params[:old_password])
+      params[:password] = ''
+      params[:password_confirmation] = ''
+    end
+      
+    if @user.update(user_params)
+      redirect_to @user, flash: {success: I18n.t('flash.successful.profile_update')}
+    else
+      render 'new'
+    end
   end
   
   def destroy
@@ -36,28 +54,32 @@ class UsersController < ApplicationController
   end
   
   private
+  
+    def user_params
+      params.require(:user).permit(:name, :region, :password, :password_confirmation)
+    end
     
     def get_user
       @user = User.find_by(id: params[:id])
       
       # temporary implementation of redirection to previous (do it in the cleaner way)
       if !@user
-        flash[:danger] = I18n.t('flash.no_user_error')
+        flash[:danger] = I18n.t('flash.error.no_user')
         redirect_to root_path
       end
     end
     
     def user_auth
       if !logged_in?
-        flash[:danger] = I18n.t('flash.non_logged_error')
+        flash[:danger] = I18n.t('flash.error.non_logged')
         # temporary redirect should redirect to login_path and store location
-        redirect_to root_path
+        redirect_to login_path
       end
     end
     
     def admin_auth
       if current_user.nil? || !current_user.admin?
-        flash[:danger] = I18n.t('flash.user_not_admin_error')
+        flash[:danger] = I18n.t('flash.error.user_not_admin')
         redirect_to root_path
       end
     end

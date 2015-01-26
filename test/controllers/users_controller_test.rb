@@ -19,13 +19,13 @@ class UsersControllerTest < ActionController::TestCase
   
   test 'should not get show pages of inexisting user' do
     get :show, id: 0
-    assert_redirected_to root_path
+    assert_redirected_to login_path
     get :edit, id: 0
-    assert_redirected_to root_path
+    assert_redirected_to login_path
     post :update, id: 0
-    assert_redirected_to root_path
+    assert_redirected_to login_path
     delete :destroy, id: 0
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 
   test "should get index" do
