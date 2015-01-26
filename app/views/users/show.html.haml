@@ -1,6 +1,6 @@
 .row
   .col-md-4
-    %h2.custom-h2= t('elements.user_info')
+    %h2.custom-h2= t('elements.user.info')
     %ul.list-group
       %li.list-group-item
         %b= t('activerecord.attributes.user.name') + ':'
@@ -8,9 +8,9 @@
       %li.list-group-item
         %b= t('activerecord.attributes.user.region')+ ':'
         = @user.region
-    /- #admin_user_buttons function in user helper (buttons for edit and delete profile)
+    = render 'profile_buttons'
   .col-md-8
-    %h2.custom-h2= t('elements.user_offers')
+    %h2.custom-h2= t('elements.user.offers')
     /- #current_user_offer_nav(@user, (0..2)) function in user helper to show offers status navigation 
     .list-group
       /= render @offers

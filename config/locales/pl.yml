@@ -2,14 +2,20 @@ pl:
   flash:
     no_user_error: 'Wybrany użytkownik nie istnieje'
     non_logged_error: 'Musisz być zalogowany'
+    logged_error: 'Nie możesz być zalogowany'
     user_not_admin_error: 'Nie możesz tego zrobić'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
     jumbo: 'Możesz tu wystawiać ogłoszednia... itd.'
-    user_info: 'Dane konta'
-    user_offers: 'Oferty użytkownika'
     or: 'albo'
+    
+    user:
+      info: 'Dane konta'
+      offers: 'Oferty użytkownika'
+      
+    admin:
+      buttons: 'Adminowskie'
     
   links:
     fast_trade: 'Fast Trade'
@@ -23,13 +29,6 @@ pl:
     offer:
       own: 'Własne oferty'
       pending: 'Oczekujące'
-      
-    show: 'Wyświetl'
-    add: 'Dodaj'
-    settings: 'Ustawienia'
-    offers: 'Oferty'
-    users: 'Użytkownicy'
-    admin_options: 'Administracyjne'
     
     search:
       by_more_than_valid: 'Starsze niż:'
@@ -37,6 +36,15 @@ pl:
       by_category: 'Według kategorii'
       by_region: 'Według regionu'
       submit: 'Wyszukaj oferty'
+      
+    show: 'Wyświetl'
+    add: 'Dodaj'
+    settings: 'Ustawienia'
+    offers: 'Oferty'
+    users: 'Użytkownicy'
+    edit: 'Edytuj'
+    destroy: 'Usuń'
+    admin_options: 'Administracyjne'
     
   activerecord:
     attributes:

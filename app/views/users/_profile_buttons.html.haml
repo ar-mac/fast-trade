@@ -1,0 +1,10 @@
+- if true || current_user == @user
+  .well
+    .btn-group
+      = link_to t('links.edit'), '#', class: 'btn btn-primary'
+- if true || (!current_user.nil? && current_user.admin?)
+  .well
+    %div
+      %b= t('elements.admin.buttons')
+    .btn-group
+      = link_to t('links.edit'), '#', class: 'btn btn-warning'

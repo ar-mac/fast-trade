@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   before_action :get_user, only: [:show, :edit, :update, :destroy]
-  #before_action :get_admin, only: :index
+  before_action :get_admin, only: :index
   #before_action :current, only: [:show, :edit, :update, :destroy]
+  #before_action :no_user, only: [:new, :create]
   
   def show
     
@@ -38,10 +39,10 @@ class UsersController < ApplicationController
     def get_user
       @user = User.find_by(id: params[:id])
       
-      # temporary implementation (do it in the cleaner way)
+      # temporary implementation of redirection to previous (do it in the cleaner way)
       if !@user
         flash[:danger] = I18n.t('flash.no_user_error')
-        redirect_to request.env['HTTP_REFERER'] || root_path
+        redirect_to root_path
       end
     end
     
@@ -53,10 +54,18 @@ class UsersController < ApplicationController
       end
     end
     
+    def no_user
+      if logged_in?
+        flash[:danger] = I18n.t('flash.logged_error')
+        # temporary redirect should redirect back
+        redirect_to root_path
+      end
+    end
+    
     def get_admin
-      if !current_user.admin?
+      if current_user.nil? || !current_user.admin?
         flash[:danger] = I18n.t('flash.user_not_admin_error')
-        redirect_to request.env['HTTP_REFERER'] || root_path
+        redirect_to root_path
       end
     end
   
