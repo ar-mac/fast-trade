@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   
   before_action :get_user, only: [:show, :edit, :update, :destroy]
-  before_action :get_admin, only: :index
-  before_action :logged_in?, only: [:show, :edit, :update, :destroy]
+  #before_action :get_admin, only: :index
+  #before_action :current, only: [:show, :edit, :update, :destroy]
   
   def show
     
@@ -45,11 +45,19 @@ class UsersController < ApplicationController
       end
     end
     
+    def current
+      if !logged_in?
+        flash[:danger] = I18n.t('flash.non_logged_error')
+        # temporary redirect should redirect to login_path and store location
+        redirect_to root_path
+      end
+    end
+    
     def get_admin
-      #if !current_user.admin?
-      #  flash[:danger] = I18n.t('flash.user_not_admin_error')
-      #  redirect_to request.env['HTTP_REFERER'] || root_path
-      #end
+      if !current_user.admin?
+        flash[:danger] = I18n.t('flash.user_not_admin_error')
+        redirect_to request.env['HTTP_REFERER'] || root_path
+      end
     end
   
 end

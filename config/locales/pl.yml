@@ -1,6 +1,7 @@
 pl:
   flash:
     no_user_error: 'Wybrany użytkownik nie istnieje'
+    non_logged_error: 'Musisz być zalogowany'
     user_not_admin_error: 'Nie możesz tego zrobić'
     
   elements:
