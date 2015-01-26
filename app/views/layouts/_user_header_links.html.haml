@@ -1,23 +1,44 @@
-- if logged_in?
-  %ul.nav.navbar-nav.navbar-right
+%ul.nav.navbar-nav.navbar-right
+  - if logged_in?
+  
+    - if current_user.admin?
+      
+      %li.dropdown
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
+        :href => "#", :role => "button"}  |
+          = t('links.admin_options')
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          %li.dropdown-header{:role => "presentation"}= t('links.users')
+          %li= link_to t('links.show'), '#'
+          %li.divider
+          %li.dropdown-header{:role => "presentation"}= t('links.offers')
+          %li= link_to t('links.show'), '#'
+          %li= link_to t('links.offer.pending'), '#'
+            
+    
+    
     %li.dropdown
-      %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        = t('links.own_offers')
+      %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
+      :href => "#", :role => "button"}  |
+        = t('links.offer.own')
         %span.caret
       %ul.dropdown-menu{:role => "menu"}
         %li= link_to t('links.show'), '#'
         %li.divider
         %li= link_to t('links.add'), '#'
     %li.dropdown
-      %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        = t('links.profile')
+      %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
+      :href => "#", :role => "button"}  |
+        = t('links.user.profile')
         %span.caret
       %ul.dropdown-menu{:role => "menu"}
         %li= link_to t('links.show'), '#'
         %li= link_to t('links.settings'), '#'
         %li.divider
-        %li= link_to t('links.log_out'), '#'
-- else
-  %ul.nav.navbar-nav.navbar-right
-    %li= link_to t('links.register'), '#'
-    %li= link_to t('links.login'), '#'
+        %li= link_to t('links.user.log_out'), '#'
+    
+  - else
+  
+    %li= link_to t('links.user.register'), '#'
+    %li= link_to t('links.user.login'), '#'

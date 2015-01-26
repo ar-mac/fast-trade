@@ -30,6 +30,23 @@ class HomepageTest < ActionDispatch::IntegrationTest
     
   end
   
+  test 'link for admin user' do
+    # log_in(@user)
+    # get root_path
+    # assert_select "a[href = ?], login_path, count: 1"
+    # assert_select "a[href = ?], register_path, count: 1"
+    
+    # assert_select "a[href = ?], user_path(@user), count: 1"
+    # assert_select "a[href = ?], edit_user_path(@user), count: 1"
+    # assert_select "a[href = ?], user_offers_path(@user), count: 1"
+    # assert_select "a[href = ?], new_offer_path(@user), count: 1"
+    # assert_select "a[href = ?], logout_path, count: 1"
+    
+    # assert_select "a[href = ?], admin_users_path, count: 1"
+    # assert_select "a[href = ?], admin_offers_path, count: 1"
+    # assert_select "a[href = ?], admin_offers_path(status: 0), count: 1"
+  end
+  
   test 'existence of search form' do
     get root_path
     assert_select '.form-search', count: 1

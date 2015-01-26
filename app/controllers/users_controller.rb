@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   before_action :get_user, only: [:show, :edit, :update, :destroy]
   before_action :get_admin, only: :index
+  before_action :logged_in?, only: [:show, :edit, :update, :destroy]
   
   def show
     

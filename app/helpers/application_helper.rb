@@ -25,9 +25,11 @@ module ApplicationHelper
     end
     
     def current_user
-      u_id = session[:user_id] || cookies.signed[:user_id]
+      u_id = session[:user_id] 
+      u_id ||= cookies.signed[:user_id]
       current = User.find_by(id: u_id)
       log_in(current) if !current.nil?
+      return current
     end
   
 end
