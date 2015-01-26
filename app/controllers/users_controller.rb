@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   
-  before_action :current, only: [:show, :edit, :update, :destroy]
+  before_action :get_current
+  before_action :user_auth, only: [:show, :edit, :update, :destroy]
   before_action :get_user, only: [:show, :edit, :update, :destroy]
-  before_action :get_admin, only: :index
-  #before_action :no_user, only: [:new, :create]
+  before_action :admin_auth, only: :index
+  before_action :no_user, only: [:new, :create]
   
   def show
     
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
       end
     end
     
-    def current
+    def user_auth
       if !logged_in?
         flash[:danger] = I18n.t('flash.non_logged_error')
         # temporary redirect should redirect to login_path and store location
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
       end
     end
     
-    def get_admin
+    def admin_auth
       if current_user.nil? || !current_user.admin?
         flash[:danger] = I18n.t('flash.user_not_admin_error')
         redirect_to root_path

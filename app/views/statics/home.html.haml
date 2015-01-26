@@ -1,9 +1,9 @@
 .jumbotron
   %h1= t('elements.welcome')
   %p= t('elements.jumbo')
-  = link_to t('links.user.register'), '#', class: 'btn btn-primary'
+  = link_to t('links.user.register'), new_user_path, class: 'btn btn-primary'
   %span= t('elements.or')
-  = link_to t('links.user.login'), '#', class: 'btn btn-primary'
+  = link_to t('links.user.login'), login_path, class: 'btn btn-primary'
 
 .row
   .col-md-4.col-md-offset-4
