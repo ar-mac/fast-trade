@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   #allows only logged users to do action
   before_action :logged_user, only: [:show, :edit, :update, :destroy]
   
-  #allows only owner of the account (and admin to do action)
+  #allows only owner of the account (and admin) to do action
   before_action :owner_user, only: [:edit, :update, :destroy]
   
   #allows only non logged users to do action
@@ -48,15 +48,14 @@ class UsersController < ApplicationController
   end
   
   def update
-    # implement admin edit
-    
     #password change
-    if @user.authenticate(params[:old_password])
+    if @user.authenticate(params[:old_password]) && @current_user == @user
       password_change = true
       flash[:info] = I18n.t('flash.successful.password_change')
     else
       password_change = false
     end
+    
     if @user.update(user_params(password_change))
       flash[:success] = I18n.t('flash.successful.profile_update')
       redirect_to @user
@@ -68,8 +67,9 @@ class UsersController < ApplicationController
   def destroy
     if @user.active?
       @user.toggle!(:active)
-      @user.save
       redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
+    else
+      redirect_to root_path, flash: {danger: I18n.t('flash.successful.no_such_action')}
     end
   end
   

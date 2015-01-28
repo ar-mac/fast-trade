@@ -83,7 +83,6 @@ class UsersControllerTest < ActionController::TestCase
     log_in_as(@other)
     delete :destroy, id: @user.id
     assert flash[:danger]
-    
   end
   
   test 'user able to destroy his account' do
@@ -92,12 +91,22 @@ class UsersControllerTest < ActionController::TestCase
     assert flash[:info]
     @user.reload
     assert_not @user.active?
+    
+    delete :destroy, id: @user.id
+    assert flash[:danger]
+    @user.reload
+    assert_not @user.active?
   end
     
   test 'admin able to destroy user account' do
     log_in_as(@admin)
     delete :destroy, id: @user.id
     assert flash[:info]
+    @user.reload
+    assert_not @user.active?
+    
+    delete :destroy, id: @user.id
+    assert flash[:danger]
     @user.reload
     assert_not @user.active?
   end
@@ -169,6 +178,27 @@ class UsersControllerTest < ActionController::TestCase
         password_confirmation: 'newpassword'
       },
       old_password: ''
+    }
+    
+    assert_response :redirect
+    assert_redirected_to user_path(@user)
+    assert_not flash[:info]
+    assert flash[:success]
+    @user.reload
+    assert @user.authenticate('asdfasdf')
+  end
+  
+  test 'admin cant even try to edit password' do
+    log_in_as(@admin)
+    patch :update, {
+      id: @user.id, 
+      user: {
+        name: 'Newname',
+        region: User::REGIONS[2],
+        password: 'newpassword',
+        password_confirmation: 'newpassword'
+      },
+      old_password: 'asdfasdf'
     }
     
     assert_response :redirect
