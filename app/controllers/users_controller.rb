@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   # index should be visible only for admins
   def index
-    
+    @users = User.active.from_newest.paginate(page: params[:page])
   end
   
   #only for non logged

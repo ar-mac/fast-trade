@@ -26,10 +26,11 @@ pl:
       offers: 'Oferty użytkownika'
       choose_region: 'Wybierz region'
       delete_confirmation: 'Jesteś pewny, że chcesz usunąć konto?'
-      delete_description: "Jeżeli chcesz usunąć swoje konto, to użyj poniższego przycisku pamiętaj jednak, że ta operacja jest nieodwracalna. Usunięte zostaną również wszystkie Twoje ogłoszenia"
+      delete_description: "Aby usunąć konto, użyj poniższego przycisku pamiętaj jednak, że ta operacja jest nieodwracalna. Usunięte zostaną również ogłoszenia."
       old_password: 'Dotychczasowe hasło'
       new_password: 'Nowe hasło'
       password_confirm: 'Potwierdzenie nowego hasła'
+      offer_count: 'Aktywnych ofert:'
     admin:
       buttons: 'Adminowskie'
     forms:

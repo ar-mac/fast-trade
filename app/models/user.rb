@@ -17,4 +17,7 @@ class User < ActiveRecord::Base
   
   has_secure_password
   
+  scope :active, -> { where(active: true) }
+  scope :from_newest, ->{ order(created_at: :desc) }
+  
 end
