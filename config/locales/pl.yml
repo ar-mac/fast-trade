@@ -37,6 +37,19 @@ pl:
       new_session: 'Logowanie do serwisu'
       edit_user: 'Edycja profilu'
       create_user: 'Rejestracja'
+    category:
+      main: 'Główna'
+      music: 'Muzyka'
+      automotive: 'Motoryzacja'
+      sport: 'Sport'
+      food: 'Kulinaria'
+      it: 'Informatyka'
+      business: 'Biznes'
+      money: 'Finanse'
+      news: 'Wiadomości'
+      science: 'Nauka'
+      fashion: 'Moda'
+      other: 'Pozostałe'
     
   links:
     fast_trade: 'Fast Trade'

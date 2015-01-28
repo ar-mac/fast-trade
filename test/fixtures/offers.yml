@@ -1,17 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  content: MyText
-  valid_until: 2015-01-28
-  status_id: 1
-  category_id: 1
-  user_id: 1
 
-two:
-  title: MyString
-  content: MyText
-  valid_until: 2015-01-28
-  status_id: 1
-  category_id: 1
-  user_id: 1
+<% 40.times do |n| %>
+offer_<%= n +1 %>:
+  id: <%= n + 1 %>
+  title: <%= Faker::Commerce.product_name %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + n.days %>
+  status_id: <%= n % 3 %>
+  category_id: <%= n % 12 %>
+  user_id: <%= rand(1..4) %>
+<% end %>

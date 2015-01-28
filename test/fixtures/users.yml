@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 tom:
+  id: 1
   name: 'Tom'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
   region: 'Śląskie'
@@ -8,6 +9,7 @@ tom:
   admin: false
   
 bob:
+  id: 2
   name: 'Bob'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
   region: 'Śląskie'
@@ -15,6 +17,7 @@ bob:
   admin: false
 
 admin:
+  id: 3
   name: 'Admin'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
   region: 'Śląskie'
@@ -22,6 +25,7 @@ admin:
   admin: true
 
 inactive:
+  id: 4
   name: 'Looser'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
   region: 'Śląskie'

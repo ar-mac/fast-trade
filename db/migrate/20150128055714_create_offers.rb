@@ -10,5 +10,8 @@ class CreateOffers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :offers, :category_id
+    add_index :offers, :status_id
+    add_index :offers, :valid_until, order: {valid_until: :desc}
   end
 end
