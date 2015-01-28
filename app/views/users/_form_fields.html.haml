@@ -1,0 +1,21 @@
+= form_for(@user) do |f|
+
+  - if edit
+    .well
+      .form-field
+        = label_tag :old_password, I18n.t('elements.user.old_password')
+        = password_field_tag :old_password, nil, class: 'form-control'
+      .form-field
+        = f.label :password, I18n.t('elements.user.new_password')
+        = f.password_field :password, class: 'form-control'
+      .form-field
+        = f.label :password_confirmation, I18n.t('elements.user.password_confirm')
+        = f.password_field :password_confirmation, class: 'form-control'
+        
+  - else
+    .form-field
+      = f.label :password, I18n.t('elements.user.new_password')
+      = f.password_field :password, class: 'form-control'
+    .form-field
+      = f.label :password_confirmation, I18n.t('elements.user.password_confirm')
+      = f.password_field :password_confirmation, class: 'form-control'
