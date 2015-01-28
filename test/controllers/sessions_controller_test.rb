@@ -22,6 +22,7 @@ class SessionsControllerTest < ActionController::TestCase
       remember_me: '0'
     }
     assert_response :redirect
+    assert flash[:success]
     assert is_logged_in?
     assert session[:user_id] == @user.id
   end
@@ -33,6 +34,7 @@ class SessionsControllerTest < ActionController::TestCase
       remember_me: '0'
     }
     assert_response :success
+    assert flash[:danger]
     assert_not is_logged_in?
     
     post :create, session: {
@@ -41,6 +43,7 @@ class SessionsControllerTest < ActionController::TestCase
       remember_me: '0'
     }
     assert_response :success
+    assert flash[:danger]
     assert_not is_logged_in?
   end
   

@@ -2,7 +2,7 @@
   .well
     .btn-group
       = link_to t('links.edit'), edit_user_path(@user), class: 'btn btn-primary'
-- if !current_user.nil? && current_user.admin?
+- if @current_user.admin?
   .well
     %div
       %b= t('elements.admin.buttons')

@@ -6,11 +6,14 @@ pl:
       logged: 'Nie możesz być zalogowany'
       user_not_admin: 'Nie możesz tego zrobić'
       login_credentials: 'Niepoprawny login/hasło'
+      not_owner: 'Tylko właściciel konta może to zrobić'
     successful:
       login: 'Zalogowano'
       logout: 'Wylogowano'
       profile_update: 'Zapisano zmiany'
       user_creation: 'Konto zostało utworzone'
+      account_deletion: 'Konto zostało usunięte'
+      password_change: 'Hasło zostało zmnienine'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'

@@ -1,11 +1,24 @@
 class UsersController < ApplicationController
   
+  #finds out who is current and sets to @current_user
   before_action :get_current
-  before_action :user_auth, only: [:show, :edit, :update, :destroy]
+  
+  #finds user who is object of the action
   before_action :get_user, only: [:show, :edit, :update, :destroy]
+  
+  #allows only admin to do action
   before_action :admin_auth, only: :index
+  
+  #allows only logged users to do action
+  before_action :logged_user, only: [:show, :edit, :update, :destroy]
+  
+  #allows only owner of the account (and admin to do action)
+  before_action :owner_user, only: [:edit, :update, :destroy]
+  
+  #allows only non logged users to do action
   before_action :no_user, only: [:new, :create]
   
+  #visible for all logged in
   def show
     
   end
@@ -14,7 +27,8 @@ class UsersController < ApplicationController
   def index
     
   end
-
+  
+  #only for non logged
   def new
     @user = User.new
   end
@@ -37,26 +51,36 @@ class UsersController < ApplicationController
     # implement admin edit
     
     #password change
-    unless @user.authenticate(params[:old_password])
-      params[:password] = ''
-      params[:password_confirmation] = ''
-    end
-      
-    if @user.update(user_params)
-      redirect_to @user, flash: {success: I18n.t('flash.successful.profile_update')}
+    if @user.authenticate(params[:old_password])
+      password_change = true
+      flash[:info] = I18n.t('flash.successful.password_change')
     else
-      render 'new'
+      password_change = false
+    end
+    if @user.update(user_params(password_change))
+      flash[:success] = I18n.t('flash.successful.profile_update')
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
   
   def destroy
-    
+    if @user.active?
+      @user.toggle!(:active)
+      @user.save
+      redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
+    end
   end
   
   private
   
-    def user_params
-      params.require(:user).permit(:name, :region, :password, :password_confirmation)
+    def user_params(password_change=true)
+      if password_change
+        params.require(:user).permit(:name, :region,:password, :password_confirmation)
+      else
+        params.require(:user).permit(:name, :region)
+      end
     end
     
     def get_user
@@ -69,11 +93,19 @@ class UsersController < ApplicationController
       end
     end
     
-    def user_auth
-      if !logged_in?
+    def logged_user
+      if @current_user.nil?
         flash[:danger] = I18n.t('flash.error.non_logged')
         # temporary redirect should redirect to login_path and store location
         redirect_to login_path
+      end
+    end
+    
+    def owner_user
+      if !(@current_user == @user || @current_user.admin?)
+        flash[:danger] = I18n.t('flash.error.not_owner')
+        # temporary redirect should redirect to prev location
+        redirect_to root_path
       end
     end
     
