@@ -37,6 +37,8 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem "wysiwyg-rails"
 
+gem 'whenever'
+
 group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
