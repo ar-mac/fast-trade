@@ -208,5 +208,14 @@ class UsersControllerTest < ActionController::TestCase
     @user.reload
     assert @user.authenticate('asdfasdf')
   end
+  
+  test 'users index' do
+    log_in_as(@admin)
+    get :index
+    @users = assigns(:users)
+    @users.each do |user|
+      assert user.active?
+    end
+  end
 
 end
