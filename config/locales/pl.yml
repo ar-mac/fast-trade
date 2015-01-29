@@ -63,7 +63,10 @@ pl:
       delete_account: 'Usuń konto'
     offer:
       own: 'Własne oferty'
-      pending: 'Oczekujące'
+      all: 'Wszystkie'
+      status0: 'Oczekujące'
+      status1: 'Aktywne'
+      status2: 'Zakończone'
     search:
       by_more_than_valid: 'Starsze niż:'
       by_less_than_valid: 'Nowsze niż:'
@@ -88,4 +91,13 @@ pl:
         region: 'Województwo'
         password: 'Hasło'
         password_confirmation: 'Potwierdzenie hasła'
-      
+      offer:
+        status:
+          pending: 'Oczekuje na akceptację'
+          active: 'Aktywna'
+          closed: 'Zakończona'
+          
+  will_paginate:
+    previous_label: "&#8592; Poprzednia"
+    next_label: "Następna &#8594;"
+    page_gap: "&hellip;"

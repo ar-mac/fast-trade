@@ -28,6 +28,8 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   
+  scope :by_status, ->(status) { where(status: status)}
+  
   def status
     STATUS[status_id]
   end

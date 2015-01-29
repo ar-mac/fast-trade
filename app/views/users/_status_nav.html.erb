@@ -1,0 +1,13 @@
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class=<%= params[:status].nil? ? 'active' : '' %>>
+    <%= link_to t('links.offer.all'), user_path(@user) %>
+  </li>
+  
+  <% %w[0 1 2].each do |val| %>
+    <li role="presentation" class=<%= params[:status] == val ? 'active' : '' %>>
+      <%= link_to t("links.offer.status#{val}"), user_path(@user, status: val) %>
+    </li>
+  <% end %>
+  
+</ul>

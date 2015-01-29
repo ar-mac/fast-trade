@@ -10,4 +10,10 @@ module UsersHelper
     end
   end
   
+  def offer_status_nav
+    if current_user? || admin?
+      render 'status_nav'
+    end
+  end
+  
 end
