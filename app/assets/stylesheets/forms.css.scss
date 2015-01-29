@@ -1,4 +1,4 @@
-.form-search {
+@mixin search-form-style {
   margin: 10px auto auto;
   width: 250px;
   padding: 20px;
@@ -7,6 +7,17 @@
   .form-field {
     width: 210px;
   }
+}
+
+.form-search {
+  @include search-form-style;
+}
+
+.form-search-mounted {
+  @include search-form-style;
+  width: 100%;
+  border-radius: 0px;
+  margin: 0;
 }
 
 .form {

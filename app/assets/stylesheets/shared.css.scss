@@ -34,9 +34,6 @@
     
     @include link-style($gray-light);
   }
-  a {
-    @include link-style($gray-dark);
-  }
 }
 
 .list-group-item-heading {
@@ -59,6 +56,12 @@
 .list-group-item-region {
   color: $gray-light;
   float: right;
+  a {
+    @include link-style($gray-dark);
+  }
+}
+
+.panel-body {
   a {
     @include link-style($gray-dark);
   }

@@ -1,18 +1,21 @@
 .row
   .col-md-3.col-md-offset-1
     .panel.panel-default
-      .panel-heading
-        %h3.panel-title
-          = t('elements.users_by_region')
-      %ul.list-group
-        %li.list-group-item
-          = link_to t('elements.all_regions'), admin_users_path
-        - User::REGIONS.each do |region|
-          %li.list-group-item
-            = link_to region, admin_users_path(region: region)
+      .form-search-mounted
+        = form_tag('/users', method: :get) do
+          .form-field
+            = label_tag :region, t('elements.users_by_region'), class: 'full-width-label'
+            = select_tag :region, options_for_select(User::REGIONS), {include_blank: true, class: 'form-control'}
+          
+          = submit_tag t('links.search.submit_users'), class: 'btn btn-default'
         
   .col-md-7.well
     .list-group
-      = render @users
+      - if @users.empty?
+        .list-group-item
+          %h2= t('elements.no_users')
+      - else
+        = render @users
       
     = will_paginate @users
+

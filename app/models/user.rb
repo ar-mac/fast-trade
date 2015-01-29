@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   has_many :offers
   
   scope :from_newest, ->{ order(created_at: :desc) }
-  scope :by_region, ->(region) { where(region: region) if region }
+  scope :by_region, ->(region) { where(region: region) if region && !region.empty? }
   
 end

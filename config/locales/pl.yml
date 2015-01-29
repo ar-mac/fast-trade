@@ -22,6 +22,7 @@ pl:
     remember_me: 'Zapamiętaj mnie na tym komputerze'
     users_by_region: 'Wyświetl użytkowników z danego regionu'
     all_regions: 'Cała Polska'
+    no_users: 'Nie ma użytkowników z podanego rejonu'
     user:
       info: 'Dane konta'
       offers: 'Oferty użytkownika'
@@ -75,6 +76,7 @@ pl:
       by_category: 'Według kategorii'
       by_region: 'Według regionu'
       submit: 'Wyszukaj oferty'
+      submit_users: 'Wyszukaj użytkowników'
     show: 'Wyświetl'
     add: 'Dodaj'
     settings: 'Ustawienia'
