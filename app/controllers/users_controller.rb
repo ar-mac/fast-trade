@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   
   #visible for all logged in
   def show
-    
+    @offers = @user.offers.paginate(page: params[:page])
   end
 
   # index should be visible only for admins

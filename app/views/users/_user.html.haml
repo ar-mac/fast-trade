@@ -2,7 +2,7 @@
 
   %h4.list-group-item-heading
     = link_to user.name, user_path(user)
-  .category= "#{t('elements.user.offer_count')} (#{user.offers.count})"
+  .category= "#{t('elements.user.offer_count')} (#{user.offers.size})"
   
   .empty-newline
   .list-group-item-region

@@ -49,6 +49,9 @@ pl:
       science: 'Nauka'
       fashion: 'Moda'
       other: 'Pozostałe'
+    offer:
+      confirm_close: 'Deaktywować ogłoszenie?'
+      confirm_destroy: 'Usunąć ogłoszenie?'
     
   links:
     fast_trade: 'Fast Trade'

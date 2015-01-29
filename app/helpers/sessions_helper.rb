@@ -28,5 +28,13 @@ module SessionsHelper
       log_in(current) if !current.nil?
       return current
     end
+    
+    def current_user?
+      @current_user == @user
+    end
+    
+    def admin?
+      @current_user.admin?
+    end
   
 end

@@ -1,7 +1,7 @@
 %ul.nav.navbar-nav.navbar-right
   - if @current_user
   
-    - if @current_user.admin?
+    - if admin?
       
       %li.dropdown
         %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
@@ -13,8 +13,8 @@
           %li= link_to t('links.show'), admin_users_path
           %li.divider
           %li.dropdown-header{:role => "presentation"}= t('links.offers')
-          %li= link_to t('links.show'), '#'
-          %li= link_to t('links.offer.pending'), '#'
+          %li= link_to t('links.show'), offers_path
+          %li= link_to t('links.offer.pending'), offers_path(status: 0)
             
     
     
@@ -24,9 +24,9 @@
         = t('links.offer.own')
         %span.caret
       %ul.dropdown-menu{:role => "menu"}
-        %li= link_to t('links.show'), '#'
+        %li= link_to t('links.show'), offers_path
         %li.divider
-        %li= link_to t('links.add'), '#'
+        %li= link_to t('links.add'), new_offer_path
     %li.dropdown
       %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
       :href => "#", :role => "button"}  |

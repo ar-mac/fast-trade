@@ -1,4 +1,62 @@
+@import "bootstrap";
+
+@mixin link-style($color) {
+  color: $color;
+  font-style: italic;
+  font-weight: bold;
+  &:hover {
+    color: $color;
+  }
+}
+
+.vertical-margins {
+  margin: 40px 0;
+}
+
 .empty-newline {
   content: "";
   display: block;
+}
+
+.list-group-item {
+  overflow: auto;
+  .category {
+    float: right;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    margin-top: -10px;
+    margin-right: -15px;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    width: 150px;
+    background: #f8f8f8;
+    font-size: 12px;
+    
+    @include link-style($gray-light);
+  }
+}
+
+.list-group-item-heading {
+  -moz-box-sizing: border-box;
+  display: inline;
+  max-width: 640px;
+  a {
+    @include link-style($gray-dark);
+    font-style: normal;
+  }
+}
+
+.list-group-item-author {
+  color: $gray-light;
+  a {
+    @include link-style(inherit);
+  }
+}
+
+.list-group-item-region {
+  color: $gray-light;
+  float: right;
+  a {
+    @include link-style($gray-dark);
+  }
 }

@@ -1,0 +1,25 @@
+.list-group-item
+
+  %h4.list-group-item-heading
+    = link_to truncate(offer.title, length: 50, separator:  ' '), offer
+  %span
+    = link_to offer.category, offers_path(c_id: offer.category_id), class: 'category'
+    
+  %span.list-group-item-author
+    .empty-newline
+    = t('activerecord.attributes.offer.user')
+    = link_to offer.user.name, offer.user
+    / for debugging purpose
+    /= offer.status_name
+    / comment out when done
+    
+    
+  - if (current_user? || admin?)
+    .empty-newline
+    .btn-group.btn-group-xs
+      = link_to t('links.edit'), edit_offer_path(offer), class: 'btn btn-default'
+      = link_to t('links.close'), offer_path(offer, close: true), method: :delete, class: 'btn btn-warning', data: {confirm: t('elements.offer.confirm_close')}
+      = link_to t('links.destroy'), offer_path(offer), method: :delete, class: 'btn btn-danger', data: {confirm: t('elements.offer.confirm_destroy')}
+  .list-group-item-region
+    = t('activerecord.attributes.offer.region')
+    = link_to offer.user.region, offers_path(region: offer.user.region)
