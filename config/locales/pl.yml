@@ -7,7 +7,6 @@ pl:
       user_not_admin: 'Nie możesz tego zrobić'
       login_credentials: 'Niepoprawny login/hasło'
       not_owner: 'Tylko właściciel konta może to zrobić'
-      no_such_action: 'Nie można tego zrobić'
     successful:
       login: 'Zalogowano'
       logout: 'Wylogowano'
