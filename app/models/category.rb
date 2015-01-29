@@ -19,4 +19,9 @@ class Category < ActiveRecord::Base
   def to_s
     NAMES[name_id]
   end
+  
+  def name
+    NAMES[name_id]
+  end
+  
 end

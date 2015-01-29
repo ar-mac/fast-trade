@@ -25,10 +25,15 @@ class Offer < ActiveRecord::Base
     presence: true
   validate :valid_in_the_future
   
-  belongs_to :user
+  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
   
   scope :by_status, ->(status) { where(status_id: status) if status && !status.empty?}
+  scope :by_region, ->(region) { joins(:owner).where('region = ?', region) if region && !region.empty? }
+  scope :by_max_valid_date, ->(date) { where('valid_until <= ?', date) if date }
+  scope :by_min_valid_date, ->(date) { where('valid_until >= ?', date) if date }
+  scope :by_category, ->(c_id) { where('category_id = ?', c_id) if c_id && !c_id.empty? }
+  scope :from_newest, ->{ order(created_at: :desc)}
   
   def status
     STATUS[status_id]
@@ -46,10 +51,37 @@ class Offer < ActiveRecord::Base
     self.update_all('status = 2', ['valid_until < ?', Time.zone.today])
   end
   
-  def self.build(params)
-    if params[:status]
-      by_status(params[:status])
+  
+  def self.by_search_params(params, admin)
+    #create quite complex search query from sended params.
+    #n is number of objects per page (pagination)
+    params[:status] = '1' if !admin
+    begin
+      min_date = Date.civil(
+        params[:d_min][:"(1i)"].to_i,
+        params[:d_min][:"(2i)"].to_i,
+        params[:d_min][:"(3i)"].to_i
+      )
+    rescue
+      min_date = nil
     end
+    begin
+      max_date = Date.civil(
+        params[:d_max][:"(1i)"].to_i,
+        params[:d_max][:"(2i)"].to_i,
+        params[:d_max][:"(3i)"].to_i
+      )
+    rescue
+      max_date = nil
+    end
+      
+    from_newest.
+    by_status(params[:status]).
+    by_region(params[:region]).
+    by_min_valid_date(min_date).
+    by_max_valid_date(max_date).
+    by_category(params[:c_id]).
+    includes(:owner, :category).
     paginate(page: params[:page])
   end
   

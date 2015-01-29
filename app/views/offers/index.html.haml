@@ -1,2 +1,11 @@
-%h1 Offers#index
-%p Find me in app/views/offers/index.html.haml
+.row
+  .col-md-4
+    %h2.custom-h2
+      = t('elements.offer.search')
+    = render 'shared/search_form'
+    
+  .col-md-8
+    %h2.custom-h2= t('elements.feed')
+    .list-group
+      = render @offers
+    = will_paginate @offers

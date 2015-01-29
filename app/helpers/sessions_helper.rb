@@ -34,7 +34,12 @@ module SessionsHelper
     end
     
     def admin?
-      @current_user.admin?
+      true if @current_user && @current_user.admin?
+    end
+    
+    def current_or_admin?
+      return false if @current_user.nil?
+      return false if current_user? || admin?
     end
   
 end

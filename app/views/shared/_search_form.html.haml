@@ -8,10 +8,14 @@
       = date_select :d_max, nil, start_year: Date.today.year, include_blank: true,  class: 'form-control'
     .form-field
       = label_tag :category, t('links.search.by_category')
-      /= select_tag :c_id, options_from_collection_for_select(Category.all, "id", "name"), {include_blank: true, class: 'form-control'}
+      = select_tag :c_id, options_from_collection_for_select(Category.all, "id", "name"), {include_blank: true, class: 'form-control'}
     .form-field
       = label_tag :region, t('links.search.by_region'), class: 'full-width-label'
       = select_tag :region, options_for_select(User::REGIONS), {include_blank: true, class: 'form-control'}
+    - if admin?
+      .form-field
+        = label_tag :status, t('links.search.by_status'), class: 'full-width-label'
+        = select_tag :status, options_for_select(Offer::STATUS), {include_blank: true, class: 'form-control'}
     
     
     = submit_tag t('links.search.submit'), class: 'btn btn-default'

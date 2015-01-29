@@ -7,14 +7,17 @@
     
   %span.list-group-item-author
     .empty-newline
-    = t('activerecord.attributes.offer.user')
-    = link_to offer.user.name, offer.user
+    = t('activerecord.attributes.offer.owner')
+    = link_to offer.owner.name, offer.owner
     / for debugging purpose
     = offer.status
     / comment out when done
+    .empty-newline
+    = t('activerecord.attributes.offer.valid_until')
+    %b= offer.valid_until
     
     
-  - if (current_user? || admin?)
+  - if current_or_admin?
     .empty-newline
     .btn-group.btn-group-xs
       = link_to t('links.edit'), edit_offer_path(offer), class: 'btn btn-default'
@@ -22,4 +25,4 @@
       = link_to t('links.destroy'), offer_path(offer), method: :delete, class: 'btn btn-danger', data: {confirm: t('elements.offer.confirm_destroy')}
   .list-group-item-region
     = t('activerecord.attributes.offer.region')
-    = link_to offer.user.region, offers_path(region: offer.user.region)
+    = link_to offer.owner.region, offers_path(region: offer.owner.region)

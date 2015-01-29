@@ -55,6 +55,7 @@ pl:
     offer:
       confirm_close: 'Deaktywować ogłoszenie?'
       confirm_destroy: 'Usunąć ogłoszenie?'
+      search: 'Wyszukaj ofert'
     
   links:
     fast_trade: 'Fast Trade'
@@ -71,11 +72,12 @@ pl:
       status1: 'Aktywne'
       status2: 'Zakończone'
     search:
-      by_more_than_valid: 'Starsze niż:'
-      by_less_than_valid: 'Nowsze niż:'
-      by_category: 'Według kategorii'
-      by_region: 'Według regionu'
-      submit: 'Wyszukaj oferty'
+      by_more_than_valid: 'Ważne dłużej niż:'
+      by_less_than_valid: 'Ważne krócej niż:'
+      by_category: 'Z podanej kategorii'
+      by_region: 'Z podanego regionu'
+      by_status: 'Według statusu'
+      submit: 'Wyszukaj'
       submit_users: 'Wyszukaj użytkowników'
     show: 'Wyświetl'
     add: 'Dodaj'
@@ -96,6 +98,9 @@ pl:
         password: 'Hasło'
         password_confirmation: 'Potwierdzenie hasła'
       offer:
+        user: 'ZMIENIĆ !!'
+        owner: 'Autor'
+        valid_until: 'Oferta ważna do:'
         status:
           pending: 'Oczekuje na akceptację'
           active: 'Aktywna'
