@@ -65,12 +65,9 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    if @user.active?
-      @user.toggle!(:active)
-      redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
-    else
-      redirect_to root_path, flash: {danger: I18n.t('flash.successful.no_such_action')}
-    end
+    log_out(@user)
+    @user.destroy
+    redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
   end
   
   private
