@@ -29,7 +29,7 @@ User.all.each do |user|
       content: Faker::Lorem.sentence(rand(3..9)),
       valid_until: (Time.zone.today + rand(1..90).days),
       status_id: ( n % 3 ),
-      category_id: rand(0..11)
+      category_id: rand(1..12)
       )
   end
 end
