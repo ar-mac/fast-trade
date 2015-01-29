@@ -110,9 +110,6 @@ class OfferTest < ActiveSupport::TestCase
     @o_new.update( user_id: '' )
     assert_not @o_new.valid?
     
-    @o_new.update( user_id: 0 )
-    assert_not @o_new.valid?
-    
     @o_new.update( user_id: 2 )
     assert @o_new.valid?
   end

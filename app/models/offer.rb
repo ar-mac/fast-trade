@@ -25,6 +25,8 @@ class Offer < ActiveRecord::Base
     presence: true
   validate :valid_in_the_future
   
+  belongs_to :user
+  belongs_to :category
   
   def status
     STATUS[status_id]

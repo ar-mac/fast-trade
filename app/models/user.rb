@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   
   has_secure_password
   
+  has_many :offers
+  
   scope :active, -> { where(active: true) }
   scope :from_newest, ->{ order(created_at: :desc) }
   

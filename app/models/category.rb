@@ -14,6 +14,7 @@ class Category < ActiveRecord::Base
     I18n.t('elements.category.other')
   ]
     
+  has_many :offers
   
   def to_s
     NAMES[name_id]
