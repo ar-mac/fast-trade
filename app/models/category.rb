@@ -1,6 +1,5 @@
 class Category < ActiveRecord::Base
   NAMES = [
-    '', #empty record because category.id starts at 1
     I18n.t('elements.category.main'),
     I18n.t('elements.category.music'),
     I18n.t('elements.category.automotive'),

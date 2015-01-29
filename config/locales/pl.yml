@@ -20,6 +20,8 @@ pl:
     jumbo: 'Możesz tu wystawiać ogłoszednia... itd.'
     or: 'albo'
     remember_me: 'Zapamiętaj mnie na tym komputerze'
+    users_by_region: 'Wyświetl użytkowników z danego regionu'
+    all_regions: 'Cała Polska'
     user:
       info: 'Dane konta'
       offers: 'Oferty użytkownika'
@@ -29,7 +31,7 @@ pl:
       old_password: 'Dotychczasowe hasło'
       new_password: 'Nowe hasło'
       password_confirm: 'Potwierdzenie nowego hasła'
-      offer_count: 'Aktywnych ofert:'
+      offer_count: 'Liczba ofert:'
     admin:
       buttons: 'Adminowskie'
     forms:

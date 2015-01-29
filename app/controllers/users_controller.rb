@@ -20,12 +20,12 @@ class UsersController < ApplicationController
   
   #visible for all logged in
   def show
-    @offers = @user.offers.paginate(page: params[:page])
+    @offers = @user.offers.by_status(params[:status]).paginate(page: params[:page])
   end
 
   # index should be visible only for admins
   def index
-    @users = User.active.from_newest.paginate(page: params[:page])
+    @users = User.from_newest.by_region(params[:region]).paginate(page: params[:page])
   end
   
   #only for non logged

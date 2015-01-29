@@ -28,7 +28,7 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   
-  scope :by_status, ->(status) { where(status: status)}
+  scope :by_status, ->(status) { where(status_id: status) if status && !status.empty?}
   
   def status
     STATUS[status_id]
@@ -41,8 +41,16 @@ class Offer < ActiveRecord::Base
   end
   
   def self.update_expiration
+    #this method is triggered at 00:00 am by whenever config/scheldule.rb
     #sets status 2 - closed, when offer expires
     self.update_all('status = 2', ['valid_until < ?', Time.zone.today])
+  end
+  
+  def self.build(params)
+    if params[:status]
+      by_status(params[:status])
+    end
+    paginate(page: params[:page])
   end
   
 end

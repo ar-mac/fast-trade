@@ -1,6 +1,16 @@
 .row
   .col-md-3.col-md-offset-1
-    Text w kolumnie
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = t('elements.users_by_region')
+      %ul.list-group
+        %li.list-group-item
+          = link_to t('elements.all_regions'), admin_users_path
+        - User::REGIONS.each do |region|
+          %li.list-group-item
+            = link_to region, admin_users_path(region: region)
+        
   .col-md-7.well
     .list-group
       = render @users

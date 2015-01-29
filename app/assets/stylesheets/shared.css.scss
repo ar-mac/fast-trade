@@ -34,6 +34,9 @@
     
     @include link-style($gray-light);
   }
+  a {
+    @include link-style($gray-dark);
+  }
 }
 
 .list-group-item-heading {

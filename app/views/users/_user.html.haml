@@ -7,4 +7,4 @@
   .empty-newline
   .list-group-item-region
     = t('activerecord.attributes.user.region')
-    = link_to user.region, '#'
+    = link_to user.region, admin_users_path(region: user.region )
