@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :name,
     uniqueness: true,
     presence: true,
-    length: { in: (3..20) }
+    length: { in: (3..35) }
   validates :region,
     inclusion: { in: REGIONS, message: 'to nie jest województwo' } #I18n.t('errors.user.invalid_region') }
   validates :password,

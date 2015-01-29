@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
     @user2.update(name: 'aa')
     assert_not @user2.valid?, 'user name is less than 3 letters'
     
-    @user2.update(name: 'a' * 21 )
+    @user2.update(name: 'a' * 36 )
     assert_not @user2.valid?, 'user name is more than 20 letters'
     
     @user2.update(name: 'Mark999')
