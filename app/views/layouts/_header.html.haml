@@ -12,6 +12,8 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li= link_to t('links.offers'), offers_path
+        - if !@current_user.active?
+          %p.navbar-text#text-danger= t('activerecord.attributes.user.inactive')
         
       %ul.nav.navbar-nav.navbar-right
       = render 'layouts/user_header_links' 
