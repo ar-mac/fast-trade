@@ -16,6 +16,10 @@ pl:
       password_change: 'Hasło zostało zmnienine'
       user_activation: 'Konto jest teraz aktywne'
       user_deactivation: 'Konto jest teraz nieaktywne'
+      offer:
+        renewation: 'Oferta ponownie aktywowana, oczekuje na akceptację'
+        close: 'Oferta została zamknięta'
+        acceptation: 'Oferta została zaakceptowana'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'

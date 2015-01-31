@@ -1,13 +1,40 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+offer_1:
+  id: 1
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 1 #active
+  category_id: 2
+  user_id: 1
+  
+offer_2:
+  id: 2
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 2 #closed
+  category_id: 2
+  user_id: 1
+  
+offer_3:
+  id: 3
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 0 #pending
+  category_id: 2
+  user_id: 1
+
 
 <% 40.times do |n| %>
-offer_<%= n +1 %>:
-  id: <%= n + 1 %>
-  title: <%= Faker::Commerce.product_name %>
+offer_<%= n + 3 %>:
+  id: <%= n + 3 %>
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
   content: <%= Faker::Lorem.sentence(5) %>
   valid_until: <%= Time.zone.today + n.days %>
   status_id: <%= n % 3 %>
   category_id: <%= n % 12 %>
-  user_id: <%= rand(1..4) %>
+  user_id: <%= ((n % 4) + 1) %>
 <% end %>

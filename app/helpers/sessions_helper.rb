@@ -30,6 +30,7 @@ module SessionsHelper
     end
     
     def current_user?
+      return false if @current_user.nil?
       return true if @current_user == @user
     end
     

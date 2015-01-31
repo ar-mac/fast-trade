@@ -4,7 +4,7 @@
     %ul.list-group
       %li.list-group-item
         %b= t('activerecord.attributes.offer.owner')
-        = link_to @offer.owner.name, @offer.owner
+        %span.list-group-item-author= link_to @offer.owner.name, @offer.owner
       %li.list-group-item
         %b= t('activerecord.attributes.offer.region')
         = @offer.owner.region

@@ -54,7 +54,6 @@ class Offer < ActiveRecord::Base
   
   def self.by_search_params(params, admin)
     #create quite complex search query from sended params.
-    #n is number of objects per page (pagination)
     params[:status] = '1' if !admin
     begin
       min_date = Date.civil(
@@ -88,6 +87,7 @@ class Offer < ActiveRecord::Base
   def self.by_show_params(params, current_or_admin)
     params[:status] = '1' unless current_or_admin
     
+    from_newest.
     includes(:owner, :category).
     by_status(params[:status]).
     paginate(page: params[:page])
@@ -105,7 +105,7 @@ class Offer < ActiveRecord::Base
     I18n.l(updated_at, format: "%d %b %Y")
   end
   
-  def activate
+  def accept
     self.update_attribute(:status_id, 1)
   end
   
@@ -113,7 +113,7 @@ class Offer < ActiveRecord::Base
     self.update_attribute(:status_id, 2)
   end
   
-  def pending
+  def make_pending
     self.update_attribute(:status_id, 0)
   end
   
