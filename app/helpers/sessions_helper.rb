@@ -37,9 +37,11 @@ module SessionsHelper
       true if @current_user && @current_user.admin?
     end
     
-    def current_or_admin?
+    def current_or_admin?(owner=nil)
       return false if @current_user.nil?
-      return false if current_user? || admin?
+      return true if @current_user == owner
+      return true if current_user? || admin?
+      return false
     end
   
 end

@@ -20,6 +20,24 @@ class User < ActiveRecord::Base
   has_many :offers
   
   scope :from_newest, ->{ order(created_at: :desc) }
-  scope :by_region, ->(region) { where(region: region) if region && !region.empty? }
+  scope :by_region, ->(region) { where(region: region) if !(region.nil? || region.empty?) }
+  scope :by_status, ->(active) { where(active: active) if !active.nil? }
+  
+  
+  def self.by_search_params(params)
+    if params[:active].nil? && params[:inactive].nil?
+      active = true
+    elsif params[:active] == '1' && params[:inactive] == '1'
+      active = nil
+    elsif params[:active] == '1'
+      active = true
+    elsif params[:inactive] == '1'
+      active = false
+    end
+    from_newest.
+    by_status(active).
+    by_region(params[:region]).
+    paginate(page: params[:page])
+  end
   
 end

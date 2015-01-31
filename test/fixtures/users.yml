@@ -12,7 +12,7 @@ bob:
   id: 2
   name: 'Bob'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
-  region: 'Śląskie'
+  region: 'Świętokrzyskie'
   active: true
   admin: false
 
@@ -20,7 +20,7 @@ admin:
   id: 3
   name: 'Admin'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
-  region: 'Śląskie'
+  region: 'Dolnośląskie'
   active: true
   admin: true
 
@@ -28,6 +28,16 @@ inactive:
   id: 4
   name: 'Looser'
   password_digest: <%= BCrypt::Password.create('asdfasdf') %>
-  region: 'Śląskie'
+  region: 'Mazowieckie'
   active: false
   admin: false
+  
+<% 50.times do |n| %>
+user_<%= n %>:
+  id: <% n + 5 %>
+  name: <% Faker::Name.name %>
+  password_digest: <%= BCrypt::Password.create('asdfasdf') %>
+  region: <% User::REGIONS[rand(0..15)]%>
+  active: <% n % 2 == 1 ? true : false %>
+  admin: false
+<% end %>

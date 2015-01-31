@@ -20,12 +20,12 @@ class UsersController < ApplicationController
   
   #visible for all logged in
   def show
-    @offers = @user.offers.by_status(params[:status]).paginate(page: params[:page])
+    @offers = @user.offers.includes(:owner, :category).by_status(params[:status]).paginate(page: params[:page])
   end
 
   # index should be visible only for admins
   def index
-    @users = User.from_newest.by_region(params[:region]).paginate(page: params[:page])
+    @users = User.by_search_params(params)
   end
   
   #only for non logged
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    log_out(@user)
+    log_out
     @user.destroy
     redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
   end

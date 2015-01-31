@@ -17,7 +17,7 @@
     %b= offer.valid_until
     
     
-  - if current_or_admin?
+  - if current_or_admin?(offer.owner)
     .empty-newline
     .btn-group.btn-group-xs
       = link_to t('links.edit'), edit_offer_path(offer), class: 'btn btn-default'

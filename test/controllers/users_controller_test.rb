@@ -89,26 +89,14 @@ class UsersControllerTest < ActionController::TestCase
     log_in_as(@user)
     delete :destroy, id: @user.id
     assert flash[:info]
-    @user.reload
-    assert_not @user.active?
-    
-    delete :destroy, id: @user.id
-    assert flash[:danger]
-    @user.reload
-    assert_not @user.active?
+    assert_not User.find_by(id: @user.id)
   end
     
   test 'admin able to destroy user account' do
     log_in_as(@admin)
     delete :destroy, id: @user.id
     assert flash[:info]
-    @user.reload
-    assert_not @user.active?
-    
-    delete :destroy, id: @user.id
-    assert flash[:danger]
-    @user.reload
-    assert_not @user.active?
+    assert_not User.find_by(id: @user.id)
   end
   
   test 'editing profile without password change' do
@@ -216,6 +204,36 @@ class UsersControllerTest < ActionController::TestCase
     @users.each do |user|
       assert user.active?
     end
+    
+    get :index, {region: 'Śląskie'}
+    @users = assigns(:users)
+    @users.each do |user|
+      assert user.region == 'Śląskie'
+    end
+    
+    get :index, {active: '1'}
+    @users = assigns(:users)
+    @users.each do |user|
+      assert user.active?
+    end
+    
+    get :index, {inactive: '1'}
+    @users = assigns(:users)
+    @users.each do |user|
+      assert_not user.active?
+    end
+    
+    get :index, {
+      inactive: '1',
+      active: '1'
+    }
+    @users = assigns(:users)
+    @active = @users.select {|user| user.active? }
+    @inactive = @users.select {|user| !user.active? }
+    assert @active.count > 0
+    assert @inactive.count > 0
+    assert_select 'b.text-success', count: @active.count
+    assert_select 'b.text-danger', count: @inactive.count
   end
 
 end

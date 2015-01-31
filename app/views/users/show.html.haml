@@ -8,6 +8,8 @@
       %li.list-group-item
         %b= t('activerecord.attributes.user.region')+ ':'
         = @user.region
+      %li.list-group-item
+        = account_status_text(@user)
     = render 'profile_buttons'
   .col-md-8
     %h2.custom-h2= t('elements.user.offers')
