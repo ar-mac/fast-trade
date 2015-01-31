@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class OffersControllerTest < ActionController::TestCase
+  
+  def setup
+    @o_1 = offers(:offer_1)
+    @o_1_owner = @o_1.owner
+  end
+  
   test "should get show" do
-    get :show
+    get :show, id: @o_1.id
     assert_response :success
   end
 
@@ -17,7 +23,8 @@ class OffersControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit
+    log_in_as(@o_1_owner)
+    get :edit, id: @o_1.id
     assert_response :success
   end
 

@@ -39,7 +39,7 @@ class OffersController < ApplicationController
     end
     
     def owner_user
-      if @current_user.nil? || !(@current_user == @offer.user || @current_user.admin?)
+      if @current_user.nil? || !(@current_user == @offer.owner || @current_user.admin?)
         flash[:danger] = I18n.t('flash.error.not_owner')
         # temporary redirect should redirect to prev location
         redirect_to root_path
