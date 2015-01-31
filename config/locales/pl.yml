@@ -14,6 +14,8 @@ pl:
       user_creation: 'Konto zostało utworzone'
       account_deletion: 'Konto zostało usunięte'
       password_change: 'Hasło zostało zmnienine'
+      user_activation: 'Konto jest teraz aktywne'
+      user_deactivation: 'Konto jest teraz nieaktywne'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
@@ -31,6 +33,8 @@ pl:
       choose_region: 'Wybierz region'
       delete_confirmation: 'Jesteś pewny, że chcesz usunąć konto?'
       delete_description: "Aby usunąć konto, użyj poniższego przycisku pamiętaj jednak, że ta operacja jest nieodwracalna. Usunięte zostaną również ogłoszenia."
+      activate_description: 'Aktywne konto może normalnie wystawiać ogłoszenia.'
+      deactivate_description: 'Deaktywując konto zablokowana zostanie mozliwość tworzenia nowych ogłoszeń, a obecne zostaną zakończone.'
       old_password: 'Dotychczasowe hasło'
       new_password: 'Nowe hasło'
       password_confirm: 'Potwierdzenie nowego hasła'
@@ -67,6 +71,8 @@ pl:
       log_out: 'Wyloguj'
       profile: 'Profil'
       delete_account: 'Usuń konto'
+      deactivate_account: 'Zawieś konto'
+      activate_account: 'Aktywuj konto'
     offer:
       own: 'Własne oferty'
       all: 'Wszystkie'

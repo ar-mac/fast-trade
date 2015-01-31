@@ -4,23 +4,24 @@ class UsersController < ApplicationController
   before_action :get_current
   
   #finds user who is object of the action
-  before_action :get_user, only: [:show, :edit, :update, :destroy]
+  before_action :get_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
   
   #allows only admin to do action
   before_action :admin_auth, only: :index
   
   #allows only logged users to do action
-  before_action :logged_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
   
   #allows only owner of the account (and admin) to do action
-  before_action :owner_user, only: [:edit, :update, :destroy]
+  before_action :owner_user, only: [:edit, :update, :destroy, :activate, :deactivate]
+  before_action :account_inactive, only: :show
   
   #allows only non logged users to do action
   before_action :no_user, only: [:new, :create]
   
   #visible for all logged in
   def show
-    @offers = @user.offers.includes(:owner, :category).by_status(params[:status]).paginate(page: params[:page])
+    @offers = @user.offers.by_show_params(params, current_or_admin?)
   end
 
   # index should be visible only for admins
@@ -70,6 +71,16 @@ class UsersController < ApplicationController
     redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
   end
   
+  def activate
+    @user.activate
+    redirect_to @user, flash: {info: I18n.t('flash.successful.user_activation')}
+  end
+  
+  def deactivate
+    @user.deactivate
+    redirect_to @user, flash: {info: I18n.t('flash.successful.user_deactivation')}
+  end
+  
   private
   
     def user_params(password_change=true)
@@ -110,6 +121,12 @@ class UsersController < ApplicationController
       if current_user.nil? || !current_user.admin?
         flash[:danger] = I18n.t('flash.error.user_not_admin')
         redirect_to root_path
+      end
+    end
+    
+    def account_inactive
+      if !@user.active?
+        owner_user
       end
     end
   

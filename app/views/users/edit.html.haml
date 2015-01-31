@@ -4,6 +4,16 @@
       %h3= t('elements.forms.edit_user')
       = render 'form', edit: true
   .col-md-3
+    - if @user.active?
+      .well.vertical-margins
+        = t('elements.user.deactivate_description')
+        = link_to t('links.user.deactivate_account'), deactivate_user_path(@user), method: :patch, |
+          class: 'btn btn-primary btn-block'  |
+    - else
+      .well.vertical-margins
+        = t('elements.user.activate_description')
+        = link_to t('links.user.activate_account'), activate_user_path(@user), method: :patch, |
+          class: 'btn btn-primary btn-block'  |
     .well.vertical-margins
       = t('elements.user.delete_description')
       = link_to t('links.user.delete_account'), user_path(@user), method: :delete, |

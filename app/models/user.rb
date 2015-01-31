@@ -40,4 +40,13 @@ class User < ActiveRecord::Base
     paginate(page: params[:page])
   end
   
+  def deactivate
+    self.update_attribute(:active, false)
+    self.offers.each {|offer| offer.close }
+  end
+  
+  def activate
+    self.update_attribute(:active, true)
+  end
+  
 end

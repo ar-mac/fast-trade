@@ -85,16 +85,24 @@ class Offer < ActiveRecord::Base
     paginate(page: params[:page])
   end
   
+  def self.by_show_params(params, current_or_admin)
+    params[:status] = '1' unless current_or_admin
+    
+    includes(:owner, :category).
+    by_status(params[:status]).
+    paginate(page: params[:page])
+  end
+  
   def activate
-    self.update_attribute(status: 1)
+    self.update_attribute(:status_id, 1)
   end
   
   def close
-    self.update_attribute(status: 2)
+    self.update_attribute(:status_id, 2)
   end
   
   def pending
-    self.update_attribute(status: 0)
+    self.update_attribute(:status_id, 0)
   end
   
 end

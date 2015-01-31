@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root 'statics#home'
   resources :users, except: :index
+  patch 'users/:id/activate' => 'users#activate', as: :activate_user
+  patch 'users/:id/deactivate' => 'users#deactivate', as: :deactivate_user
   resources :offers
   
   get 'users' => 'users#index', as: :admin_users
