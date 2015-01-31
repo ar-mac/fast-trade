@@ -85,4 +85,16 @@ class Offer < ActiveRecord::Base
     paginate(page: params[:page])
   end
   
+  def activate
+    self.update_attribute(status: 1)
+  end
+  
+  def close
+    self.update_attribute(status: 2)
+  end
+  
+  def pending
+    self.update_attribute(status: 0)
+  end
+  
 end
