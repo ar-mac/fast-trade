@@ -6,8 +6,14 @@ class OffersController < ApplicationController
   #finds offert which is object of the action
   before_action :get_offer, only: [:show, :edit, :update, :destroy]
   
+  #finds user who is object of the action
+  before_action :get_user, only: [:show, :edit, :update, :destroy, :renew, :deactivate]
+  
   #allows only owner of the account (and admin) to do action
-  before_action :owner_user, only: [:edit, :update, :destroy]
+  before_action :owner_user, only: [:edit, :update, :destroy, :renew, :deactivate]
+  
+  #allows only admin to do action
+  before_action :admin_auth, only: :accept
   
   def show
     
@@ -32,6 +38,17 @@ class OffersController < ApplicationController
   def destroy
   end
   
+  def renew
+  end
+  
+  def deactivate
+  end
+  
+  def accept
+    
+  end
+
+  
   private
   
     def get_offer
@@ -44,5 +61,9 @@ class OffersController < ApplicationController
         # temporary redirect should redirect to prev location
         redirect_to root_path
       end
+    end
+    
+    def get_user
+      @user = @offer.owner
     end
 end

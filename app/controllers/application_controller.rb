@@ -17,4 +17,11 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def admin_auth
+    if current_user.nil? || !current_user.admin?
+      flash[:danger] = I18n.t('flash.error.user_not_admin')
+      redirect_to root_path
+    end
+  end
+  
 end

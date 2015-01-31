@@ -10,10 +10,15 @@
         = @user.region
       %li.list-group-item
         = account_status_text(@user)
-    = render 'profile_buttons'
+    - if current_or_admin?
+      .well
+        = link_to t('links.edit'), edit_user_path(@user), class: 'btn btn-primary'
   .col-md-8
     %h2.custom-h2= t('elements.user.offers')
     = offer_status_nav
     .list-group
       = render @offers
       = will_paginate @offers
+      - if @offers.empty?
+        .list-group-item
+          = t('elements.no_offers')

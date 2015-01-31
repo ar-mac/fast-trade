@@ -14,7 +14,7 @@
     / comment out when done
     .empty-newline
     = t('activerecord.attributes.offer.valid_until')
-    %b= offer.valid_until
+    %b= offer.valid_date
     
     
   - if current_or_admin?(offer.owner)

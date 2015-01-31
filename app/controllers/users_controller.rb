@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   
   def update
     #password change
-    if @user.authenticate(params[:old_password]) && @current_user == @user
+    if @user.authenticate(params[:old_password]) && current_user?
       password_change = true
       flash[:info] = I18n.t('flash.successful.password_change')
     else
@@ -113,13 +113,6 @@ class UsersController < ApplicationController
       if !(@current_user == @user || @current_user.admin?)
         flash[:danger] = I18n.t('flash.error.not_owner')
         # temporary redirect should redirect to prev location
-        redirect_to root_path
-      end
-    end
-    
-    def admin_auth
-      if current_user.nil? || !current_user.admin?
-        flash[:danger] = I18n.t('flash.error.user_not_admin')
         redirect_to root_path
       end
     end

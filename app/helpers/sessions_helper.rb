@@ -30,7 +30,7 @@ module SessionsHelper
     end
     
     def current_user?
-      @current_user == @user
+      return true if @current_user == @user
     end
     
     def admin?

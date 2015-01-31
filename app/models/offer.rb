@@ -93,6 +93,18 @@ class Offer < ActiveRecord::Base
     paginate(page: params[:page])
   end
   
+  def valid_date
+    I18n.l(valid_until, format: "%d %b %Y")
+  end
+  
+  def created_date
+    I18n.l(created_at, format: "%d %b %Y")
+  end
+  
+  def updated_date
+    I18n.l(updated_at, format: "%d %b %Y")
+  end
+  
   def activate
     self.update_attribute(:status_id, 1)
   end

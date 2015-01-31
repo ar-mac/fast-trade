@@ -27,6 +27,7 @@ pl:
     inactive_users: 'Konta nieaktywne'
     all_regions: 'Cała Polska'
     no_users: 'Brak użytkowników z podanymi właściwościami'
+    no_offers: 'Brak offert'
     user:
       info: 'Dane konta'
       offers: 'Oferty użytkownika'
@@ -61,7 +62,7 @@ pl:
       fashion: 'Moda'
       other: 'Pozostałe'
     offer:
-      confirm_close: 'Deaktywować ogłoszenie?'
+      confirm_close: 'Zamknąć ogłoszenie?'
       confirm_destroy: 'Usunąć ogłoszenie?'
       search: 'Wyszukaj ofert'
     
@@ -76,6 +77,7 @@ pl:
       deactivate_account: 'Zawieś konto'
       activate_account: 'Aktywuj konto'
     offer:
+      info: 'Informacje o ofercie'
       own: 'Własne oferty'
       all: 'Wszystkie'
       index: 'Oferty z podanego kryterium'
@@ -96,8 +98,11 @@ pl:
     offers: 'Oferty'
     users: 'Użytkownicy'
     edit: 'Edytuj'
+    accept: 'Akceptuj'
+    renew: 'Ponów'
     accept_edit: 'Zachowaj zmiany'
     destroy: 'Usuń'
+    close: 'Zakończ'
     cancel: 'Odrzuć'
     admin_options: 'Administracyjne'
     
@@ -111,10 +116,13 @@ pl:
         active: 'Konto aktywne'
         inactive: 'Konto nieaktywne'
       offer:
-        user: 'ZMIENIĆ !!'
         owner: 'Autor'
+        category: 'Kategoria'
+        created: 'Utworzono'
+        updated: 'Zmieniono'
         valid_until: 'Oferta ważna do:'
         status:
+          name: 'Stan'
           pending: 'Oczekuje na akceptację'
           active: 'Aktywna'
           closed: 'Zakończona'
@@ -123,3 +131,9 @@ pl:
     previous_label: "&#8592; Poprzednia"
     next_label: "Następna &#8594;"
     page_gap: "&hellip;"
+    
+  date:
+    day_names: [Niedziela, Poniedziałek, Wtorek, Środa, Czwartek, Piatek, Sobota]
+    abbr_day_names: [Nied, Pon, Wt, Śr, Czw, Pt, Sob]
+    month_names: [~, Styczeń, Luty, Marzec, Kwiecień, Maj, Czerwiec, Lipiec, Sierpień, Wrzesień, Październik, Listopad, Grudzień]
+    abbr_month_names: [~, Sty, Lu, Mar, Kwi, Maj, Cze, Lip, Sie, Wrze, Paź, Lis, Gru]
