@@ -12,7 +12,7 @@ User.create(name: 'Beziq',
   password: 'asdfasdf',
   password_confirmation: 'asdfasdf',
   region: User::REGIONS[n % 16],
-  active: true,
+  active: n % 2 == 0 ? true : false,
   admin: false)
 end
 
