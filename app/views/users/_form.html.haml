@@ -6,8 +6,28 @@
   .form-field
     = f.label :region, t('activerecord.attributes.user.region')
     = f.select :region, User::REGIONS, { prompt: t('elements.user.choose_region') }, { class: 'form-control' }
-  = password_fields
   
+  - if current_user?
+    .well
+      .form-field
+        = label_tag :old_password, I18n.t('elements.user.old_password')
+        = password_field_tag :old_password, nil, class: 'form-control'
+      .form-field
+        = f.label :password, I18n.t('elements.user.new_password')
+        = f.password_field :password, class: 'form-control'
+      .form-field
+        = f.label :password_confirmation, I18n.t('elements.user.password_confirm')
+        = f.password_field :password_confirmation, class: 'form-control'
+        
+  - elsif @current_user.nil?
+    .form-field
+      = f.label :password, I18n.t('elements.user.new_password')
+      = f.password_field :password, class: 'form-control'
+    .form-field
+      = f.label :password_confirmation, I18n.t('elements.user.password_confirm')
+      = f.password_field :password_confirmation, class: 'form-control'
+      
+      
   - if @current_user.nil?
     = f.submit t('links.user.register'), class: 'btn btn-default'
   - else

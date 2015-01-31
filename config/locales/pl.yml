@@ -37,7 +37,9 @@ pl:
       deactivate_description: 'Deaktywując konto zablokowana zostanie mozliwość tworzenia nowych ogłoszeń, a obecne zostaną zakończone.'
       old_password: 'Dotychczasowe hasło'
       new_password: 'Nowe hasło'
-      password_confirm: 'Potwierdzenie nowego hasła'
+      new_password_confirm: 'Potwierdzenie nowego hasła'
+      password: 'Hasło'
+      password_confirm: 'Potwierdzenie hasła'
       offer_count: 'Liczba ofert:'
     admin:
       buttons: 'Adminowskie'
