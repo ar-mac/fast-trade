@@ -9,10 +9,13 @@ class OffersController < ApplicationController
   #finds user who is object of the action
   before_action :get_user, only: [:show, :edit, :update, :destroy, :renew, :close, :accept]
   
-  #allows only owner of the account (and admin) to do action
+  #allows only owner of the account and admin to do action
   before_action :owner_user, only: [:edit, :update, :destroy, :close]
   
+  #allows only owner to do action
   before_action :only_owner, only: :renew
+  
+  before_action :logged_user, only: [:new, :create]
   
   #allows only admin to do action
   before_action :admin_auth, only: :accept

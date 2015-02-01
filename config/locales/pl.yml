@@ -123,17 +123,59 @@ pl:
         active: 'Konto aktywne'
         inactive: 'Konto nieaktywne'
       offer:
+        title: 'Tytuł'
         owner: 'Autor'
+        content: 'Treść'
         category: 'Kategoria'
+        category_id: 'Numer kategorii'
         created: 'Utworzono'
         updated: 'Zmieniono'
-        valid_until: 'Oferta ważna do:'
+        valid_until: 'Termin ważności'
+        status_id: 'Numer stanu'
+        user_id: 'Numer właściciela'
         status:
           name: 'Stan'
           pending: 'Oczekuje na akceptację'
           active: 'Aktywna'
           closed: 'Zakończona'
-          
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              taken: 'jest już zajęta'
+              blank: 'jest pusta'
+              too_short: 'jest zbyt krótka, minimum 3 znaki'
+              too_long: 'jest zbyt długa, maximum 35 znaków'
+            region:
+              inclusion: 'które podano nie jest województwem (w przymiotniku np. "Śląskie)'
+            password:
+              too_long: 'które podano jest zbyt długie'
+              too_short: 'musi być dłuższe niż 7 znaków'
+        offer:
+          attributes:
+            title:
+              taken: 'jest już zajęty'
+              blank: 'nie może być pusty'
+              too_short: 'jest zbyt krótki, minimum 5 znaki'
+              too_long: 'jest zbyt długi, maximum 40 znaków'
+            content:
+              blank: 'nie może być pusta'
+              too_short: 'musi mieć przynajmniej 20 znaków'
+            status_id:
+              numericality: 'który został podany nie jest liczbą'
+              not_a_number: 'nie jest liczbą (w zakresie 0 .. 2)'
+              inclusion: 'musi należeć do zakresu 0 .. 2'
+            category_id:
+              numericality: 'który został podany nie jest liczbą'
+              not_a_number: "nie jest liczbą (w zakresie 0 .. 11)"
+              inclusion: 'musi należeć do zakresu 0 .. 11'
+            user_id:
+              blank: 'musi być przypisany'
+            valid_until:
+              in_the_past: 'musi być w przyszłości'
+              
+        
   will_paginate:
     previous_label: "&#8592; Poprzednia"
     next_label: "Następna &#8594;"

@@ -101,14 +101,6 @@ class UsersController < ApplicationController
       end
     end
     
-    def logged_user
-      if @current_user.nil?
-        flash[:danger] = I18n.t('flash.error.non_logged')
-        # temporary redirect should redirect to login_path and store location
-        redirect_to login_path
-      end
-    end
-    
     def owner_user
       if !(@current_user == @user || @current_user.admin?)
         flash[:danger] = I18n.t('flash.error.not_owner')

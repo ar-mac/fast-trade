@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     presence: true,
     length: { in: (3..35) }
   validates :region,
-    inclusion: { in: REGIONS, message: 'to nie jest województwo' } #I18n.t('errors.user.invalid_region') }
+    inclusion: { in: REGIONS }
   validates :password,
     length: { minimum: 7 },
     allow_blank: true

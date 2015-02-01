@@ -41,7 +41,7 @@ class Offer < ActiveRecord::Base
   
   def valid_in_the_future
     if valid_until < Time.zone.today
-      errors.add(:valid_until, I18n.t('activerecord.errors.offer.valid_in_the_past'))
+      errors.add(:valid_until, I18n.t('activerecord.errors.models.offer.attributes.valid_until.in_the_past'))
     end
   end
   

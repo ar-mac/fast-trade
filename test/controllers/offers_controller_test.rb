@@ -217,15 +217,96 @@ class OffersControllerTest < ActionController::TestCase
   end
   
 
-  test "should get new" do
+  test "new offer action" do
+    get :new
+    assert_redirected_to login_path
+    
+    log_in_as @user1
     get :new
     assert_response :success
+    assert_template 'new'
+    @o_new = assigns(:offer)
+    assert_not_nil @o_new
+  end
+  
+  test 'valid create offer action' do
+    log_in_as @user1
+    post :create, offer: {
+      title: 'Valid new offer title',
+      valid_until: (Time.zone.today + 10.days),
+      category_id: 4,
+      content: Faker::Lorem.sentence(6)
+    }
+    @o_new = assigns(:offer)
+    assert_redirected_to offer_path(@o_new)
+    assert_equal 0, @o_new.status_id
+  end
+  
+  test 'create offer action with attempt to set status' do
+    log_in_as @user1
+    post :create, offer: {
+      title: 'Valid other new offer title',
+      valid_until: (Time.zone.today + 10.days),
+      category_id: 4,
+      content: Faker::Lorem.sentence(6),
+      status_id: 1
+    }
+    @o_new = assigns(:offer)
+    assert_redirected_to offer_path(@o_new)
+    assert_equal 0, @o_new.status_id
   end
 
-  test "should get edit" do
-    log_in_as(@user1)
+  test "edit permissions" do
+    get :edit, id: @o_active.id
+    assert_response :redirect
+    
+    log_in_as @user2
+    get :edit, id: @o_active.id
+    assert_response :redirect
+    
+    log_in_as @user1
     get :edit, id: @o_active.id
     assert_response :success
+    assert_not_nil assigns(:offer)
+    
+    log_in_as @admin
+    get :edit, id: @o_active.id
+    assert_response :success
+    assert_not_nil assigns(:offer)
+  end
+  
+  test 'full update with valid params' do
+    newtitle = 'Changed title for offer'
+    newcontent = Faker::Lorem.sentence(5)
+    log_in_as @user1
+    patch :update, id: @o_active, offer: {
+      title: newtitle,
+      valid_until: (Time.zone.today + 10.days),
+      category_id: 7,
+      content: newcontent
+    }
+    @o_edited = assigns(:offer)
+    assert_redirected_to @o_edited
+    assert_equal newtitle, @o_edited.title
+    assert_equal((Time.zone.today + 10.days), @o_edited.valid_until)
+    assert_equal 7, @o_edited.category_id
+    assert_equal newcontent, @o_edited.content
+    assert_equal 0, @o_edited.status_id
+  end
+  
+  test 'full update with invalid params' do
+    newtitle = 'Short'
+    newcontent = Faker::Lorem.sentence(5)
+    
+    log_in_as @user1
+    patch :update, id: @o_active, offer: {
+      title: newtitle,
+      valid_until: (Time.zone.today - 2.days),
+      category_id: 25,
+      content: newcontent
+    }
+    @o_edited = assigns(:offer)
+    assert_template 'edit'
   end
 
 end
