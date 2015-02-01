@@ -22,22 +22,19 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   test 'profile buttons visibility for admin' do
     log_in_as(@admin)
     get user_path(@user)
-    assert_select "a[href=?]", edit_user_path(@user), count: 0
-    assert_select "a[href=?]", edit_admin_user_path(@user), count: 1
+    assert_select "a[href=?]", edit_user_path(@user), count: 1
   end
   
   test 'profile buttons visibility for owner' do
     log_in_as(@user)
     get user_path(@user)
     assert_select "a.btn[href=?]", edit_user_path(@user), count: 1
-    assert_select "a[href=?]", edit_admin_user_path(@user), count: 0
   end
     
   test 'profile buttons visibility for guest' do
     log_in_as(@other)
     get user_path(@user)
     assert_select "a[href=?]", edit_user_path(@user), count: 0
-    assert_select "a[href=?]", edit_admin_user_path(@user), count: 0
   end
   
 end

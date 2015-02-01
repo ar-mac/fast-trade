@@ -7,13 +7,13 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
   
   #allows only admin to do action
-  before_action :admin_auth, only: :index
+  before_action :admin_auth, only: [:index, :activate, :deactivate]
   
   #allows only logged users to do action
-  before_action :logged_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
+  before_action :logged_user, only: [:show, :edit, :update, :destroy]
   
   #allows only owner of the account (and admin) to do action
-  before_action :owner_user, only: [:edit, :update, :destroy, :activate, :deactivate]
+  before_action :owner_user, only: [:edit, :update, :destroy]
   before_action :account_inactive, only: :show
   
   #allows only non logged users to do action

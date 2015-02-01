@@ -238,7 +238,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test 'activate permissions' do
     patch :activate, id: @user.id
-    assert_redirected_to login_path
+    assert_redirected_to root_path
     assert flash[:danger]
     
     log_in_as(@other)
@@ -248,8 +248,8 @@ class UsersControllerTest < ActionController::TestCase
     
     log_in_as(@user)
     patch :activate, id: @user.id
-    assert_redirected_to user_path(@user)
-    assert flash[:info]
+    assert_redirected_to root_path
+    assert flash[:danger]
     
     log_in_as(@admin)
     patch :activate, id: @user.id
@@ -259,7 +259,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test 'deactivate permissions' do
     patch :deactivate, id: @user.id
-    assert_redirected_to login_path
+    assert_redirected_to root_path
     assert flash[:danger]
     
     log_in_as(@other)
@@ -269,21 +269,46 @@ class UsersControllerTest < ActionController::TestCase
     
     log_in_as(@user)
     patch :deactivate, id: @user.id
-    assert_redirected_to user_path(@user)
-    assert flash[:info]
-    @user.reload
-    @user.offers.each do |offer|
-      assert offer.status_id == 2
-    end
-  end
+    assert_redirected_to root_path
+    assert flash[:danger]
     
-  test 'admin deactivation' do
     log_in_as(@admin)
     patch :deactivate, id: @user.id
     assert_redirected_to user_path(@user)
     assert flash[:info]
     @user.offers.each do |offer|
       assert offer.status_id == 2
+    end
+  end
+  
+  test 'user destroy permissions' do
+    assert_no_difference 'User.count' do
+      delete :destroy, id: @user.id
+      assert_redirected_to login_path
+      assert flash[:danger]
+    end
+    assert_no_difference 'User.count' do
+      log_in_as @other
+      delete :destroy, id: @user.id
+      assert_redirected_to root_path
+      assert flash[:danger]
+    end
+    
+    assert_difference 'User.count', -1 do
+      log_in_as @user
+      delete :destroy, id: @user.id
+      assert_redirected_to root_path
+      assert flash[:info]
+    end
+    
+  end
+  
+  test 'admin destroy' do
+    assert_difference 'User.count', -1 do
+      log_in_as @admin
+      delete :destroy, id: @user.id
+      assert_redirected_to root_path
+      assert flash[:info]
     end
   end
 
