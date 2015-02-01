@@ -26,11 +26,17 @@ class OffersController < ApplicationController
   end
 
   def new
-    
+    @offer = @current_user.offers.new
   end
   
   def create
-    
+    @offer = @current_user.offers.new(offer_params)
+    @offer.status_id = 0
+    if @offer.save
+      redirect_to @offer, flash: {success: I18n.t('flash.successful.offer.creation')}
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -38,7 +44,12 @@ class OffersController < ApplicationController
   end
   
   def update
-    
+    if @offer.update(offer_params)
+      @offer.status_id = 0
+      redirect_to @offer, flash: {success: I18n.t('flash.successful.offer.edition')}
+    else
+      render 'edit'
+    end
   end
   
   def destroy
@@ -63,6 +74,10 @@ class OffersController < ApplicationController
 
   
   private
+  
+    def offer_params
+      params.require(:offer).permit(:title, :valid_until, :category_id, :content)
+    end
   
     def get_offer
       @offer = Offer.find_by(id: params[:id])

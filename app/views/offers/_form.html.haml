@@ -1,0 +1,32 @@
+= form_for @offer do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-field
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  
+  .form-field
+    = f.label :valid_until, class: 'full-width-label'
+    = f.date_select :valid_until, start_year: Date.today.year, class: 'form-control'
+    
+  .form-field
+    = f.label :category
+    = f.collection_select :category_id, Category.all, :id, :name, {}, class: 'form-control'
+  
+  .form-field
+    = f.label :content
+    = f.text_area :content, class: 'form-control', id: 'edit'
+  
+  = f.submit params[:action] == 'new' ? t('links.offer.create') :  |
+  t('links.edit'),  class: 'btn btn-default'                       |
+  = link_to t('elements.cancel'), root_path, class: 'btn btn-danger pull-right'
+
+:javascript
+  $(function() {
+    $('textarea#edit').editable({
+      inlineMode: false,
+      imageUpload: false,
+      buttons: ["bold", "italic", "underline", "fontSize", "formatBlock",
+      "blockStyle", "align", "insertOrderedList", "insertUnorderedList",
+      "outdent","indent", "createLink", "undo", "redo"]
+    })
+  });

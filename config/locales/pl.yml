@@ -21,6 +21,8 @@ pl:
         close: 'Oferta została zamknięta'
         acceptation: 'Oferta została zaakceptowana'
         deletion: 'Oferta została całkowicie usunięta'
+        creation: 'Oferta utworzona, oczekuje na akceptację'
+        edition: 'Zmiany zostały zapisane, oferta oczekuje teraz na akceptację'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
