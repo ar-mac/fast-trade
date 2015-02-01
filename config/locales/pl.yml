@@ -20,6 +20,7 @@ pl:
         renewation: 'Oferta ponownie aktywowana, oczekuje na akceptację'
         close: 'Oferta została zamknięta'
         acceptation: 'Oferta została zaakceptowana'
+        deletion: 'Oferta została całkowicie usunięta'
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'

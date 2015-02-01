@@ -139,7 +139,7 @@ class OffersControllerTest < ActionController::TestCase
     end
   end
   
-  test 'other user close accept renew offer' do
+  test 'other user close/accept/renew offer' do
     log_in_as @user2
     patch :close, id: @o_active.id
     assert_redirected_to root_path
@@ -157,7 +157,7 @@ class OffersControllerTest < ActionController::TestCase
     assert_equal 0,  @o_pending.status_id
   end
   
-  test 'owner close accept renew offer' do
+  test 'owner close/accept/renew offer' do
     log_in_as @user1
     patch :close, id: @o_active.id
     assert_redirected_to @o_active
@@ -175,7 +175,7 @@ class OffersControllerTest < ActionController::TestCase
     assert_equal 0,  @o_pending.status_id
   end
   
-  test 'admin close accept renew offer' do
+  test 'admin close/accept/renew offer' do
     log_in_as @admin
     patch :close, id: @o_active.id
     assert_redirected_to @o_active
@@ -191,6 +191,29 @@ class OffersControllerTest < ActionController::TestCase
     assert_redirected_to @o_pending
     @o_pending.reload
     assert_equal 1,  @o_pending.status_id
+  end
+  
+  test 'users offer delete' do
+    assert_no_difference 'Offer.count' do
+      delete :destroy, id: @o_active.id
+      assert_redirected_to root_path
+    end
+    assert_no_difference 'Offer.count' do
+      log_in_as @user2
+      delete :destroy, id: @o_active.id
+      assert_redirected_to root_path
+    end
+    assert_difference 'Offer.count', -1 do
+      log_in_as @user1
+      delete :destroy, id: @o_active.id
+      assert_redirected_to @user1
+    end
+    assert_difference 'Offer.count', -1 do
+      log_in_as @admin
+      delete :destroy, id: @o_pending.id
+      assert_redirected_to @user1
+    end
+    
   end
   
 

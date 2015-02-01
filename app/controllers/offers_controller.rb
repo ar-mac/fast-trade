@@ -42,7 +42,8 @@ class OffersController < ApplicationController
   end
   
   def destroy
-    
+    @offer.destroy
+    redirect_to @user, flash: {info: I18n.t('flash.successful.offer.deletion')}
   end
   
   def renew
