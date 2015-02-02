@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       params[:session][:remember] == '1' ? remember(@user) : forget
       log_in(@user)
-      redirect_to root_path, flash: {success: I18n.t('flash.successful.login')}
+      redirect_to root_path, flash: {success: I18n.t('flash.successful.user.login')}
     else
-      flash.now[:danger] = I18n.t('flash.error.login_credentials')
+      flash.now[:danger] = I18n.t('flash.error.user.login_credentials')
       render 'new'
     end
   end
@@ -21,9 +21,9 @@ class SessionsController < ApplicationController
   def destroy
     if current_user
       log_out
-      redirect_to root_path, flash: {success: I18n.t('flash.successful.logout')}
+      redirect_to root_path, flash: {success: I18n.t('flash.successful.user.logout')}
     else
-      redirect_to root_path, flash: {danger: I18n.t('flash.error.non_logged')}
+      redirect_to root_path, flash: {danger: I18n.t('flash.error.user.non_logged')}
     end
   end
 end

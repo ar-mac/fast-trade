@@ -1,9 +1,9 @@
 class Offer < ActiveRecord::Base
   
   STATUS = [
-    I18n.t('activerecord.attributes.offer.status.pending'), 
-    I18n.t('activerecord.attributes.offer.status.active'),
-    I18n.t('activerecord.attributes.offer.status.closed')
+    I18n.t('activerecord.attributes.offer.status_type.pending'), 
+    I18n.t('activerecord.attributes.offer.status_type.active'),
+    I18n.t('activerecord.attributes.offer.status_type.closed')
   ]
   
   validates :title,

@@ -1,21 +1,23 @@
 pl:
   flash:
     error:
-      no_user: 'Wybrany użytkownik nie istnieje'
-      non_logged: 'Musisz być zalogowany'
-      logged: 'Nie możesz być zalogowany'
-      user_not_admin: 'Nie możesz tego zrobić'
-      login_credentials: 'Niepoprawny login/hasło'
-      not_owner: 'Tylko właściciel konta może to zrobić'
+      user:
+        not_exist: 'Wybrany użytkownik nie istnieje'
+        non_logged: 'Musisz być zalogowany'
+        logged: 'Nie możesz być zalogowany'
+        not_admin: 'Nie możesz tego zrobić'
+        login_credentials: 'Niepoprawny login/hasło'
+        not_owner: 'Tylko właściciel konta może to zrobić'
     successful:
-      login: 'Zalogowano'
-      logout: 'Wylogowano'
-      profile_update: 'Zapisano zmiany'
-      user_creation: 'Konto zostało utworzone'
-      account_deletion: 'Konto zostało usunięte'
-      password_change: 'Hasło zostało zmnienine'
-      user_activation: 'Konto jest teraz aktywne'
-      user_deactivation: 'Konto jest teraz nieaktywne'
+      user:
+        creation: 'Konto zostało utworzone'
+        update: 'Zapisano zmiany'
+        deletion: 'Konto zostało usunięte'
+        activation: 'Konto jest teraz aktywne'
+        deactivation: 'Konto jest teraz nieaktywne'
+        password_change: 'Hasło zostało zmnienine'
+        login: 'Zalogowano'
+        logout: 'Wylogowano'
       offer:
         renewation: 'Oferta ponownie aktywowana, oczekuje na akceptację'
         close: 'Oferta została zamknięta'
@@ -133,8 +135,8 @@ pl:
         valid_until: 'Termin ważności'
         status_id: 'Numer stanu'
         user_id: 'Numer właściciela'
-        status:
-          name: 'Stan'
+        status: 'Stan'
+        status_type:
           pending: 'Oczekuje na akceptację'
           active: 'Aktywna'
           closed: 'Zakończona'

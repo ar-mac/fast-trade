@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to @user, flash: {success: I18n.t('flash.successful.user_creation')}
+      redirect_to @user, flash: {success: I18n.t('flash.successful.user.creation')}
     else
       render 'new'
     end
@@ -52,13 +52,13 @@ class UsersController < ApplicationController
     #password change
     if @user.authenticate(params[:old_password]) && current_user?
       password_change = true
-      flash[:info] = I18n.t('flash.successful.password_change')
+      flash[:info] = I18n.t('flash.successful.user.password_change')
     else
       password_change = false
     end
     
     if @user.update(user_params(password_change))
-      flash[:success] = I18n.t('flash.successful.profile_update')
+      flash[:success] = I18n.t('flash.successful.user.update')
       redirect_to @user
     else
       render 'edit'
@@ -68,17 +68,17 @@ class UsersController < ApplicationController
   def destroy
     log_out
     @user.destroy
-    redirect_to root_path, flash: {info: I18n.t('flash.successful.account_deletion')}
+    redirect_to root_path, flash: {info: I18n.t('flash.successful.user.deletion')}
   end
   
   def activate
     @user.activate
-    redirect_to @user, flash: {info: I18n.t('flash.successful.user_activation')}
+    redirect_to @user, flash: {info: I18n.t('flash.successful.user.activation')}
   end
   
   def deactivate
     @user.deactivate
-    redirect_to @user, flash: {info: I18n.t('flash.successful.user_deactivation')}
+    redirect_to @user, flash: {info: I18n.t('flash.successful.user.deactivation')}
   end
   
   private
@@ -96,14 +96,14 @@ class UsersController < ApplicationController
       
       # temporary implementation of redirection to previous (do it in the cleaner way)
       if !@user
-        flash[:danger] = I18n.t('flash.error.no_user')
+        flash[:danger] = I18n.t('flash.error.user.not_exist')
         redirect_to root_path
       end
     end
     
     def owner_user
       if !(@current_user == @user || @current_user.admin?)
-        flash[:danger] = I18n.t('flash.error.not_owner')
+        flash[:danger] = I18n.t('flash.error.user.not_owner')
         # temporary redirect should redirect to prev location
         redirect_to root_path
       end

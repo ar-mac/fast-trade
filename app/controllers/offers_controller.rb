@@ -88,7 +88,7 @@ class OffersController < ApplicationController
     
     def owner_user
       if !current_or_admin?
-        flash[:danger] = I18n.t('flash.error.not_owner')
+        flash[:danger] = I18n.t('flash.error.user.not_owner')
         # temporary redirect should redirect to prev location
         redirect_to root_path
       end
@@ -96,7 +96,7 @@ class OffersController < ApplicationController
     
     def only_owner
       if !current_user?
-        flash[:danger] = I18n.t('flash.error.not_owner')
+        flash[:danger] = I18n.t('flash.error.user.not_owner')
         # temporary redirect should redirect to prev location
         redirect_to root_path
       end

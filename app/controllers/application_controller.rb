@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   
   def no_user
     if logged_in?
-      flash[:danger] = I18n.t('flash.error.logged')
+      flash[:danger] = I18n.t('flash.error.user.logged')
       # temporary redirect should redirect back
       redirect_to root_path
     end
@@ -19,14 +19,14 @@ class ApplicationController < ActionController::Base
   
   def admin_auth
     if current_user.nil? || !current_user.admin?
-      flash[:danger] = I18n.t('flash.error.user_not_admin')
+      flash[:danger] = I18n.t('flash.error.user.not_admin')
       redirect_to root_path
     end
   end
   
   def logged_user
     if @current_user.nil?
-      flash[:danger] = I18n.t('flash.error.non_logged')
+      flash[:danger] = I18n.t('flash.error.user.non_logged')
       # temporary redirect should redirect to login_path and store location
       redirect_to login_path
     end
