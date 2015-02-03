@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   before_action :no_user, only: [:new, :create]
   
   def new
-    
+    @title = I18n.t('links.crumbs.users.login')
   end
   
   def create

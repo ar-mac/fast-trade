@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+  include ActionView::Helpers::TextHelper
   REGIONS = ["Dolnośląskie", "Kujawsko-pomorskie", "Lubelskie", "Lubuskie",
   "Łódzkie", "Małopolskie", "Mazowieckie", "Opolskie", "Podkarpackie",
   "Podlaskie", "Pomorskie", "Śląskie", "Świętokrzyskie", "Warmińsko-mazurskie",
@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
   
   def activate
     self.update_attribute(:active, true)
+  end
+  
+  def short_name
+    truncate(name, length: 25, separator: ' ')
   end
   
 end

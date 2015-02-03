@@ -19,18 +19,18 @@ class UsersController < ApplicationController
   #allows only non logged users to do action
   before_action :no_user, only: [:new, :create]
   
-  #visible for all logged in
   def show
+    @title = I18n.t('links.crumbs.users.user', name: @user.short_name)
     @offers = @user.offers.by_show_params(params, current_or_admin?)
   end
 
-  # index should be visible only for admins
   def index
+    @title = I18n.t('links.crumbs.users.index')
     @users = User.by_search_params(params)
   end
   
-  #only for non logged
   def new
+    @title = I18n.t('links.crumbs.users.new')
     @user = User.new
   end
   
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+    @title = I18n.t('links.crumbs.users.edit_user', name: @user.short_name)
   end
   
   def update

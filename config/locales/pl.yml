@@ -84,12 +84,15 @@ pl:
         index: 'Oferty'
         offer: "Oferta: %{title}"
         edit: 'Edycja'
+        edit_offer: 'Edycja oferty: %{title}'
         new: 'Nowa'
       users:
         index: 'Użytkownicy'
         user: "Profil: %{name}"
         edit: 'Ustawienia'
+        edit_user: 'Edycja użytkownika: %{name}'
         new: 'Rejestracja'
+        login: 'Logowanie'
     user:
       register: 'Zarejestruj się'
       login: 'Zaloguj'
@@ -198,7 +201,7 @@ pl:
     page_gap: "&hellip;"
     
   date:
-  abbr_day_names:
+    abbr_day_names:
     - nie
     - pon
     - wto
@@ -206,7 +209,7 @@ pl:
     - czw
     - pią
     - sob
-  abbr_month_names:
+    abbr_month_names:
     -
     - sty
     - lut
@@ -220,7 +223,7 @@ pl:
     - paź
     - lis
     - gru
-  day_names:
+    day_names:
     - niedziela
     - poniedziałek
     - wtorek
@@ -228,12 +231,12 @@ pl:
     - czwartek
     - piątek
     - sobota
-  formats:
-    default: ! '%d-%m-%Y'
-    long: ! '%B %d, %Y'
-    short: ! '%d %b'
-  
-  month_names:
+    formats:
+      default: ! '%d-%m-%Y'
+      long: ! '%B %d, %Y'
+      short: ! '%d %b'
+    
+    month_names:
     -
     - styczeń
     - luty
@@ -247,7 +250,7 @@ pl:
     - październik
     - listopad
     - grudzień
-  order:
+    order:
     - :day
     - :month
     - :year

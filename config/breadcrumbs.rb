@@ -45,9 +45,13 @@ end
 
 crumb :new_user do
   link I18n.t('links.crumbs.users.new'), new_user_path
-  parent :users
+  parent :home
 end
 
+crumb :login do
+  link I18n.t('links.crumbs.users.login'), login_path
+  parent :home
+end
 
 
 # crumb :projects do

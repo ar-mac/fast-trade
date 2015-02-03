@@ -1,5 +1,5 @@
 class Offer < ActiveRecord::Base
-  
+  include ActionView::Helpers::TextHelper
   STATUS = [
     I18n.t('activerecord.attributes.offer.status_type.pending'), 
     I18n.t('activerecord.attributes.offer.status_type.active'),
@@ -127,6 +127,10 @@ class Offer < ActiveRecord::Base
   
   def closed?
     status_id == 2
+  end
+  
+  def short_title
+    truncate(title, length: 25 , separator: ' ')
   end
   
 end
