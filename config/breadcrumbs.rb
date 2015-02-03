@@ -39,13 +39,13 @@ crumb :user do |user|
 end
 
 crumb :edit_user do |user|
-  link I18n.t('links.crumbs.users.user'), edit_user_path(user)
+  link I18n.t('links.crumbs.users.edit'), edit_user_path(user)
   parent :user, user
 end
 
 crumb :new_user do
   link I18n.t('links.crumbs.users.new'), new_user_path
-  parent :user
+  parent :users
 end
 
 

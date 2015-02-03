@@ -20,13 +20,3 @@
   t('links.edit'),  class: 'btn btn-default'                       |
   = link_to t('elements.cancel'), root_path, class: 'btn btn-danger pull-right'
 
-:javascript
-  $(function() {
-    $('textarea#edit').editable({
-      inlineMode: false,
-      imageUpload: false,
-      buttons: ["bold", "italic", "underline", "fontSize", "formatBlock",
-      "blockStyle", "align", "insertOrderedList", "insertUnorderedList",
-      "outdent","indent", "createLink", "undo", "redo"]
-    })
-  });

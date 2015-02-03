@@ -51,6 +51,7 @@ pl:
       password: 'Hasło'
       password_confirm: 'Potwierdzenie hasła'
       offer_count: 'Liczba ofert:'
+      inactive: 'Konto nieaktywne'
     admin:
       buttons: 'Adminowskie'
     forms:
@@ -87,6 +88,8 @@ pl:
       users:
         index: 'Użytkownicy'
         user: "Profil: %{name}"
+        edit: 'Ustawienia'
+        new: 'Rejestracja'
     user:
       register: 'Zarejestruj się'
       login: 'Zaloguj'

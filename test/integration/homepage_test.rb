@@ -52,6 +52,21 @@ class HomepageTest < ActionDispatch::IntegrationTest
     assert_select 'input[type=submit]', count: 1
   end
   
-  
+  test 'link for inactive user' do
+    log_in_as(@inactive)
+    get root_path
+    assert_select "p#text-danger", text: I18n.t('elements.user.inactive'), count: 1 
+    assert_select "a[href = ?]", login_path, count: 1
+    assert_select "a[href = ?]", new_user_path, count: 1
+    
+    assert_select "a[href = ?]", user_path(@inactive), count: 1
+    assert_select "a[href = ?]", edit_user_path(@inactive), count: 1
+    assert_select "a[href = ?]", new_offer_path, count: 1
+    assert_select "a[href = ?]", logout_path, count: 1
+    
+    assert_select "a[href = ?]", admin_users_path, count: 0
+    assert_select "a[href = ?]", offers_path, count: 2
+    assert_select "a[href = ?]", offers_path(status: 0), count: 0
+  end
   
 end
