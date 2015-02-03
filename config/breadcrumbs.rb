@@ -35,7 +35,11 @@ crumb :user do |user|
     :name => truncate(user.name, length: 20, separator: ' ')
   )
   link link_title, user_path(user)
-  parent :users
+  if admin?
+    parent :users
+  else
+    parent :home
+  end
 end
 
 crumb :edit_user do |user|
