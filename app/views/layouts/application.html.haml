@@ -16,6 +16,7 @@
           = fa_for_msg(msg_type)
           = msg
           = fa_for_msg(msg_type)
+      = breadcrumbs display_single_fragment: true, style: :bootstrap, separator: ''
       = yield
       = debug(params) if Rails.env.development?
     = render 'layouts/footer'

@@ -77,6 +77,16 @@ pl:
     
   links:
     fast_trade: 'Fast Trade'
+    crumbs:
+      home: 'Strona główna'
+      offers:
+        index: 'Index ofert'
+        offer: "Oferta: %{title}"
+        edit: 'Edycja'
+        new: 'Nowa'
+      users:
+        index: 'Index użytkowników'
+        user: "Profil: %{name}"
     user:
       register: 'Zarejestruj się'
       login: 'Zaloguj'
