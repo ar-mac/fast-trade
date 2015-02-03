@@ -1,7 +1,7 @@
 module UsersHelper
   
   def offer_status_nav
-    if current_oradmin?
+    if current_or_admin?
       render 'status_nav'
     end
   end
