@@ -44,5 +44,10 @@ module SessionsHelper
       return true if current_user? || admin?
       return false
     end
+    
+    def inactive?
+      return true if @current_user && !@current_user.active?
+      return false
+    end
   
 end
