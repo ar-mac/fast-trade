@@ -40,7 +40,6 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
-    breadcrumbs_on_rails (2.3.0)
     builder (3.2.2)
     byebug (3.4.0)
       columnize (~> 0.8)
@@ -72,6 +71,8 @@ GEM
     font-awesome-sass (4.2.2)
       sass (~> 3.2)
     formatador (0.2.5)
+    gretel (3.0.8)
+      rails (>= 3.2.0)
     guard (2.10.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -230,11 +231,11 @@ DEPENDENCIES
   better_errors
   bootstrap-sass
   bootstrap-will_paginate
-  breadcrumbs_on_rails
   byebug (= 3.4.0)
   coffee-rails (~> 4.0.0)
   faker
   font-awesome-sass
+  gretel
   guard-minitest (= 2.3.1)
   haml-rails
   jbuilder (~> 2.0)
