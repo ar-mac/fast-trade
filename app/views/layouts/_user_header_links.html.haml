@@ -13,12 +13,28 @@
           %span.caret
         %ul.dropdown-menu{:role => "menu"}
           %li.dropdown-header{:role => "presentation"}= t('links.users')
-          %li= link_to t('links.show'), admin_users_path
+          %li
+            = link_to admin_users_path do
+              %i.fa.fa-users.fa-fw
+              = t('links.show')
           %li.divider
           %li.dropdown-header{:role => "presentation"}= t('links.offers')
-          %li= link_to t('links.show'), offers_path
-          %li= link_to t('links.offer.status0'), offers_path(status: 0)
-            
+          %li
+            = link_to offers_path do
+              %i.fa.fa-list.fa-fw
+              = t('links.show')
+          %li
+            = link_to offers_path(status: 0) do
+              %i.fa.fa-pause.fa-fw
+              = t('links.offer.status0')
+          %li
+            = link_to offers_path(status: 1) do
+              %i.fa.fa-play.fa-fw
+              = t('links.offer.status1')
+          %li
+            = link_to offers_path(status: 2) do
+              %i.fa.fa-stop.fa-fw
+              = t('links.offer.status2')
     
     
     %li.dropdown
@@ -27,21 +43,44 @@
         = t('links.offer.own')
         %span.caret
       %ul.dropdown-menu{:role => "menu"}
-        %li= link_to t('links.show'), offers_path
+        %li
+          = link_to offers_path do
+            %i.fa.fa-list.fa-fw
+            = t('links.show')
         %li.divider
-        %li= link_to t('links.add'), new_offer_path
+        %li
+          = link_to new_offer_path do
+            %i.fa.fa-plus.fa-fw
+            = t('links.add')
     %li.dropdown
       %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
       :href => "#", :role => "button"}  |
         = @current_user.name
         %span.caret
       %ul.dropdown-menu{:role => "menu"}
-        %li= link_to t('links.show'), @current_user
-        %li= link_to t('links.settings'), edit_user_path(@current_user)
+        %li
+          = link_to @current_user do
+            %i.fa.fa-user.fa-fw
+            = t('links.show')
+        %li
+          = link_to edit_user_path(@current_user) do
+            %i.fa.fa-cogs.fa-fw
+            = t('links.settings')
         %li.divider
-        %li= link_to t('links.user.log_out'), logout_path, method: :delete
+        %li
+          = link_to logout_path, method: :delete do
+            %i.fa.fa-sign-out.fa-fw
+            = t('links.user.log_out')
+        
     
   - else
   
-    %li= link_to t('links.user.register'), new_user_path
-    %li= link_to t('links.user.login'), login_path
+    %li
+      = link_to new_user_path do
+        %i.fa.fa-sign-in.fa-fw
+        = t('links.user.register')
+    %li
+      = link_to login_path do
+        %i.fa.fa-sign-in.fa-fw
+        = t('links.user.login')
+        

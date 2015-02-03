@@ -5,6 +5,7 @@ class HomepageTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:tom)
     @admin = users(:admin)
+    @inactive = users(:inactive)
   end
   
   test 'links for non logged in person' do
@@ -50,5 +51,7 @@ class HomepageTest < ActionDispatch::IntegrationTest
     assert_select '.form-search', count: 1
     assert_select 'input[type=submit]', count: 1
   end
+  
+  
   
 end

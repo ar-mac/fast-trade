@@ -117,4 +117,16 @@ class Offer < ActiveRecord::Base
     self.update_attribute(:status_id, 0)
   end
   
+  def pending?
+    status_id == 0
+  end
+  
+  def active?
+    status_id == 1
+  end
+  
+  def closed?
+    status_id == 2
+  end
+  
 end

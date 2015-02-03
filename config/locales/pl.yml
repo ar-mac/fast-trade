@@ -80,12 +80,12 @@ pl:
     crumbs:
       home: 'Strona główna'
       offers:
-        index: 'Index ofert'
+        index: 'Oferty'
         offer: "Oferta: %{title}"
         edit: 'Edycja'
         new: 'Nowa'
       users:
-        index: 'Index użytkowników'
+        index: 'Użytkownicy'
         user: "Profil: %{name}"
     user:
       register: 'Zarejestruj się'
@@ -117,6 +117,7 @@ pl:
     offers: 'Oferty'
     users: 'Użytkownicy'
     edit: 'Edytuj'
+    edit_profile: 'Ustawienia konta'
     accept: 'Akceptuj'
     renew: 'Ponów'
     accept_edit: 'Zachowaj zmiany'
