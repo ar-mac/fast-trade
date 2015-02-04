@@ -76,6 +76,7 @@ pl:
       confirm_close: 'Zamknąć ogłoszenie?'
       confirm_destroy: 'Usunąć ogłoszenie?'
       search: 'Wyszukaj ofert'
+      status: 'Stan'
     
   links:
     fast_trade: 'Fast Trade'

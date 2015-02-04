@@ -9,9 +9,8 @@
     .empty-newline
     = t('activerecord.attributes.offer.owner')
     = link_to offer.owner.name, offer.owner
-    / for debugging purpose
-    = offer.status
-    / comment out when done
+    - if admin?
+      = "#{t('elements.offer.status')}: #{offer.status}"
     .empty-newline
     = t('activerecord.attributes.offer.valid_until')
     %b= offer.valid_date
