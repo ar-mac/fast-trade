@@ -14,7 +14,6 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     
     log_in_as(@user)
     get user_path(@user)
-    assert_select "title", "FastTrade"
     assert_select "li.list-group-item", /#{@user.name}/, count: 1
     assert_select "li.list-group-item", /#{@user.region}/, count: 1
   end

@@ -14,7 +14,12 @@ class UsersController < ApplicationController
   
   #allows only owner of the account (and admin) to do action
   before_action :owner_user, only: [:edit, :update, :destroy]
-  before_action :account_inactive, only: :show
+  
+  #allows only owner and admins to show profile
+  before_action :inactive_account, only: :show
+  
+  #allows only active current_user to do action
+  before_action :active_account, only: [:edit, :update]
   
   #allows only non logged users to do action
   before_action :no_user, only: [:new, :create]
@@ -109,7 +114,7 @@ class UsersController < ApplicationController
       end
     end
     
-    def account_inactive
+    def inactive_account
       if !@user.active?
         owner_user
       end

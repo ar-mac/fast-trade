@@ -53,4 +53,12 @@ class User < ActiveRecord::Base
     truncate(name, length: 25, separator: ' ')
   end
   
+  def active_offers_count
+    self.offers.where('status_id = ?', 1).size
+  end
+  
+  def inactive?
+    true unless self.active?
+  end
+  
 end

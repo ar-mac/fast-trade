@@ -47,7 +47,14 @@ module SessionsHelper
     end
     
     def inactive?
-      return true if @current_user && !@current_user.active?
+      return false if @current_user.nil?
+      return true if @current_user.inactive?
+      return false
+    end
+    
+    def active?
+      return false if @current_user.nil?
+      return true if @current_user.active?
       return false
     end
     

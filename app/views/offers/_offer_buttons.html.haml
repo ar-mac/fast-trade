@@ -1,10 +1,9 @@
 .empty-newline
   .btn-group.btn-group-xs
-  
-    = link_to edit_offer_path(offer), class: 'btn btn-default' do
-      %i.fa.fa-pencil.fa-fw
-      = t('links.edit')
-    
+    - if current_user.active?
+      = link_to edit_offer_path(offer), class: 'btn btn-default' do
+        %i.fa.fa-pencil.fa-fw
+        = t('links.edit')
     - if admin? && offer.pending?
       = link_to accept_offer_path(offer), method: :patch, class: 'btn btn-success' do
         %i.fa.fa-check.fa-fw
@@ -13,7 +12,7 @@
       = link_to close_offer_path(offer), method: :patch, class: 'btn btn-warning', data: {confirm: t('elements.offer.confirm_close')} do
         %i.fa.fa-times.fa-fw
         = t('links.close')
-    - if owner?(offer.owner) && offer.closed?
+    - if owner?(offer.owner) && offer.owner.active? && offer.closed?
       = link_to renew_offer_path(offer), method: :patch, class: 'btn btn-primary' do
         %i.fa.fa-refresh.fa-fw
         = t('links.renew')

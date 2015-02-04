@@ -16,7 +16,7 @@
     = f.label :content
     = f.text_area :content, class: 'form-control', id: 'edit'
   
-  = f.submit params[:action] == 'new' ? t('links.offer.create') :  |
+  = f.submit params[:action] == 'new' ? t('links.offer.new') :  |
   t('links.edit'),  class: 'btn btn-default'                       |
   = link_to t('elements.cancel'), root_path, class: 'btn btn-danger pull-right'
 

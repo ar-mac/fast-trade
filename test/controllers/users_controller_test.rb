@@ -6,6 +6,7 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:tom)
     @admin = users(:admin)
     @other = users(:bob)
+    @inactive = users(:inactive)
   end
   
   test "show action validations" do
@@ -61,6 +62,10 @@ class UsersControllerTest < ActionController::TestCase
 
   test "edit authorization" do
     get :edit, id: @user.id
+    assert_response :redirect
+    
+    log_in_as(@inactive)
+    get :edit, id: @inactive.id
     assert_response :redirect
     
     log_in_as(@other)
@@ -176,7 +181,7 @@ class UsersControllerTest < ActionController::TestCase
     assert @user.authenticate('asdfasdf')
   end
   
-  test 'admin cant even try to edit password' do
+  test "admin cant edit user's password" do
     log_in_as(@admin)
     patch :update, {
       id: @user.id, 

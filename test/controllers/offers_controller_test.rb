@@ -10,6 +10,7 @@ class OffersControllerTest < ActionController::TestCase
     @o_pending = @user1.offers.find(3)
     #he has no offers, so when used it's certain that he wont be mistakelny owner of the offer
     @user2 = users(:user_5)
+    @inactive = users(:inactive)
   end
   
   test "show for non logged user" do
@@ -307,6 +308,23 @@ class OffersControllerTest < ActionController::TestCase
     }
     @o_edited = assigns(:offer)
     assert_template 'edit'
+  end
+  
+  test 'inactive account restrictions' do
+    log_in_as @inactive
+    get :new
+    assert_response :redirect
+    
+    get :edit, id: @inactive.id
+    assert_response :redirect
+    
+    patch :renew, id: @inactive.id
+    assert_redirected_to root_path
+    assert_not_nil flash[:danger]
+    
+    patch :close, id: @inactive.id
+    assert_redirected_to root_path
+    assert_not_nil flash[:danger]
   end
 
 end

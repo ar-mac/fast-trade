@@ -2,7 +2,7 @@
 
   %h4.list-group-item-heading
     = link_to user.name, user_path(user)
-  .category= "#{t('elements.user.offer_count')} (#{user.offers.size})"
+  .category= "#{t('elements.user.offer_count')} (#{user.active_offers_count})"
   
   %span.list-group-item-author
     .empty-newline

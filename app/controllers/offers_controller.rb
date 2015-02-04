@@ -6,7 +6,7 @@ class OffersController < ApplicationController
   #finds offert which is object of the action
   before_action :get_offer, only: [:show, :edit, :update, :destroy, :renew, :close, :accept]
   
-  #finds user who is object of the action
+  #finds user who is owner of the offer
   before_action :get_user, only: [:show, :edit, :update, :destroy, :renew, :close, :accept]
   
   #allows only owner of the account and admin to do action
@@ -14,6 +14,9 @@ class OffersController < ApplicationController
   
   #allows only owner to do action
   before_action :only_owner, only: :renew
+  
+  #allows only active current_user to do action
+  before_action :active_account, only: [:new, :create, :edit, :update, :renew, :close]
   
   before_action :logged_user, only: [:new, :create]
   

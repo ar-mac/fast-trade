@@ -8,6 +8,7 @@ pl:
         not_admin: 'Nie możesz tego zrobić'
         login_credentials: 'Niepoprawny login/hasło'
         not_owner: 'Tylko właściciel konta może to zrobić'
+        non_active: 'Nie możesz tego zrobić, ponieważ Twoje konto jest zablokowane.'
     successful:
       user:
         creation: 'Konto zostało utworzone'
@@ -50,7 +51,7 @@ pl:
       new_password_confirm: 'Potwierdzenie nowego hasła'
       password: 'Hasło'
       password_confirm: 'Potwierdzenie hasła'
-      offer_count: 'Liczba ofert:'
+      offer_count: 'Aktywnych ofert:'
       inactive: 'Konto nieaktywne'
     admin:
       buttons: 'Adminowskie'
@@ -103,8 +104,9 @@ pl:
       activate_account: 'Aktywuj konto'
     offer:
       info: 'Informacje o ofercie'
-      own: 'Własne oferty'
       all: 'Wszystkie'
+      add: 'Dodaj własną ofertę'
+      new: 'Zamieść ofertę'
       index: 'Oferty z podanego kryterium'
       status0: 'Oczekujące'
       status1: 'Aktywne'
