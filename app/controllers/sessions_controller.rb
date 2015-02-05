@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       params[:session][:remember] == '1' ? remember(@user) : forget
       log_in(@user)
-      redirect_to root_path, flash: {success: I18n.t('flash.successful.user.login')}
+      flash[:success] = I18n.t('flash.successful.user.login')
+      redirect_back_or(root_path)
     else
       flash.now[:danger] = I18n.t('flash.error.user.login_credentials')
       render 'new'

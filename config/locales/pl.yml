@@ -19,6 +19,7 @@ pl:
         password_change: 'Hasło zostało zmnienine'
         login: 'Zalogowano'
         logout: 'Wylogowano'
+        redirect_back: 'Jestes teraz na stronie którą wcześniej chciałeś otworzyć'
       offer:
         renewation: 'Oferta ponownie aktywowana, oczekuje na akceptację'
         close: 'Oferta została zamknięta'
@@ -59,6 +60,7 @@ pl:
       new_session: 'Logowanie do serwisu'
       edit_user: 'Edycja profilu'
       create_user: 'Rejestracja'
+      new_offer: 'Nowa oferta'
     category:
       main: 'Główna'
       music: 'Muzyka'

@@ -26,17 +26,14 @@ class ApplicationController < ActionController::Base
   
   def logged_user
     if !logged_in?
-      flash[:danger] = I18n.t('flash.error.user.non_logged')
-      # temporary redirect should redirect to login_path and store location
-      redirect_to login_path
+      store_location
+      redirect_to login_path, flash: { danger: I18n.t('flash.error.user.non_logged') }
     end
   end
   
   def active_account
     if inactive?
-      flash[:danger] = I18n.t('flash.error.user.non_active')
-      # temporary redirect should redirect to login_path and store location
-      redirect_to root_path
+      redirect_to root_path, flash: { danger: I18n.t('flash.error.user.non_active') }
     end
   end
   

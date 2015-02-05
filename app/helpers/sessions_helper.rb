@@ -62,5 +62,19 @@ module SessionsHelper
       return false
     end
     
+    def store_location
+      session[:forward_url] = request.original_url if request.get?
+    end
+    
+    def redirect_back_or(provided)
+      if session[:forward_url]
+        flash[:success] = I18n.t('flash.successful.user.redirect_back')
+        redirect_to session[:forward_url]
+        session.delete(:forward_url)
+      else
+        redirect_to provided
+      end
+    end
+    
   
 end
