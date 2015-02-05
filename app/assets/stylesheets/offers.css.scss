@@ -3,11 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
-@mixin bg-gradient($rot, $col1, $col2) {
-    background: -webkit-linear-gradient($rot, $col1, $col1, $col2); /* For Safari 5.1 to 6.0 */
-    background: linear-gradient($rot, $col1, $col1, $col2); /* Standard syntax (must be last) */
-}
-
 .offer-content {
   background-color: $gray-lighter;
   border-top: 4px solid $gray-light;
@@ -16,5 +11,4 @@
   border-right: 5px solid $gray;
   border-radius: 20px;
   padding: 20px 18px;
-  @include bg-gradient(165deg, lighten($gray-light, 25%), lighten($gray, 15%))
 }

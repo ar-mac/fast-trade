@@ -52,7 +52,7 @@ class OfferTest < ActiveSupport::TestCase
     @o_new.update( content: ' ' * 40 )
     assert_not @o_new.valid?
     
-    @o_new.update( content: Faker::Lorem.sentence(3) )
+    @o_new.update( content: 'text' * 10 )
     assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
   end
   

@@ -34,9 +34,15 @@ module SessionsHelper
       return true if @current_user == @user
     end
     
-    def admin?
+    def owner?(owner)
       return false if @current_user.nil?
-      return true if @current_user.admin?
+      return true if @current_user == owner
+      return false
+    end
+    
+    def admin?
+      return true if @current_user.try(:admin?)
+      return false
     end
     
     def current_or_admin?(owner=nil)
@@ -47,21 +53,14 @@ module SessionsHelper
     end
     
     def inactive?
-      return false if @current_user.nil?
-      return true if @current_user.inactive?
+      return true if @current_user.try(:inactive?)
       return false
     end
     
     def active?
-      return false if @current_user.nil?
-      return true if @current_user.active?
+      return true if @current_user.try(:active?)
       return false
     end
     
-    def owner?(owner)
-      return false if @current_user.nil?
-      return true if @current_user == owner
-      return false
-    end
   
 end
