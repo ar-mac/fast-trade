@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   
   def get_current
     @current_user = current_user
+    store_location
   end
   
   def no_user
@@ -20,13 +21,12 @@ class ApplicationController < ActionController::Base
   def admin_auth
     if current_user.nil? || !current_user.admin?
       flash[:danger] = I18n.t('flash.error.user.not_admin')
-      redirect_to root_path
+      redirect_back_or root_path
     end
   end
   
   def logged_user
     if !logged_in?
-      store_location
       redirect_to login_path, flash: { danger: I18n.t('flash.error.user.non_logged') }
     end
   end

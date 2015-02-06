@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       params[:session][:remember] == '1' ? remember(@user) : forget
       log_in(@user)
       flash[:success] = I18n.t('flash.successful.user.login')
-      redirect_back_or(root_path)
+      redirect_forward_or(root_path)
     else
       flash.now[:danger] = I18n.t('flash.error.user.login_credentials')
       render 'new'

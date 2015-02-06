@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   #finds user who is object of the action
   before_action :get_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
   
+  #allows only logged users to do action
+  before_action :logged_user, only: [:show, :edit, :update, :destroy, :index, :activate, :deactivate]
+  
   #allows only admin to do action
   before_action :admin_auth, only: [:index, :activate, :deactivate]
-  
-  #allows only logged users to do action
-  before_action :logged_user, only: [:show, :edit, :update, :destroy]
   
   #allows only owner of the account (and admin) to do action
   before_action :owner_user, only: [:edit, :update, :destroy]
@@ -98,19 +98,16 @@ class UsersController < ApplicationController
     
     def get_user
       @user = User.find_by(id: params[:id])
-      
-      # temporary implementation of redirection to previous (do it in the cleaner way)
       if !@user
         flash[:danger] = I18n.t('flash.error.user.not_exist')
-        redirect_to root_path
+        redirect_back_or root_path
       end
     end
     
     def owner_user
-      if !(@current_user == @user || @current_user.admin?)
+      if !current_or_admin?(@user)
         flash[:danger] = I18n.t('flash.error.user.not_owner')
-        # temporary redirect should redirect to prev location
-        redirect_to root_path
+        redirect_back_or root_path
       end
     end
     

@@ -3,6 +3,9 @@ class OffersController < ApplicationController
   #finds out who is current and sets to @current_user
   before_action :get_current
   
+  #allows only logged user to take action
+  before_action :logged_user, only: [:new, :create, :edit, :update, :destroy, :renew, :close, :accept]
+  
   #finds offert which is object of the action
   before_action :get_offer, only: [:show, :edit, :update, :destroy, :renew, :close, :accept]
   
@@ -17,8 +20,6 @@ class OffersController < ApplicationController
   
   #allows only active current_user to do action
   before_action :active_account, only: [:new, :create, :edit, :update, :renew, :close]
-  
-  before_action :logged_user, only: [:new, :create]
   
   #allows only admin to do action
   before_action :admin_auth, only: :accept
@@ -93,17 +94,13 @@ class OffersController < ApplicationController
     
     def owner_user
       if !current_or_admin?
-        flash[:danger] = I18n.t('flash.error.user.not_owner')
-        # temporary redirect should redirect to prev location
-        redirect_to root_path
+        redirect_back_or(root_path, {danger: I18n.t('flash.error.user.not_owner')})
       end
     end
     
     def only_owner
       if !current_user?
-        flash[:danger] = I18n.t('flash.error.user.not_owner')
-        # temporary redirect should redirect to prev location
-        redirect_to root_path
+        redirect_back_or(root_path, {danger: I18n.t('flash.error.user.not_owner')})
       end
     end
     

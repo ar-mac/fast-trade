@@ -63,14 +63,26 @@ module SessionsHelper
     end
     
     def store_location
+      session[:back_url] = session[:forward_url]
       session[:forward_url] = request.original_url if request.get?
     end
     
-    def redirect_back_or(provided)
+    def redirect_back_or(provided, msg={})
+      msg.symbolize_keys! if msg
+      if session[:back_url]
+        redirect_to session[:back_url], flash: msg
+        
+        #prevents getting into loops if back_url is causing calling redirect_back_or
+        session[:forward_url] = provided 
+      else
+        redirect_to provided
+      end
+    end
+    
+    def redirect_forward_or(provided, msg={})
+      msg.symbolize_keys! if msg
       if session[:forward_url]
-        flash[:success] = I18n.t('flash.successful.user.redirect_back')
-        redirect_to session[:forward_url]
-        session.delete(:forward_url)
+        redirect_to session[:forward_url], flash: msg
       else
         redirect_to provided
       end
