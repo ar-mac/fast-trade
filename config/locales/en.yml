@@ -1,23 +1,410 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  flash:
+    error:
+      user:
+        not_exist: "Selected user doesn't exist."
+        non_logged: "You must be logged in ."
+        logged: "You mustn't be logged in."
+        not_admin: "You mustn't do it."
+        login_credentials: 'Incorrect login or password.'
+        not_owner: 'Only the owner of the account can do it'
+        non_active: "You mustn't do it, because your account is blocked."
+    successful:
+      user:
+        creation: 'Your account has been created'
+        update: 'Changes saved'
+        deletion: 'Your account has been removed'
+        activation: 'Your account is active'
+        deactivation: 'Your account is not active'
+        password_change: 'Password has been changed'
+        login: 'You are logged in'
+        logout: 'You must be signed out'
+        redirect_forward: 'You are now on the page, you previously wanted to open. ' 
+      offer:
+        renewation: 'Your offer is active again, waiting for acceptance'
+        close: 'Your offer is closed'
+        acceptation: 'Your offer is accepted'
+        deletion: 'Your offer is totally removed'
+        creation: 'Your offer is created, waiting for acceptance'
+        edition: "Changes have been made, your offer is waiting for acceptance"
+    
+  elements:
+    welcome: 'Welcome to "Fast Trade".'
+    jumbo: 'You can place offers here... etc.'
+    or: 'or'
+    remember_me: 'Rembember me'
+    users_by_region: 'Show users from certain regions'
+    active_users: 'Active accounts'
+    inactive_users: 'Konta nieaktywne'
+    all_regions: 'Whole Poland'
+    no_users: 'There are no users with given attributes'
+    no_offers: 'No offers'
+    user:
+      info: 'Account information'
+      offers: "User's offers"
+      choose_region: 'Choose region'
+      delete_confirmation: 'Are you sure to remove your account?'
+      delete_description: "If you want to remove account, choose the button below. Remember that this process is irreversible. Your offers will also be removed."
+      activate_description: "Active account can put offers."
+      deactivate_description: "When you deactivate account, user won't be able to create new offers and present ones will be closed"
+      old_password: 'Old password'
+      new_password: 'New password'
+      new_password_confirm: 'Confirm new password'
+      password: 'Password'
+      password_confirm: 'Confirm password'
+      offer_count: 'Active offers:'
+      inactive: 'Inactive account'
+    admin:
+      buttons: 'Administration'
+    forms:
+      new_session: 'Log in'
+      edit_user: "Edit user's profile"
+      create_user: 'Create user'
+      new_offer: 'New offer'
+    category:
+      main: 'Main'
+      music: 'Music'
+      automotive: 'Automotive'
+      sport: 'Sport'
+      food: 'Food'
+      it: 'It'
+      business: 'Business'
+      money: 'Finance'
+      news: 'News'
+      science: 'Science'
+      fashion: 'Fashion'
+      other: 'Others'
+    offer:
+      confirm_close: 'Do you want to close the offer?'
+      confirm_destroy: 'Do you want to remove offer?'
+      search: 'Search for the offer'
+      status: 'Status'
+    
+  links:
+    fast_trade: 'Fast Trade'
+    crumbs:
+      home: 'Home'
+      offers:
+        index: 'Offers'
+        offer: "Offer: %{title}"
+        edit: 'Edit'
+        edit_offer: 'Edit offer: %{title}'
+        new: 'New'
+      users:
+        index: 'Users'
+        user: "Profile: %{name}"
+        edit: 'settings'
+        edit_user: 'Edit user: %{name}'
+        new: 'Registration'
+        login: 'Log in'
+    user:
+      register: 'Sign up'
+      login: 'Log in'
+      log_out: 'Log out'
+      profile: 'Profile'
+      delete_account: 'Remove account'
+      deactivate_account: 'Deactivate account'
+      activate_account: 'Activate account'
+    offer:
+      info: 'Information about offers'
+      all: 'All'
+      add: 'Add your offer'
+      new: 'Insert your advertisement'
+      index: 'Offers from certain range'
+      status0: 'Waiting'
+      status1: 'Active'
+      status2: 'Closed'
+    search:
+      by_more_than_valid: 'Valid longer than:'
+      by_less_than_valid: 'Valid shorter than:'
+      by_category: 'From given category'
+      by_region: 'From given region'
+      by_status: 'According to status'
+      submit: 'Search'
+      submit_users: 'Search users'
+    show: 'Show'
+    add: 'Add'
+    settings: 'Settings'
+    offers: 'Offers'
+    users: 'Users'
+    edit: 'Edit'
+    edit_profile: 'Account settings'
+    accept: 'Accept'
+    renew: 'Renew'
+    accept_edit: 'Save changes'
+    destroy: 'Remove'
+    close: 'Close'
+    cancel: 'Cancel'
+    admin_options: 'Administration'
+    
+  activerecord:
+    attributes:
+      user:
+        name: 'Name'
+        region: 'Region'
+        password: 'Password'
+        password_confirmation: 'Confirm password'
+        active: 'Active account'
+        inactive: 'Inactive account'
+      offer:
+        title: 'Title'
+        owner: 'Owner'
+        content: 'Content'
+        category: 'Category'
+        category_id: 'Category number'
+        created: 'Created'
+        updated: 'Changed'
+        valid_until: 'Term of validity'
+        status_id: 'Status number'
+        user_id: "User's number"
+        status: 'Status'
+        status_type:
+          pending: 'Waiting for acceptance'
+          active: 'Active'
+          closed: 'Closed'
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              taken: 'has already been taken'
+              blank: 'is empty'
+              too_short: 'is too short, at least 3 signs'
+              too_long: 'is too long, max  35 signs'
+            region:
+              inclusion: 'is not a region'
+            password:
+              too_long: 'is too long'
+              too_short: 'should be longer than 7 signs'
+        offer:
+          attributes:
+            title:
+              taken: 'has already been taken'
+              blank: "can't be empty"
+              too_short: 'is too short, at least 5 signs'
+              too_long: 'is too long, max 40 signs'
+            content:
+              blank: "can't be empty"
+              too_short: 'should at least 20 signs'
+            status_id:
+              numericality: 'is not a number'
+              not_a_number: 'is not a number (ranging from 0 to 2)'
+              inclusion: 'must be between  0..2'
+            category_id:
+              numericality: 'is not a number'
+              not_a_number: "is not a number (ranging from 0 to 11)"
+              inclusion: 'must be between  0..11'
+            user_id:
+              blank: 'must be assigned'
+            valid_until:
+              in_the_past: 'must be in the future'
+              
+        
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
+   
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other: ! '%{count} days'
+      x_minutes:
+        one: 1 minute
+        other: ! '%{count} minutes'
+      x_months:
+        one: 1 month
+        other: ! '%{count} months'
+      x_seconds:
+        one: 1 second
+        other: ! '%{count} seconds'
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: must be blank
+      confirmation: ! "doesn't match %{attribute}"
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: ! 'Validation failed: %{errors}'
+      restrict_dependent_destroy:
+        one: "Cannot delete record because a dependent %{record} exists"
+        many: "Cannot delete record because dependent %{record} exist"
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: "must be other than %{count}"
+    template:
+      body: ! 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm
