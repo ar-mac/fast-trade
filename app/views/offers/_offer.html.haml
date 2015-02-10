@@ -3,7 +3,7 @@
   %h4.list-group-item-heading
     = link_to truncate(offer.title, length: 50, separator:  ' '), offer
   %span
-    = link_to offer.category, offers_path(c_id: offer.category_id), class: 'category'
+    = link_to t(offer.category.name_code), offers_path(c_id: offer.category_id), class: 'category'
     
   %span.list-group-item-author
     .empty-newline

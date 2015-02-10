@@ -17,8 +17,8 @@ User.create(name: 'Beziq',
 end
 
 # categories creation
-Category::NAMES.each_index do |i|
-  Category.create(name_id: i )
+Category::NAME_CODES.each do |name_c|
+  Category.create(name_code: name_c )
 end
 
 # offers creation

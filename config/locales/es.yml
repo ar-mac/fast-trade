@@ -136,6 +136,11 @@ es:
     close: 'Zakończ'
     cancel: 'Odrzuć'
     admin_options: 'Administracyjne'
+    locale:
+      choose: 'Elige la lengua'
+      polish: 'Polski'
+      english: 'English'
+      Spanish: 'Español'
     
   activerecord:
     attributes:

@@ -1,27 +1,27 @@
 class Category < ActiveRecord::Base
-  NAMES = [
-    I18n.t('elements.category.main'),
-    I18n.t('elements.category.music'),
-    I18n.t('elements.category.automotive'),
-    I18n.t('elements.category.sport'),
-    I18n.t('elements.category.food'),
-    I18n.t('elements.category.it'),
-    I18n.t('elements.category.business'),
-    I18n.t('elements.category.money'),
-    I18n.t('elements.category.news'),
-    I18n.t('elements.category.science'),
-    I18n.t('elements.category.fashion'),
-    I18n.t('elements.category.other')
+  NAME_CODES = [
+    'elements.category.main',
+    'elements.category.music',
+    'elements.category.automotive',
+    'elements.category.sport',
+    'elements.category.food',
+    'elements.category.it',
+    'elements.category.business',
+    'elements.category.money',
+    'elements.category.news',
+    'elements.category.science',
+    'elements.category.fashion',
+    'elements.category.other'
   ]
     
   has_many :offers
   
   def to_s
-    NAMES[name_id]
+    I18n.t(self.name_code)
   end
   
   def name
-    NAMES[name_id]
+    I18n.t(self.name_code)
   end
   
 end

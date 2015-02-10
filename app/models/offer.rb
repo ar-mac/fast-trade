@@ -20,7 +20,7 @@ class Offer < ActiveRecord::Base
   validates :category_id,
     presence: true,
     numericality: true,
-    inclusion: { in: (0...Category::NAMES.count)}
+    inclusion: { in: (0...Category::NAME_CODES.count)}
   validates :user_id,
     presence: true
   validate :valid_in_the_future

@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   
+  #finds out who is current and sets to @current_user
+  before_action :get_current
+  
+  #sets locale according to 
+  before_action :set_locale
+  
+  def set_locale
+    I18n.locale = params[:locale]
+  end
+  
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
+  end
+  
   def get_current
     @current_user = current_user
     store_location

@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
   
-  #finds out who is current and sets to @current_user
-  before_action :get_current
-  
   #finds user who is object of the action
   before_action :get_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
   
