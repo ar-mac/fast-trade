@@ -1,3 +1,51 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+
+.message {
+  overflow: auto;
+  margin: 8px 0 8px 0;
+}
+.message-sender {
+  display: inline-block;
+  width: 80%;
+  background-color: $gray-lighter;
+  border: 1px solid $gray-darker;
+  border-radius: 6px;
+}
+
+.message-reciever {
+  display: inline-block;
+  float: right;
+  width: 80%;
+  background-color: $gray-lighter;
+  border: 1px solid $gray-darker;
+  border-radius: 6px;
+}
+
+.arrow-right {
+  display: inline-block;
+  vertical-align: top;
+  width: 0;
+  height: 0;
+  margin: 4px 0 0 -4px;
+  
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid $gray-darker;
+}
+
+.arrow-left {
+  display: inline-block;
+  vertical-align: top;
+  overflow: auto;
+  width: 0;
+  height: 0;
+  margin: 4px -4px 0 0;
+  
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid $gray-light;
+}

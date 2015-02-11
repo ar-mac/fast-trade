@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   	post 'login' => 'sessions#create', as: :sessions
   	delete 'logout' => 'sessions#destroy', as: :logout
   	
-  	resources :messages, except: [:show, :index, :delete]
+  	resources :messages, only: [:new, :create]
 	end
 	
 end

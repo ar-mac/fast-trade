@@ -96,13 +96,13 @@ class OfferTest < ActiveSupport::TestCase
     @o_new.update( category_id: 'f' )
     assert_not @o_new.valid?
     
-    @o_new.update( category_id: Category::NAMES.count )
+    @o_new.update( category_id: Category::NAME_CODES.count )
     assert_not @o_new.valid?
     
     @o_new.update( category_id: '12' )
     assert_not @o_new.valid?
     
-    @o_new.update( category_id: (Category::NAMES.count - 1) )
+    @o_new.update( category_id: (Category::NAME_CODES.count - 1) )
     assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
   end
   

@@ -27,6 +27,11 @@ pl:
         deletion: 'Oferta została całkowicie usunięta'
         creation: 'Oferta utworzona, oczekuje na akceptację'
         edition: 'Zmiany zostały zapisane, oferta oczekuje teraz na akceptację'
+      
+      
+      message:
+        creation: 'Wiadomość została wysłana.'
+    
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
@@ -84,6 +89,12 @@ pl:
       confirm_destroy: 'Usunąć ogłoszenie?'
       search: 'Wyszukaj ofert'
       status: 'Stan'
+      
+      
+      owner: 'Autor ogłoszenia'
+    message:
+      history: 'Wiadomości w tym wątku'
+      read_at: 'Przeczytano: '
     
   links:
     fast_trade: 'Fast Trade'
@@ -106,6 +117,7 @@ pl:
         
       message:
         new: 'Nowa wiadomość'
+        
         
         
     user:
@@ -137,6 +149,7 @@ pl:
       
     message:
       send: 'Wyślij wiadomość'
+      new: 'Utwórz'
       
       
     show: 'Wyświetl'
@@ -184,6 +197,15 @@ pl:
           pending: 'Oczekuje na akceptację'
           active: 'Aktywna'
           closed: 'Zakończona'
+      
+      
+      message:
+        content: 'Treść'
+        
+      issue:
+        title: 'Tytuł wątku'
+      
+      
     errors:
       models:
         user:

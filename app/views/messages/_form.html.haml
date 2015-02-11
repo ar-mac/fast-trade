@@ -1,0 +1,25 @@
+= form_for @message do |f|
+
+  = render 'shared/error_messages', object: f.object
+  
+  = fields_for @issue do |ff|
+    .form-field
+      = ff.label :title
+      - if @issue.new_record?
+        = ff.text_field :title, {class: 'form-control'}
+        = ff.hidden_field :sender_id
+        = ff.hidden_field :reciever_id
+        = ff.hidden_field :offer_id
+      - else
+        = ff.text_field :title, {class: 'form-control', id: 'disabledInput', disabled: 'disabled'}
+  
+  .form-field
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+  
+  = f.hidden_field :author_id
+  = hidden_field_tag :offer_id, @offer.id
+    
+  = f.submit params[:action] == 'new' ? t('links.message.new') : |
+  t('links.edit'),  class: 'btn btn-default'                     |
+  = link_to t('elements.cancel'), @offer, class: 'btn btn-danger pull-right'
