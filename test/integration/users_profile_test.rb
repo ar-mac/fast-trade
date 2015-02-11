@@ -9,7 +9,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   end
   
   test 'showing proper_user profile' do
-    get user_path(@user)
+    get user_path(id: @user)
     assert_redirected_to login_path
     
     log_in_as(@user)

@@ -61,6 +61,11 @@ pl:
       edit_user: 'Edycja profilu'
       create_user: 'Rejestracja'
       new_offer: 'Nowa oferta'
+      
+      
+      new_message: 'Wiadomość do autora ogłoszenia'
+      
+      
     category:
       main: 'Główna'
       music: 'Muzyka'
@@ -84,19 +89,25 @@ pl:
     fast_trade: 'Fast Trade'
     crumbs:
       home: 'Strona główna'
-      offers:
+      offer:
         index: 'Oferty'
         offer: "Oferta: %{title}"
         edit: 'Edycja'
         edit_offer: 'Edycja oferty: %{title}'
         new: 'Nowa'
-      users:
+      user:
         index: 'Użytkownicy'
         user: "Profil: %{name}"
         edit: 'Ustawienia'
         edit_user: 'Edycja użytkownika: %{name}'
         new: 'Rejestracja'
         login: 'Logowanie'
+        
+        
+      message:
+        new: 'Nowa wiadomość'
+        
+        
     user:
       register: 'Zarejestruj się'
       login: 'Zaloguj'
@@ -122,6 +133,12 @@ pl:
       by_status: 'Według statusu'
       submit: 'Wyszukaj'
       submit_users: 'Wyszukaj użytkowników'
+      
+      
+    message:
+      send: 'Wyślij wiadomość'
+      
+      
     show: 'Wyświetl'
     add: 'Dodaj'
     settings: 'Ustawienia'

@@ -197,7 +197,7 @@ class OffersControllerTest < ActionController::TestCase
   test 'users offer delete' do
     assert_no_difference 'Offer.count' do
       delete :destroy, id: @o_active.id
-      assert_redirected_to root_path
+      assert_redirected_to login_path
     end
     assert_no_difference 'Offer.count' do
       log_in_as @user2

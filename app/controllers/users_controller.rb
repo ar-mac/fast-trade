@@ -22,17 +22,17 @@ class UsersController < ApplicationController
   before_action :no_user, only: [:new, :create]
   
   def show
-    @title = I18n.t('links.crumbs.users.user', name: @user.short_name)
+    @title = I18n.t('links.crumbs.user.user', name: @user.short_name)
     @offers = @user.offers.by_show_params(params, current_or_admin?)
   end
 
   def index
-    @title = I18n.t('links.crumbs.users.index')
+    @title = I18n.t('links.crumbs.user.index')
     @users = User.by_search_params(params)
   end
   
   def new
-    @title = I18n.t('links.crumbs.users.new')
+    @title = I18n.t('links.crumbs.user.new')
     @user = User.new
   end
   
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @title = I18n.t('links.crumbs.users.edit_user', name: @user.short_name)
+    @title = I18n.t('links.crumbs.user.edit_user', name: @user.short_name)
   end
   
   def update

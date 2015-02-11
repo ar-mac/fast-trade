@@ -26,6 +26,8 @@
         %li.list-group-item
           %b= t('activerecord.attributes.offer.status')
           = t(@offer.status)
+    .well
+      = link_to t('links.message.send'), new_message_path(offer_id: @offer), class: 'btn btn-success btn-lg btn-block'
     - if current_or_admin?(@offer.owner)
       .well
         .btn-group

@@ -1,2 +1,17 @@
 %h1 Messages#new
 %p Find me in app/views/messages/new.html.haml
+
+-breadcrumb :new_message
+
+.row
+  
+  .col-md-8.col-md-offset-2
+    %h2.custom-h2= @offer.title
+    .offer-content
+      = raw(@offer.content)
+
+.row
+  .col-md-8.col-md-offset-2
+    .form
+      %h3= t('elements.forms.new_message')
+      = render 'form'

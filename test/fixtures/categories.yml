@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name_code: 1
-
-two:
-  name_code: 2
+<% n = 1 %>
+<% Category::NAME_CODES.each do |name_c| %>
+c_<%= n %>:
+  id: <%= n %>
+  name_code: <%= name_c %>
+<% n += 1 %>
+<% end %>

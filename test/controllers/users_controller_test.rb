@@ -243,7 +243,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test 'activate permissions' do
     patch :activate, id: @user.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
     assert flash[:danger]
     
     log_in_as(@other)
@@ -264,7 +264,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test 'deactivate permissions' do
     patch :deactivate, id: @user.id
-    assert_redirected_to root_path
+    assert_redirected_to login_path
     assert flash[:danger]
     
     log_in_as(@other)

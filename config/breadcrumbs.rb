@@ -3,12 +3,12 @@ crumb :home do
 end
 
 crumb :offers do
-  link I18n.t('links.crumbs.offers.index'), offers_path
+  link I18n.t('links.crumbs.offer.index'), offers_path
   parent :home
 end
 
 crumb :offer do |offer|
-  link_title = I18n.t('links.crumbs.offers.offer', 
+  link_title = I18n.t('links.crumbs.offer.offer', 
     :title => truncate(offer.title, length: 20, separator: ' ')
   )
   link link_title, offer_path(offer)
@@ -16,22 +16,22 @@ crumb :offer do |offer|
 end
 
 crumb :edit_offer do |offer|
-  link I18n.t('links.crumbs.offers.edit'), edit_offer_path(offer)
+  link I18n.t('links.crumbs.offer.edit'), edit_offer_path(offer)
   parent :offer, offer
 end
 
 crumb :new_offer do
-  link I18n.t('links.crumbs.offers.new'), new_offer_path
+  link I18n.t('links.crumbs.offer.new'), new_offer_path
   parent :offers
 end
 
 crumb :users do
-  link I18n.t('links.crumbs.users.index'), users_path
+  link I18n.t('links.crumbs.user.index'), users_path
   parent :home
 end
 
 crumb :user do |user|
-  link_title = I18n.t('links.crumbs.users.user', 
+  link_title = I18n.t('links.crumbs.user.user', 
     :name => truncate(user.name, length: 20, separator: ' ')
   )
   link link_title, user_path(user)
@@ -43,42 +43,21 @@ crumb :user do |user|
 end
 
 crumb :edit_user do |user|
-  link I18n.t('links.crumbs.users.edit'), edit_user_path(user)
+  link I18n.t('links.crumbs.user.edit'), edit_user_path(user)
   parent :user, user
 end
 
 crumb :new_user do
-  link I18n.t('links.crumbs.users.new'), new_user_path
+  link I18n.t('links.crumbs.user.new'), new_user_path
   parent :home
 end
 
 crumb :login do
-  link I18n.t('links.crumbs.users.login'), login_path
+  link I18n.t('links.crumbs.user.login'), login_path
   parent :home
 end
 
-
-# crumb :projects do
-#   link "Projects", projects_path
-# end
-
-# crumb :project do |project|
-#   link project.name, project_path(project)
-#   parent :projects
-# end
-
-# crumb :project_issues do |project|
-#   link "Issues", project_issues_path(project)
-#   parent :project, project
-# end
-
-# crumb :issue do |issue|
-#   link issue.title, issue_path(issue)
-#   parent :project_issues, issue.project
-# end
-
-# If you want to split your breadcrumbs configuration over multiple files, you
-# can create a folder named `config/breadcrumbs` and put your configuration
-# files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
-# folder are loaded and reloaded automatically when you change them, just like
-# this file (`config/breadcrumbs.rb`).
+crumb :new_message do |offer|
+  link I18n.t('links.crumbs.message.new'), login_path
+  parent :offer, offer
+end

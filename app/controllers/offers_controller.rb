@@ -25,16 +25,16 @@ class OffersController < ApplicationController
   before_action :admin_auth, only: :accept
   
   def show
-    @title = I18n.t('links.crumbs.offers.offer', title: @offer.short_title)
+    @title = I18n.t('links.crumbs.offer.offer', title: @offer.short_title)
   end
 
   def index
-    @title = I18n.t('links.crumbs.offers.index')
+    @title = I18n.t('links.crumbs.offer.index')
     @offers = Offer.by_search_params(params, admin?)
   end
 
   def new
-    @title = I18n.t('links.crumbs.offers.new')
+    @title = I18n.t('links.crumbs.offer.new')
     @offer = @current_user.offers.new
   end
   
@@ -49,7 +49,7 @@ class OffersController < ApplicationController
   end
 
   def edit
-    @title = I18n.t('links.crumbs.offers.edit_offer', title:  @offer.short_title)
+    @title = I18n.t('links.crumbs.offer.edit_offer', title:  @offer.short_title)
   end
   
   def update

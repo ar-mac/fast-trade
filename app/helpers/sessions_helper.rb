@@ -69,7 +69,7 @@ module SessionsHelper
     
     def redirect_back_or(provided, msg={})
       msg.symbolize_keys! if msg
-      if session[:back_url].split(/\/\//).first != I18n.locale
+      if !session[:back_url].nil? && (session[:back_url].split(/\/\//).first != I18n.locale)
         session[:back_url].gsub!(/\/[a-z]{2,}\//, "/#{I18n.locale}/")
       end
       if session[:back_url]

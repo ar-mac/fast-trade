@@ -84,13 +84,13 @@ en:
     fast_trade: 'Fast Trade'
     crumbs:
       home: 'Home'
-      offers:
+      offer:
         index: 'Offers'
         offer: "Offer: %{title}"
         edit: 'Edit'
         edit_offer: 'Edit offer: %{title}'
         new: 'New'
-      users:
+      user:
         index: 'Users'
         user: "Profile: %{name}"
         edit: 'settings'

@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'messages/new'
-
-  get 'messages/edit'
-
   get '/:locale' => 'statics#home'
   root 'statics#home'
   
@@ -23,6 +19,8 @@ Rails.application.routes.draw do
   	get 'login' => 'sessions#new', as: :login
   	post 'login' => 'sessions#create', as: :sessions
   	delete 'logout' => 'sessions#destroy', as: :logout
+  	
+  	resources :messages, except: [:show, :index, :delete]
 	end
 	
 end
