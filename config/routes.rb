@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'messages/new'
+
+  get 'messages/edit'
+
   get '/:locale' => 'statics#home'
   root 'statics#home'
   
