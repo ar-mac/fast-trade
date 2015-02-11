@@ -29,8 +29,8 @@ offer_3:
 
 
 <% 40.times do |n| %>
-offer_<%= n + 3 %>:
-  id: <%= n + 3 %>
+offer_<%= n + 4 %>:
+  id: <%= n + 4 %>
   title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
   content: <%= Faker::Lorem.sentence(5) %>
   valid_until: <%= Time.zone.today + n.days %>
