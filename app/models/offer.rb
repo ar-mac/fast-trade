@@ -1,9 +1,9 @@
 class Offer < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   STATUS = [
-    I18n.t('activerecord.attributes.offer.status_type.pending'), 
-    I18n.t('activerecord.attributes.offer.status_type.active'),
-    I18n.t('activerecord.attributes.offer.status_type.closed')
+    'activerecord.attributes.offer.status_type.pending', 
+    'activerecord.attributes.offer.status_type.active',
+    'activerecord.attributes.offer.status_type.closed'
   ]
   
   validates :title,

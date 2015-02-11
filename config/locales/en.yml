@@ -140,7 +140,7 @@ en:
       choose: 'Choose language'
       polish: 'Polski'
       english: 'English'
-      Spanish: 'Español'
+      spanish: 'Español'
     
   activerecord:
     attributes:

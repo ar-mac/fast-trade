@@ -25,7 +25,7 @@
           = @offer.updated_date
         %li.list-group-item
           %b= t('activerecord.attributes.offer.status')
-          = @offer.status
+          = t(@offer.status)
     - if current_or_admin?(@offer.owner)
       .well
         .btn-group
