@@ -27,6 +27,7 @@ class Offer < ActiveRecord::Base
   
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   belongs_to :category
+  has_many :issues, dependent: :destroy
   
   scope :by_status, ->(status) { where(status_id: status) if status && !status.empty?}
   scope :by_region, ->(region) { joins(:owner).where('region = ?', region) if region && !region.empty? }

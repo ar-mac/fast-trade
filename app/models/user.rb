@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :offers, dependent: :destroy
+  has_many :send_issues, class_name: 'Issue', foreign_key: 'sender_id',
+    dependent: :destroy
+  has_many :recieved_issues, class_name: 'Issue', foreign_key: 'reciever_id',
+    dependent: :destroy
+  
   
   scope :from_newest, ->{ order(created_at: :desc) }
   scope :by_region, ->(region) { where(region: region) if !(region.nil? || region.empty?) }

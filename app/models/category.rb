@@ -17,11 +17,11 @@ class Category < ActiveRecord::Base
   has_many :offers
   
   def to_s
-    I18n.t(self.name_code)
+    I18n.t(name_code)
   end
   
   def name
-    I18n.t(self.name_code)
+    I18n.t(name_code)
   end
   
 end
