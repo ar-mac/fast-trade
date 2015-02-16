@@ -35,7 +35,7 @@ en:
     remember_me: 'Rembember me'
     users_by_region: 'Show users from certain regions'
     active_users: 'Active accounts'
-    inactive_users: 'Konta nieaktywne'
+    inactive_users: 'Inactive accounts'
     all_regions: 'Whole Poland'
     no_users: 'There are no users with given attributes'
     no_offers: 'No offers'

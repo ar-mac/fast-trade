@@ -1,5 +1,5 @@
 .form-search
-  = form_tag('/offers', method: :get) do
+  = form_tag("/#{I18n.locale}/offers", method: :get) do
     .form-field
       = label_tag :d_min, t('links.search.by_more_than_valid'), class: 'full-width-label'
       = date_select :d_min, nil, start_year: Date.today.year, include_blank: true, class: 'form-control'

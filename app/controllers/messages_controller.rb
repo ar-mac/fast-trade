@@ -15,21 +15,20 @@ class MessagesController < ApplicationController
   
   def create
     
-    
     unless @issue = @current_user.send_issues.where('offer_id = ?', @offer.id).first
       unless @issue = @current_user.send_issues.create(issue_params)
         back_to_message
         return
       end
     end
-
+    
     if @message = @issue.messages.create(message_params)
       #if message updates properly it succesfully ends
       redirect_to @issue.offer, flash: {success: I18n.t('flash.successful.message.creation')}
     else
       back_to_message
     end
-      
+    
   end
   
   private

@@ -1,0 +1,13 @@
+= form_tag("/#{I18n.locale}/users", method: :get) do
+  .form-field
+    = label_tag :region, t('elements.users_by_region'), class: 'full-width-label'
+    = select_tag :region, options_for_select(User::REGIONS), {include_blank: true, class: 'form-control'}
+  .form-field
+    = label_tag do
+      = check_box_tag 'active', '1', true
+      %span= t('elements.active_users')
+  .form-field
+    = label_tag do
+      = check_box_tag 'inactive', '1', false
+      %span= t('elements.inactive_users')
+  = submit_tag t('links.search.submit_users'), class: 'btn btn-default'
