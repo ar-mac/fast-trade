@@ -18,7 +18,7 @@ en:
         deactivation: 'Your account is not active'
         password_change: 'Password has been changed'
         login: 'You are logged in'
-        logout: 'You must be signed out'
+        logout: 'You logged out'
         redirect_forward: 'You are now on the page, you previously wanted to open. ' 
       offer:
         renewation: 'Your offer is active again, waiting for acceptance'

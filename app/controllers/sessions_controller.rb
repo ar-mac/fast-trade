@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   before_action :no_user, only: [:new, :create]
   
   def new
-    @title = I18n.t('links.crumbs.users.login')
+    @title = I18n.t('links.crumbs.user.login')
   end
   
   def create
@@ -12,7 +12,12 @@ class SessionsController < ApplicationController
       params[:session][:remember] == '1' ? remember(@user) : forget
       log_in(@user)
       flash[:success] = I18n.t('flash.successful.user.login')
-      redirect_forward_or(root_path)
+      if session[:redirected]
+        session.delete(:redirected)
+        redirect_back_or(root_path)
+      else
+        redirect_to @user
+      end
     else
       flash.now[:danger] = I18n.t('flash.error.user.login_credentials')
       render 'new'

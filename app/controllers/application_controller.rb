@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
   
   def logged_user
     if !logged_in?
+      session[:redirected] = true
       redirect_to login_path, flash: { danger: I18n.t('flash.error.user.non_logged') }
     end
   end
