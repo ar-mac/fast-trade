@@ -11,6 +11,7 @@ class OffersControllerTest < ActionController::TestCase
     #he has no offers, so when used it's certain that he wont be mistakelny owner of the offer
     @user2 = users(:user_5)
     @inactive = users(:inactive)
+    @inactive_user_closed_offer = offers(:offer_50)
   end
   
   test "show for non logged user" do
@@ -315,14 +316,14 @@ class OffersControllerTest < ActionController::TestCase
     get :new
     assert_response :redirect
     
-    get :edit, id: @inactive.id
+    get :edit, id: @inactive_user_closed_offer.id
     assert_response :redirect
     
-    patch :renew, id: @inactive.id
+    patch :renew, id: @inactive_user_closed_offer.id
     assert_redirected_to root_path
     assert_not_nil flash[:danger]
     
-    patch :close, id: @inactive.id
+    patch :close, id: @inactive_user_closed_offer.id
     assert_redirected_to root_path
     assert_not_nil flash[:danger]
   end

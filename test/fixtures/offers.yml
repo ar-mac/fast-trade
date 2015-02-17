@@ -38,3 +38,12 @@ offer_<%= n + 4 %>:
   category_id: <%= ( ( n % 12 ) + 1 ) %>
   user_id: <%= ( ( n % 4 ) + 1 ) %>
 <% end %>
+
+offer_50:
+  id: 50
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 2 #closed
+  category_id: 2
+  user_id: 4

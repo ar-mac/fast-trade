@@ -99,7 +99,7 @@ class OffersController < ApplicationController
     end
     
     def only_owner
-      if !current_user?
+      if !owner?(@user)
         redirect_back_or(root_path, {danger: I18n.t('flash.error.user.not_owner')})
       end
     end
