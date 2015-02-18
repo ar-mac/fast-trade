@@ -142,6 +142,12 @@ pl:
       status0: 'Oczekujące'
       status1: 'Aktywne'
       status2: 'Zakończone'
+      
+      
+      show_content: 'Wyświetl treść i informacje o ofercie'
+      
+      
+      
     search:
       by_more_than_valid: 'Ważne dłużej niż:'
       by_less_than_valid: 'Ważne krócej niż:'

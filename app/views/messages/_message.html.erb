@@ -6,6 +6,7 @@
       <div class='arrow-left'></div>
     <% end %>
     
+    <p class='author'>Autor: <%= message.author.name %></p>
     <div class=<%= @current_user == message.issue.sender ? 'message-sender' : 'message-reciever' %>>
       <p class='content'><%= message.content %></p>
     </div>

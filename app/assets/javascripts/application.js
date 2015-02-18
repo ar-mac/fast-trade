@@ -17,3 +17,18 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+function toggle()
+{       
+var e = document.getElementById("offer_for_message");
+if(e.style.display == 'block')
+   e.style.display = 'none';
+else
+   e.style.display = 'block';
+}
+
+function dismiss()
+{       
+var e = document.getElementById("notice");
+e.style.display = 'none';
+}

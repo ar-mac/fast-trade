@@ -3,26 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
+@mixin message-inside {
+  display: inline-block;
+  max-width: 80%;
+  background-color: $gray-lighter;
+  border: 1px solid $gray-darker;
+  border-radius: 6px;
+  padding: 3px 5px;
+}
 
 .message {
   overflow: auto;
   margin: 8px 0 8px 0;
+  .author {
+    margin: 0 0 -4px 2px;
+    font-weight: bold;
+  }
 }
 .message-sender {
-  display: inline-block;
-  width: 80%;
-  background-color: $gray-lighter;
-  border: 1px solid $gray-darker;
-  border-radius: 6px;
+  @include message-inside;
 }
 
 .message-reciever {
-  display: inline-block;
+  @include message-inside;
   float: right;
-  width: 80%;
-  background-color: $gray-lighter;
-  border: 1px solid $gray-darker;
-  border-radius: 6px;
 }
 
 .arrow-right {
@@ -49,3 +53,4 @@
   border-bottom: 6px solid transparent;
   border-right: 8px solid $gray-light;
 }
+
