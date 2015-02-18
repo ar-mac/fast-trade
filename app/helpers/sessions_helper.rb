@@ -70,7 +70,7 @@ module SessionsHelper
     end
     
     def redirect_back
-      if request.get?
+      if request.get? || session[:forward_url] == login_url
         session[:back_url] ||= root_path
         #prevents getting into loops if back_url is causing calling redirect_back
         session[:forward_url] = root_path

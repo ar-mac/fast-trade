@@ -39,9 +39,7 @@ class UsersRedirectionsTest < ActionDispatch::IntegrationTest
     get user_path(user)
     assert_response :redirect
     assert_redirected_to login_path
-    
-    #mimics behaviour of browser which gets login_path and then user can post login_path
-    get login_path 
+    follow_redirect!
     post login_path, session: { name:       @user.name,
                                 password:    'asdfasdf',
                                 remember_me: 0 }
@@ -60,9 +58,7 @@ class UsersRedirectionsTest < ActionDispatch::IntegrationTest
     get users_path
     assert_response :redirect
     assert_redirected_to login_path
-    
-    #mimics behaviour of browser which gets login_path and then user can post login_path
-    get login_path
+    follow_redirect!
     post login_path, session: { name: @user.name,
                                       password:    'asdfasdf',
                                       remember_me: 0 }
