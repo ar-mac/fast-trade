@@ -3,16 +3,16 @@ require 'test_helper'
 class SessionsControllerTest < ActionController::TestCase
   
   def setup
-    @user = users(:tom)
+    @user = users :tom
   end
   
   test "getting new" do
     get :new
     assert_response :success
     
-    log_in_as(@user)
+    log_in_as @user
     get :new
-    assert_response :redirect
+    assert_response :success
   end
   
   test "valid login credentials" do
@@ -53,7 +53,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_not is_logged_in?
     assert flash[:danger]
     
-    log_in_as(@user)
+    log_in_as @user
     delete :destroy, id: @user.id
     assert_response :redirect
     assert_not is_logged_in?

@@ -13,7 +13,7 @@ class OffersController < ApplicationController
   before_action :get_user, only: [:show, :edit, :update, :destroy, :renew, :close, :accept]
   
   #allows only owner of the account and admin to do action
-  before_action :owner_user, only: [:edit, :update, :destroy, :close]
+  before_action :owner_or_admin, only: [:edit, :update, :destroy, :close]
   
   #allows only owner to do action
   before_action :only_owner, only: :renew
@@ -92,15 +92,17 @@ class OffersController < ApplicationController
       @offer = Offer.find_by(id: params[:id])
     end
     
-    def owner_user
+    def owner_or_admin
       if !current_or_admin?
-        redirect_back_or(root_path, {danger: I18n.t('flash.error.user.not_owner')})
+        flash[:danger] = I18n.t('flash.error.user.not_owner')
+        redirect_back
       end
     end
     
     def only_owner
-      if !owner?(@user)
-        redirect_back_or(root_path, {danger: I18n.t('flash.error.user.not_owner')})
+      if !owner? @user
+        flash[:danger] = I18n.t('flash.error.user.not_owner')
+        redirect_back
       end
     end
     

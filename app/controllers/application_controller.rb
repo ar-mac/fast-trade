@@ -26,16 +26,16 @@ class ApplicationController < ActionController::Base
   
   def no_user
     if logged_in?
-      flash[:danger] = I18n.t('flash.error.user.logged')
-      # temporary redirect should redirect back
-      redirect_to root_path
+      log_out
+      get_current
+      flash[:info] = I18n.t('flash.successful.user.force_logged_out')
     end
   end
   
   def admin_auth
-    if current_user.nil? || !current_user.admin?
+    if !admin?
       flash[:danger] = I18n.t('flash.error.user.not_admin')
-      redirect_back_or root_path
+      redirect_back
     end
   end
   
@@ -48,7 +48,8 @@ class ApplicationController < ActionController::Base
   
   def active_account
     if inactive?
-      redirect_to root_path, flash: { danger: I18n.t('flash.error.user.non_active') }
+      flash[:danger] = I18n.t('flash.error.user.non_active')
+      redirect_back
     end
   end
   

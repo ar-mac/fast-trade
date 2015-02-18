@@ -64,35 +64,18 @@ module SessionsHelper
     
     def store_location
       if request.get?
-        session[:back_url] = session[:forward_url]
-        session[:forward_url] = request.original_url
+        
+        session[:back_url], session[:forward_url] = session[:forward_url], request.original_url
       end
     end
     
-    def redirect_back_or(provided, msg={})
-      msg.symbolize_keys! if msg
-      if !session[:back_url].nil? && (session[:back_url].split(/\/\//).first != I18n.locale)
-        session[:back_url].gsub!(/\/[a-z]{2,}\//, "/#{I18n.locale}/")
-      end
+    def redirect_back
       if session[:back_url]
-        #prevents getting into loops if back_url is causing calling redirect_back_or
-        session[:forward_url] = provided
-        
-        redirect_to session[:back_url], flash: msg and return
+        #prevents getting into loops if back_url is causing calling redirect_back
+        session[:forward_url] = root_path
+        redirect_to session[:back_url] and return
       else
-        redirect_to provided and return
-      end
-    end
-    
-    def redirect_forward_or(provided, msg={})
-      msg.symbolize_keys! if msg
-      if session[:forward_url]
-        #prevents getting into loops if back_url is causing calling redirect_forward_or
-        session[:forward_url] = provided
-        
-        redirect_to session[:forward_url], flash: msg and return
-      else
-        redirect_to provided and return
+        redirect_to root_path and return
       end
     end
     

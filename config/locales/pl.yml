@@ -20,6 +20,11 @@ pl:
         login: 'Zalogowano'
         logout: 'Wylogowano'
         redirect_forward: 'Jestes teraz na stronie którą wcześniej chciałeś otworzyć'
+        
+        
+        force_logged_out: 'Zostałeś automatycznie wylogowany, ponieważ jest to konieczne do wykonania wybranej akcji'
+        
+        
       offer:
         renewation: 'Oferta ponownie aktywowana, oczekuje na akceptację'
         close: 'Oferta została zamknięta'

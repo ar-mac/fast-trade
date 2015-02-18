@@ -3,15 +3,15 @@ require 'test_helper'
 class OffersControllerTest < ActionController::TestCase
   
   def setup
-    @admin = users(:admin)
-    @user1 = users(:tom)
+    @admin = users :admin
+    @user1 = users :tom
     @o_active = @user1.offers.first
     @o_closed = @user1.offers.second
     @o_pending = @user1.offers.find(3)
     #he has no offers, so when used it's certain that he wont be mistakelny owner of the offer
-    @user2 = users(:user_5)
-    @inactive = users(:inactive)
-    @inactive_user_closed_offer = offers(:offer_50)
+    @user2 = users :user_5
+    @inactive = users :inactive
+    @inactive_user_closed_offer = offers :offer_50
   end
   
   test "show for non logged user" do
@@ -26,7 +26,7 @@ class OffersControllerTest < ActionController::TestCase
   end
   
   test "show for logged other user" do
-    log_in_as(@user2)
+    log_in_as @user2
     get :show, id: @o_active.id
     assert_response :success
     assert_select 'a[href = ?]', edit_offer_path(@o_active), count: 0
@@ -38,7 +38,7 @@ class OffersControllerTest < ActionController::TestCase
   end
   
   test "show for logged owner user" do
-    log_in_as(@user1)
+    log_in_as @user1
     get :show, id: @o_active.id
     assert_response :success
     assert_select 'a[href = ?]', edit_offer_path(@o_active), count: 1
@@ -54,7 +54,7 @@ class OffersControllerTest < ActionController::TestCase
   end
   
   test "show for logged admin user" do
-    log_in_as(@admin)
+    log_in_as @admin
     get :show, id: @o_active.id
     assert_response :success
     assert_select 'a[href = ?]', edit_offer_path(@o_active), count: 1
@@ -76,20 +76,20 @@ class OffersControllerTest < ActionController::TestCase
   test "index for non logged" do
     get :index
     assert_response :success
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     
     @offers.each do |offer|
       assert offer.status_id == 1
       assert_select 'a[href = ?]', edit_offer_path(offer), count: 0
     end
     get :index, {status: 2}
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     @offers.each do |offer|
       assert offer.status_id == 1
       assert_select 'a[href = ?]', edit_offer_path(offer), count: 0
     end
     get :index, {c_id: 5, region: 'Śląskie'}
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     @offers.each do |offer|
       assert offer.status_id == 1
       assert offer.category_id == 5
@@ -99,10 +99,10 @@ class OffersControllerTest < ActionController::TestCase
   end
   
   test 'index for logged user' do
-    log_in_as(@user1)
+    log_in_as @user1
     get :index
     assert_response :success
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     
     @offers.each do |offer|
       assert offer.status_id == 1
@@ -113,7 +113,7 @@ class OffersControllerTest < ActionController::TestCase
       end
     end
     get :index, {status: 2, c_id: 2}
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     @offers.each do |offer|
       assert offer.status_id == 1
       if offer.owner == @user1
@@ -125,16 +125,16 @@ class OffersControllerTest < ActionController::TestCase
   end
   
   test 'index for admin user' do
-    log_in_as(@admin)
+    log_in_as @admin
     get :index
     assert_response :success
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     
     @offers.each do |offer|
       assert_select 'a[href = ?]', edit_offer_path(offer), count: 1
     end
     get :index, {status: 2, c_id: 2}
-    @offers = assigns(:offers)
+    @offers = assigns :offers
     @offers.each do |offer|
       assert offer.status_id == 2
       assert_select 'a[href = ?]', edit_offer_path(offer), count: 1
@@ -227,7 +227,7 @@ class OffersControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert_template 'new'
-    @o_new = assigns(:offer)
+    @o_new = assigns :offer
     assert_not_nil @o_new
   end
   
@@ -239,7 +239,7 @@ class OffersControllerTest < ActionController::TestCase
       category_id: 4,
       content: Faker::Lorem.sentence(6)
     }
-    @o_new = assigns(:offer)
+    @o_new = assigns :offer
     assert_redirected_to offer_path(@o_new)
     assert_equal 0, @o_new.status_id
   end
@@ -253,7 +253,7 @@ class OffersControllerTest < ActionController::TestCase
       content: Faker::Lorem.sentence(6),
       status_id: 1
     }
-    @o_new = assigns(:offer)
+    @o_new = assigns :offer
     assert_redirected_to offer_path(@o_new)
     assert_equal 0, @o_new.status_id
   end
@@ -269,12 +269,12 @@ class OffersControllerTest < ActionController::TestCase
     log_in_as @user1
     get :edit, id: @o_active.id
     assert_response :success
-    assert_not_nil assigns(:offer)
+    assert_not_nil assigns :offer
     
     log_in_as @admin
     get :edit, id: @o_active.id
     assert_response :success
-    assert_not_nil assigns(:offer)
+    assert_not_nil assigns :offer
   end
   
   test 'full update with valid params' do
@@ -307,7 +307,7 @@ class OffersControllerTest < ActionController::TestCase
       category_id: 25,
       content: newcontent
     }
-    @o_edited = assigns(:offer)
+    @o_edited = assigns :offer
     assert_template 'edit'
   end
   
@@ -320,11 +320,11 @@ class OffersControllerTest < ActionController::TestCase
     assert_response :redirect
     
     patch :renew, id: @inactive_user_closed_offer.id
-    assert_redirected_to root_path
+    assert_response :redirect
     assert_not_nil flash[:danger]
     
     patch :close, id: @inactive_user_closed_offer.id
-    assert_redirected_to root_path
+    assert_response :redirect
     assert_not_nil flash[:danger]
   end
 

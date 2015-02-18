@@ -11,7 +11,7 @@
         %b= t('activerecord.attributes.user.region')+ ':'
         = @user.region
       %li.list-group-item
-        = account_status_text(@user)
+        = account_status_text @user
     - if current_or_admin?
       .well
         = link_to t('links.edit_profile'), edit_user_path(@user), class: 'btn btn-primary'

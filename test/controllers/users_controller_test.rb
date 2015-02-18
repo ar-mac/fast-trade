@@ -3,31 +3,31 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   
   def setup
-    @user = users(:tom)
-    @admin = users(:admin)
-    @other = users(:bob)
-    @inactive = users(:inactive)
+    @user = users :tom
+    @admin = users :admin
+    @other = users :bob
+    @inactive = users :inactive
   end
   
   test "show action validations" do
     get :show, id: @user.id
     assert_response :redirect
     
-    log_in_as(@user)
+    log_in_as @user
     get :show, id: @user.id
     assert_response :success
     
-    log_in_as(@other)
+    log_in_as @other
     get :show, id: @user.id
     assert_response :success
     
-    log_in_as(@admin)
+    log_in_as @admin
     get :show, id: @user.id
     assert_response :success
   end
   
   test 'redirect for inexisting user' do
-    log_in_as(@user)
+    log_in_as @user
     get :show, id: 0
     assert_response :redirect
     get :edit, id: 0
@@ -42,11 +42,11 @@ class UsersControllerTest < ActionController::TestCase
     get :index
     assert_response :redirect
     
-    log_in_as(@user)
+    log_in_as @user
     get :index
     assert_response :redirect
     
-    log_in_as(@admin)
+    log_in_as @admin
     get :index
     assert_response :success
   end
@@ -55,28 +55,28 @@ class UsersControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     
-    log_in_as(@user)
+    log_in_as @user
     get :new
-    assert_response :redirect
+    assert_response :success
   end
 
   test "edit authorization" do
     get :edit, id: @user.id
     assert_response :redirect
     
-    log_in_as(@inactive)
+    log_in_as @inactive
     get :edit, id: @inactive.id
     assert_response :redirect
     
-    log_in_as(@other)
+    log_in_as @other
     get :edit, id: @user.id
     assert_response :redirect
     
-    log_in_as(@user)
+    log_in_as @user
     get :edit, id: @user.id
     assert_response :success
     
-    log_in_as(@admin)
+    log_in_as @admin
     get :edit, id: @user.id
     assert_response :success
   end
@@ -85,27 +85,27 @@ class UsersControllerTest < ActionController::TestCase
     delete :destroy, id: @user.id
     assert flash[:danger]
     
-    log_in_as(@other)
+    log_in_as @other
     delete :destroy, id: @user.id
     assert flash[:danger]
   end
   
   test 'user able to destroy his account' do
-    log_in_as(@user)
+    log_in_as @user
     delete :destroy, id: @user.id
     assert flash[:info]
     assert_not User.find_by(id: @user.id)
   end
     
   test 'admin able to destroy user account' do
-    log_in_as(@admin)
+    log_in_as @admin
     delete :destroy, id: @user.id
     assert flash[:info]
     assert_not User.find_by(id: @user.id)
   end
   
   test 'editing profile without password change' do
-    log_in_as(@user)
+    log_in_as @user
     patch :update, id: @user.id, user: {
       name: 'Newname',
       region: User::REGIONS[2],
@@ -114,12 +114,12 @@ class UsersControllerTest < ActionController::TestCase
       old_password: ''
     }
     assert_response :redirect
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert flash[:success]
   end
   
   test 'editing profile with correct password change' do
-    log_in_as(@user)
+    log_in_as @user
     patch :update, {
       id: @user.id, 
       user: {
@@ -132,7 +132,7 @@ class UsersControllerTest < ActionController::TestCase
     }
     
     assert_response :redirect
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert flash[:info]
     assert flash[:success]
     @user.reload
@@ -140,7 +140,7 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'editing profile with incorrect password change' do
-    log_in_as(@user)
+    log_in_as @user
     patch :update, {
       id: @user.id, 
       user: {
@@ -153,7 +153,7 @@ class UsersControllerTest < ActionController::TestCase
     }
     
     assert_response :redirect
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert_not flash[:info]
     assert flash[:success]
     @user.reload
@@ -161,7 +161,7 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'editing profile with blank old_password' do
-    log_in_as(@user)
+    log_in_as @user
     patch :update, {
       id: @user.id, 
       user: {
@@ -174,7 +174,7 @@ class UsersControllerTest < ActionController::TestCase
     }
     
     assert_response :redirect
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert_not flash[:info]
     assert flash[:success]
     @user.reload
@@ -182,7 +182,7 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test "admin cant edit user's password" do
-    log_in_as(@admin)
+    log_in_as @admin
     patch :update, {
       id: @user.id, 
       user: {
@@ -195,7 +195,7 @@ class UsersControllerTest < ActionController::TestCase
     }
     
     assert_response :redirect
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert_not flash[:info]
     assert flash[:success]
     @user.reload
@@ -203,7 +203,7 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'users index' do
-    log_in_as(@admin)
+    log_in_as @admin
     get :index
     @users = assigns(:users)
     @users.each do |user|
@@ -246,19 +246,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_path
     assert flash[:danger]
     
-    log_in_as(@other)
+    log_in_as @other
     patch :activate, id: @user.id
     assert_redirected_to root_path
     assert flash[:danger]
     
-    log_in_as(@user)
+    log_in_as @user
     patch :activate, id: @user.id
     assert_redirected_to root_path
     assert flash[:danger]
     
-    log_in_as(@admin)
+    log_in_as @admin
     patch :activate, id: @user.id
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert flash[:info]
   end
   
@@ -267,19 +267,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_path
     assert flash[:danger]
     
-    log_in_as(@other)
+    log_in_as @other
     patch :deactivate, id: @user.id
     assert_redirected_to root_path
     assert flash[:danger]
     
-    log_in_as(@user)
+    log_in_as @user
     patch :deactivate, id: @user.id
     assert_redirected_to root_path
     assert flash[:danger]
     
-    log_in_as(@admin)
+    log_in_as @admin
     patch :deactivate, id: @user.id
-    assert_redirected_to user_path(@user)
+    assert_redirected_to user_path @user
     assert flash[:info]
     @user.offers.each do |offer|
       assert offer.status_id == 2

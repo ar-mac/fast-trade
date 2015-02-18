@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:session][:name])
     if @user && @user.authenticate(params[:session][:password])
       params[:session][:remember] == '1' ? remember(@user) : forget
-      log_in(@user)
+      log_in @user
       flash[:success] = I18n.t('flash.successful.user.login')
       if session[:redirected]
-        session.delete(:redirected)
-        redirect_back_or(root_path)
+        session.delete :redirected
+        redirect_back
       else
         redirect_to @user
       end

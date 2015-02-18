@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in(@user)
+      log_in @user
       redirect_to @user, flash: {success: I18n.t('flash.successful.user.creation')}
     else
       render 'new'
@@ -97,14 +97,14 @@ class UsersController < ApplicationController
       @user = User.find_by(id: params[:id])
       if !@user
         flash[:danger] = I18n.t('flash.error.user.not_exist')
-        redirect_back_or root_path
+        redirect_back
       end
     end
     
     def owner_user
-      if !current_or_admin?(@user)
+      if !current_or_admin? @user
         flash[:danger] = I18n.t('flash.error.user.not_owner')
-        redirect_back_or root_path
+        redirect_back
       end
     end
     

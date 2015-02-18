@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   
   scope "(:locale)", locale: /pl|en|es/ do
     get 'locale/change' => 'statics#locale', as: :locale
-    resources :users, except: :index
+    resources :users, except: [:index, :new]
+    get 'register' => 'users#new', as: :new_user
     patch 'users/:id/activate' => 'users#activate', as: :activate_user
     patch 'users/:id/deactivate' => 'users#deactivate', as: :deactivate_user
     
