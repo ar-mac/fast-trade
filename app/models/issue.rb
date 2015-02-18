@@ -25,7 +25,7 @@ class Issue < ActiveRecord::Base
   end
   
   def both_deactivate?
-    return true if !active_for_sender && !active_for_reciever
+    return true if !active_for_sender? && !active_for_reciever?
   end
   
   

@@ -1,7 +1,69 @@
 require 'test_helper'
 
 class IssuesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @issue = issues(:one)
+    @reciever = @issue.reciever
+    @sender = @issue.sender
+    @other = users(:user_6)
+    @admin = users(:admin)
+  end
+  
+  test 'issue deactivation fail' do
+    assert_no_difference 'Issue.count' do
+      patch :deactivate, id: @issue.id
+      @issue.reload
+      assert @issue.active_for_reciever
+      assert @issue.active_for_sender
+      assert_not_nil flash[:danger]
+    end
+    assert_no_difference 'Issue.count' do
+      log_in_as @other
+      patch :deactivate, id: @issue.id
+      @issue.reload
+      assert @issue.active_for_reciever
+      assert @issue.active_for_sender
+      assert_not_nil flash[:danger]
+    end
+        assert_no_difference 'Issue.count' do
+      log_in_as @admin
+      patch :deactivate, id: @issue.id
+      @issue.reload
+      assert @issue.active_for_reciever
+      assert @issue.active_for_sender
+      assert_not_nil flash[:danger]
+    end
+  end
+    
+  test 'issue reciever deactivation' do
+    assert_no_difference 'Issue.count' do
+      log_in_as @reciever
+      patch :deactivate, id: @issue.id
+      @issue.reload
+      assert_not @issue.active_for_reciever
+      assert @issue.active_for_sender
+      assert_not_nil flash[:success]
+    end
+  end
+    
+  test 'issue sender deactivation' do
+    assert_no_difference 'Issue.count' do
+      log_in_as @sender
+      patch :deactivate, id: @issue.id
+      @issue.reload
+      assert @issue.active_for_reciever
+      assert_not @issue.active_for_sender
+      assert_not_nil flash[:success]
+    end
+  end
+  
+  test 'issue destroy' do
+    assert_difference 'Issue.count', -1 do
+      log_in_as @reciever
+      patch :deactivate, id: @issue.id
+      log_in_as @sender
+      patch :deactivate, id: @issue.id
+      assert_not_nil flash[:success]
+    end
+  end
 end

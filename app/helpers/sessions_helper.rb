@@ -70,17 +70,16 @@ module SessionsHelper
     end
     
     def redirect_back
-      if !request.get?
-        redirect_to session[:forward_url] and return
-      end
-      
-      if session[:back_url]
+      if request.get?
+        session[:back_url] ||= root_path
         #prevents getting into loops if back_url is causing calling redirect_back
         session[:forward_url] = root_path
-        redirect_to session[:back_url] and return
+        path = session[:back_url]
       else
-        redirect_to root_path and return
+        session[:forward_url] ||= root_path
+        path = session[:forward_url]
       end
+      redirect_to path
     end
     
     

@@ -1,13 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyText
+msg_1:
+  content: <%= Faker::Lorem.sentence(4) %>
   issue_id: 1
-  read_at: nil
-  author_id: 1
-
-two:
-  content: MyText
+  read_at: 2015-02-10 11:32:04
+  author_id: 2
+  
+msg_2:
+  content: <%= Faker::Lorem.sentence(4) %>
   issue_id: 1
   read_at: 2015-02-11 11:32:04
+  author_id: 1
+  
+msg_3:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 1
+  read_at: 2015-02-12 11:32:04
+  author_id: 2
+  
+msg_4:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 1
+  read_at: 2015-02-13 11:32:04
+  author_id: 1
+#------------------------------------------------
+msg_5:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 2
+  read_at: 2015-02-10 11:32:04
+  author_id: 2
+  
+msg_6:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 2
+  read_at: 2015-02-11 11:32:04
+  author_id: 1
+  
+msg_7:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 2
+  read_at: 2015-02-12 11:32:04
+  author_id: 2
+  
+msg_8:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 2
+  read_at: 2015-02-13 11:32:04
   author_id: 1
