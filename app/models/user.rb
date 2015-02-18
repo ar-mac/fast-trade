@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
   
   def deactivate
     self.update_attribute(:active, false)
+    self.deactivate_offers
+  end
+  
+  def deactivate_offers
     self.offers.each {|offer| offer.close }
   end
   

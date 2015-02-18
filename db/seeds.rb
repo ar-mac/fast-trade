@@ -16,6 +16,9 @@ User.create(name: 'Beziq',
   admin: false)
 end
 
+inactive_users = User.where(active: false)
+inactive_users.each { |user| user.deactivate_offers }
+
 # categories creation
 Category::NAME_CODES.each do |name_c|
   Category.create(name_code: name_c )
