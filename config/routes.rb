@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'messagebox/outbox'
+
+  get 'messagebox/inbox'
+
+  get 'messageboxes/outbox'
+
+  get 'messageboxes/inbox'
+
   get '/:locale' => 'statics#home'
   root 'statics#home'
   
