@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   	post 'login' => 'sessions#create', as: :sessions
   	delete 'logout' => 'sessions#destroy', as: :logout
   	
+  	patch 'issues/:id/deactivate' => 'issues#deactivate', as: :deactivate_issue
   	resources :messages, only: [:new, :create]
 	end
 	

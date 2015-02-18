@@ -9,6 +9,12 @@ pl:
         login_credentials: 'Niepoprawny login/hasło'
         not_owner: 'Tylko właściciel konta może to zrobić'
         non_active: 'Nie możesz tego zrobić, ponieważ Twoje konto jest zablokowane.'
+        
+        
+      issue:
+        not_owner: 'Nie możesz tego zrobić'
+        
+        
     successful:
       user:
         creation: 'Konto zostało utworzone'
@@ -36,6 +42,8 @@ pl:
       
       message:
         creation: 'Wiadomość została wysłana.'
+      issue:
+        deactivation: 'Wątek usunięty'
     
     
   elements:

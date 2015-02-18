@@ -15,4 +15,18 @@ class Issue < ActiveRecord::Base
   validates :offer_id,
     presence: true
   
+  
+  def sender_deactivate
+    self.update(active_for_sender: false)
+  end
+  
+  def reciever_deactivate
+    self.update(active_for_reciever: false)
+  end
+  
+  def both_deactivate?
+    return true if !active_for_sender && !active_for_reciever
+  end
+  
+  
 end
