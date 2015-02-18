@@ -9,6 +9,23 @@ class UsersRedirectionsTest < ActionDispatch::IntegrationTest
     @inactive = users :inactive
   end
   
+  
+  test 'login without redirection' do
+    #showing offers
+    get "/pl/#{offers_path}"
+    assert_response :success
+    #showing offer
+    offers = assigns :offers
+    get offer_path(offers.first)
+    assert_response :success
+    #mimics behaviour of browser which gets login_path and then user can post login_path
+    get login_path
+    post login_path, session: { name:       @user.name,
+                                password:    'asdfasdf',
+                                remember_me: 0 }
+    assert_redirected_to user_path(@user)
+  end
+  
   test 'login with valid redirection' do
     #showing offers
     get "/pl/#{offers_path}"

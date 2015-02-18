@@ -64,12 +64,16 @@ module SessionsHelper
     
     def store_location
       if request.get?
-        
-        session[:back_url], session[:forward_url] = session[:forward_url], request.original_url
+        session[:back_url] = session[:forward_url]
+        session[:forward_url] = request.original_url
       end
     end
     
     def redirect_back
+      if !request.get?
+        redirect_to session[:forward_url] and return
+      end
+      
       if session[:back_url]
         #prevents getting into loops if back_url is causing calling redirect_back
         session[:forward_url] = root_path
@@ -78,6 +82,8 @@ module SessionsHelper
         redirect_to root_path and return
       end
     end
+    
+    
     
   
 end

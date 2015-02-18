@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   before_action :admin_auth, only: [:index, :activate, :deactivate]
   
   #allows only owner of the account (and admin) to do action
-  before_action :owner_user, only: [:edit, :update, :destroy]
+  before_action :owner_or_admin, only: [:edit, :update, :destroy]
   
   #allows only owner and admins to show profile
   before_action :inactive_account, only: :show
@@ -101,7 +101,7 @@ class UsersController < ApplicationController
       end
     end
     
-    def owner_user
+    def owner_or_admin
       if !current_or_admin? @user
         flash[:danger] = I18n.t('flash.error.user.not_owner')
         redirect_back
@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     
     def inactive_account
       if !@user.active?
-        owner_user
+        owner_or_admin
       end
     end
   
