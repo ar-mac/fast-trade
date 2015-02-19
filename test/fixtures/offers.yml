@@ -47,3 +47,12 @@ offer_50:
   status_id: 2 #closed
   category_id: 2
   user_id: 4
+  
+offer_51:
+  id: 51
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 1 #active
+  category_id: 2
+  user_id: 2

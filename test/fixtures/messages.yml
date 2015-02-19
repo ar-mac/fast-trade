@@ -47,3 +47,27 @@ msg_8:
   issue_id: 2
   read_at: 2015-02-13 11:32:04
   author_id: 1
+#------------------------------------------------
+msg_9:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 3
+  read_at: 2015-02-10 11:32:04
+  author_id: 2
+  
+msg_10:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 3
+  read_at: 2015-02-11 11:32:04
+  author_id: 1
+  
+msg_11:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 3
+  read_at: 2015-02-12 11:32:04
+  author_id: 2
+  
+msg_12:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 3
+  read_at: 2015-02-13 11:32:04
+  author_id: 1

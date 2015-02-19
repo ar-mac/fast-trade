@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'messagebox/outbox'
-
-  get 'messagebox/inbox'
-
-  get 'messageboxes/outbox'
-
-  get 'messageboxes/inbox'
-
   get '/:locale' => 'statics#home'
   root 'statics#home'
   
@@ -29,8 +21,11 @@ Rails.application.routes.draw do
   	post 'login' => 'sessions#create', as: :sessions
   	delete 'logout' => 'sessions#destroy', as: :logout
   	
+  	resources :issues, only: [:show]
   	patch 'issues/:id/deactivate' => 'issues#deactivate', as: :deactivate_issue
   	resources :messages, only: [:new, :create]
+  	
+  	get 'messagebox/:type' => 'messagebox#box', as: :messagebox
 	end
 	
 end

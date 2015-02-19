@@ -1,0 +1,12 @@
+- breadcrumb :messagebox, [@type, @current_user]
+
+.row
+  .col-md-12
+    %h2.custom-h2= t('elements.messagebox.title')
+    = render 'type_nav'
+    .list-group
+      = render @issues
+      = will_paginate @issues
+      - if @issues.empty?
+        .list-group-item
+          = t("elements.messagebox.no_#{@type}_messages")

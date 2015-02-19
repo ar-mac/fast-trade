@@ -108,6 +108,12 @@ pl:
     message:
       history: 'Wiadomości w tym wątku'
       read_at: 'Przeczytano: '
+    messagebox:
+      title: 'Skrzynka wiadomości'
+      no_send_messages: 'Nie masz żadnych wysłanych wiadomości'
+      no_recieved_messages: 'Nie masz żadnych otrzymanych wiadomości'
+    
+    
     
   links:
     fast_trade: 'Fast Trade'
@@ -130,6 +136,11 @@ pl:
         
       message:
         new: 'Nowa wiadomość'
+      messagebox:
+        recieved: 'Otrzymane wiadomości'
+        send: 'Wysłane wiadomości'
+      issue:
+        issue: 'Wątek: %{title}'
         
         
         
@@ -169,6 +180,12 @@ pl:
     message:
       send: 'Wyślij wiadomość'
       new: 'Utwórz'
+    messagebox:
+      title: 'Skrzynka wiadomości'
+      recieved: 'Otrzymane'
+      send: 'Wysłane'
+    issue:
+      deactivate: 'Deaktywuj'
       
       
     show: 'Wyświetl'

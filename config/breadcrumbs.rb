@@ -35,11 +35,7 @@ crumb :user do |user|
     :name => truncate(user.name, length: 20, separator: ' ')
   )
   link link_title, user_path(user)
-  if admin?
-    parent :users
-  else
-    parent :home
-  end
+  admin? ? parent(:users) : parent(:home)
 end
 
 crumb :edit_user do |user|
@@ -58,6 +54,17 @@ crumb :login do
 end
 
 crumb :new_message do |offer|
-  link I18n.t('links.crumbs.message.new'), login_path
+  link I18n.t('links.crumbs.message.new')
   parent :offer, offer
+end
+
+crumb :messagebox do |type, current_user|
+  link I18n.t("links.crumbs.messagebox.#{type}"), messagebox_path(type: type)
+  parent :user, current_user
+end
+
+crumb :issue do |issue|
+  issue_title = I18n.t('links.crumbs.issue.issue', :title => truncate(issue.title, length: 20, separator: ' '))
+  link issue_title, login_path
+  parent :offer, issue.offer
 end

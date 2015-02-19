@@ -1,0 +1,15 @@
+.list-group-item
+  .row
+    .col-md-1
+      = link_to t('links.issue.deactivate'), deactivate_issue_path(id: issue.id), class: "btn btn-default btn-xs"
+    .col-md-4
+      = link_to issue.offer.title, offer_path(issue.offer)
+      %br
+      - if sender?(issue)
+        = link_to issue.reciever.name, issue.reciever
+      - else
+        = link_to issue.sender.name, issue.sender
+    .col-md-7
+      = link_to issue.title, issue_path(issue)
+      %br
+      = truncate(issue.messages.last.content, length: 80, separator: ' ')

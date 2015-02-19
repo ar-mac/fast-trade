@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+i_1:
   id: 1
   sender_id: 2
   reciever_id: 1
@@ -9,12 +9,21 @@ one:
   active_for_sender: true
   active_for_reciever: true
 
-two:
+i_2:
   id: 2
   sender_id: 2
   reciever_id: 1
   offer_id: 5
   title: 'Stub title for issue'
+  active_for_sender: true
+  active_for_reciever: true
+  
+i_3:
+  id: 3
+  sender_id: 1
+  reciever_id: 2
+  offer_id: 51
+  title: 'Other stub title for issue'
   active_for_sender: true
   active_for_reciever: true
   

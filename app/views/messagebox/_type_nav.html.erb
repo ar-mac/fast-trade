@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" class=<%= @type == 'recieved' ? 'active' : '' %>>
+    <%= link_to t('links.messagebox.recieved'), messagebox_path(type: 'recieved')  %>
+  </li>
+  
+  <li role="presentation" class=<%= @type == 'send' ? 'active' : '' %>>
+    <%= link_to t('links.messagebox.send'), messagebox_path(type: 'send')  %>
+  </li>
+</ul>

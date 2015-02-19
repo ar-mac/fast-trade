@@ -2,6 +2,10 @@ class IssuesController < ApplicationController
   
   before_action :get_issue
   
+  def show
+    
+  end
+  
   def deactivate
     if owner?(@issue.sender)
       @issue.sender_deactivate
