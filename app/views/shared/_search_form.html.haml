@@ -15,7 +15,7 @@
     - if admin?
       .form-field
         = label_tag :status, t('links.search.by_status'), class: 'full-width-label'
-        = select_tag :status, options_for_select(Offer::STATUS), {include_blank: true, class: 'form-control'}
+        = select_tag :status, options_for_select(statuses_for_options), {include_blank: true, class: 'form-control'}
     
     
     = submit_tag t('links.search.submit'), class: 'btn btn-default'
