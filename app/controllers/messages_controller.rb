@@ -6,11 +6,9 @@ class MessagesController < ApplicationController
   
   def new
     @title = I18n.t('links.crumbs.message.new')
-    if @issue.new_record?
-      @issue.sender_id = @current_user.id
-      @issue.reciever_id = @offer.owner.id
-      @issue.offer_id = @offer.id
-    end
+    @issue.sender_id = @current_user.id
+    @issue.reciever_id = @offer.owner.id
+    @issue.offer_id = @offer.id
     @message.author_id = @current_user.id
   end
   

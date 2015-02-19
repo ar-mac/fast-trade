@@ -4,6 +4,10 @@ class IssuesController < ApplicationController
   
   def show
     
+    @offer = @issue.offer
+    @message = @issue.messages.new()
+    @message.author_id = @current_user.id
+    
   end
   
   def deactivate
