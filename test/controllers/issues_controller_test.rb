@@ -2,7 +2,7 @@ require 'test_helper'
 
 class IssuesControllerTest < ActionController::TestCase
   def setup
-    @issue = issues(:one)
+    @issue = issues(:i_1)
     @reciever = @issue.reciever
     @sender = @issue.sender
     @other = users(:user_6)

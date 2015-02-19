@@ -3,7 +3,7 @@ require 'test_helper'
 class MessageTest < ActiveSupport::TestCase
   def setup
     @user = users(:tom)
-    @issue1 = issues(:one)
+    @issue1 = issues(:i_1)
     @message1 = Message.create(
       content: 'This content has enough length to be valid',
       issue_id: @issue1.id,
