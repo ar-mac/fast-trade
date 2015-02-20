@@ -5,7 +5,6 @@ i_1:
   sender_id: 2
   reciever_id: 1
   offer_id: 1
-  title: 'Got question about ...'
   active_for_sender: true
   active_for_reciever: true
 
@@ -14,7 +13,6 @@ i_2:
   sender_id: 2
   reciever_id: 1
   offer_id: 5
-  title: 'Stub title for issue'
   active_for_sender: true
   active_for_reciever: true
   
@@ -23,7 +21,6 @@ i_3:
   sender_id: 1
   reciever_id: 2
   offer_id: 51
-  title: 'Other stub title for issue'
   active_for_sender: true
   active_for_reciever: true
   

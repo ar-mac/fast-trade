@@ -25,7 +25,7 @@ class IssuesControllerTest < ActionController::TestCase
       assert @issue.active_for_sender
       assert_not_nil flash[:danger]
     end
-        assert_no_difference 'Issue.count' do
+    assert_no_difference 'Issue.count' do
       log_in_as @admin
       patch :deactivate, id: @issue.id
       @issue.reload
@@ -34,7 +34,7 @@ class IssuesControllerTest < ActionController::TestCase
       assert_not_nil flash[:danger]
     end
   end
-    
+  
   test 'issue reciever deactivation' do
     assert_no_difference 'Issue.count' do
       log_in_as @reciever

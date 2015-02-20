@@ -12,6 +12,12 @@ class OffersController < ApplicationController
   #finds user who is owner of the offer
   before_action :get_user, only: [:show, :edit, :update, :destroy, :renew, :close, :accept]
   
+  #loads params for creation of issue
+  before_action :params_for_issue, only: :show
+  
+  #returns issue if it exist for given attributes
+  before_action :get_issue, only: :show
+  
   #allows only owner of the account and admin to do action
   before_action :owner_or_admin, only: [:edit, :update, :destroy, :close]
   
@@ -87,9 +93,29 @@ class OffersController < ApplicationController
     def offer_params
       params.require(:offer).permit(:title, :valid_until, :category_id, :content)
     end
+    
+    def params_for_issue
+      if logged_in?
+        @params_for_issue = 
+          {
+            issue: 
+              {
+                sender_id: @current_user.id,
+                reciever_id: @user.id,
+                offer_id: @offer.id
+              }
+          }
+      end
+    end
   
     def get_offer
       @offer = Offer.find_by(id: params[:id])
+    end
+    
+    def get_issue
+      if logged_in?
+        @issue = Issue.where('offer_id = ? AND sender_id = ?', @offer.id, @current_user.id).first
+      end
     end
     
     def owner_or_admin

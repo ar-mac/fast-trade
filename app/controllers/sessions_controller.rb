@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
   
   def new
     @title = I18n.t('links.crumbs.user.login')
+    if params[:redirected] == '1'
+      session[:redirected] = true
+    end
   end
   
   def create

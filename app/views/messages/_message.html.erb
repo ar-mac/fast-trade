@@ -2,21 +2,13 @@
 
   <div class='message'>
     
-    <% if @current_user != message.issue.sender %>
-      <div class='arrow-left'></div>
-    <% end %>
-    
-    <p class='author'>Autor: <%= message.author.name %></p>
-    <div class=<%= @current_user == message.issue.sender ? 'message-sender' : 'message-reciever' %>>
+    <p class='author'><b><%= t('activerecord.attributes.offer.owner') %>:</b> <%= message.author.name %></p>
+    <div class=<%= message.issue.sender == message.author ? 'message-sender' : 'message-reciever' %>>
       <p class='content'><%= message.content %></p>
     </div>
     
-    <% if @current_user == message.issue.sender %>
-      <div class='arrow-right'></div>
-    <% end %>
-    
     <% if @current_user != message.author %>
-      <span class='read_at'><%= t('elements.message.read_at')%><%= message.read_at %></span>
+      <p class='read_at'><%= t('elements.message.read_at')%><%= message.read_at %></p>
     <% end %>
     
   </div>

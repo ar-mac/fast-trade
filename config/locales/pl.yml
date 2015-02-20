@@ -13,6 +13,7 @@ pl:
         
       issue:
         not_owner: 'Nie możesz tego zrobić'
+        owner: 'Nie możesz wysłać wiadomości do samego siebie'
         
         
     successful:
@@ -81,7 +82,7 @@ pl:
       new_offer: 'Nowa oferta'
       
       
-      new_message: 'Wiadomość do autora ogłoszenia'
+      new_message: 'Nowa wiadomość'
       
       
     category:
@@ -140,7 +141,8 @@ pl:
         recieved: 'Otrzymane wiadomości'
         send: 'Wysłane wiadomości'
       issue:
-        issue: 'Wątek: %{title}'
+        issue: 'Wątek: %{msg}'
+        title: 'Wątek'
         
         
         
@@ -166,7 +168,6 @@ pl:
       show_content: 'Wyświetl treść i informacje o ofercie'
       
       
-      
     search:
       by_more_than_valid: 'Ważne dłużej niż:'
       by_less_than_valid: 'Ważne krócej niż:'
@@ -180,12 +181,15 @@ pl:
     message:
       send: 'Wyślij wiadomość'
       new: 'Utwórz'
+      go_to_issue: 'Przejdź do wątku'
     messagebox:
       title: 'Skrzynka wiadomości'
       recieved: 'Otrzymane'
       send: 'Wysłane'
     issue:
+      title: 'Przejdź do wątku'
       deactivate: 'Deaktywuj'
+      
       
       
     show: 'Wyświetl'
@@ -279,6 +283,10 @@ pl:
             valid_until:
               in_the_past: 'musi być w przyszłości'
               
+              
+        issue:
+          exist_for_sender_offer: 'Wątek dla tej oferty już istnieje.'
+          
         
   will_paginate:
     previous_label: "&#8592; Poprzednia"

@@ -64,7 +64,7 @@ crumb :messagebox do |type, current_user|
 end
 
 crumb :issue do |issue|
-  issue_title = I18n.t('links.crumbs.issue.issue', :title => truncate(issue.title, length: 20, separator: ' '))
+  issue_title = I18n.t('links.crumbs.issue.title')
   link issue_title, login_path
   parent :offer, issue.offer
 end

@@ -26,9 +26,15 @@
         %li.list-group-item
           %b= t('activerecord.attributes.offer.status')
           = t(@offer.status)
-    - if @offer.active? && !owner?(@user)
+    - if @offer.active? && !owner?(@user) && logged_in?
       .well
-        = link_to t('links.message.send'), new_message_path(offer_id: @offer), class: 'btn btn-success btn-lg btn-block'
+        - if @issue.nil?
+          = link_to t('links.message.send'), issues_path(@params_for_issue), method: :post, class: 'btn btn-success btn-lg btn-block'
+        - else
+          = link_to t('links.message.send'), issue_path(@issue), class: 'btn btn-success btn-lg btn-block'
+    - if !logged_in?
+      .well
+        = link_to t('links.message.send'), issues_path(), {method: :post, class: 'btn btn-success btn-lg btn-block'}
     - if current_or_admin?(@offer.owner)
       .well
         .btn-group

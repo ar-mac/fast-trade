@@ -6,20 +6,24 @@ class MessagesController < ApplicationController
   
   def new
     @title = I18n.t('links.crumbs.message.new')
-    @issue.sender_id = @current_user.id
-    @issue.reciever_id = @offer.owner.id
-    @issue.offer_id = @offer.id
-    @message.author_id = @current_user.id
+    
   end
   
   def create
-    if @issue = @current_user.send_issues.create(issue_params)
-      if @message = @issue.messages.create(message_params)
-        #if message updates properly it succesfully ends
-        redirect_to @issue.offer, flash: {success: I18n.t('flash.successful.message.creation')}
-      else
+    
+    unless @issue = @current_user.send_issues.where('offer_id = ?', @offer.id).first || 
+      @issue = @current_user.recieved_issues.where('offer_id = ?', @offer.id).first
+      #if it don't find issue for that offer it create one
+      unless @issue = @current_user.send_issues.create(issue_params)
+        #if creation of the issue fails it returns to the form
         back_to_message
+        return
       end
+    end
+
+    if @message = @issue.messages.create(message_params)
+      #if message updates properly it succesfully ends
+      redirect_to @issue.offer, flash: {success: I18n.t('flash.successful.message.creation')}
     else
       back_to_message
     end
@@ -28,7 +32,7 @@ class MessagesController < ApplicationController
   private
   
     def issue_params
-      params.require(:issue).permit(:title, :sender_id, :reciever_id, :offer_id)
+      params.require(:issue).permit(:sender_id, :reciever_id, :offer_id)
     end
     
     def message_params

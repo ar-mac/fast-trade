@@ -13,6 +13,15 @@
   }
 }
 
+.form-message {
+  @include search-form-style;
+  width: 100%;
+  border-radius: 10px;
+  .form-field {
+    width: 100%;
+  }
+}
+
 .form-search-mounted {
   @include search-form-style;
   width: 100%;

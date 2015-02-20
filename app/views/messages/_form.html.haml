@@ -4,22 +4,17 @@
   
   = fields_for @issue do |ff|
     .form-field
-      = ff.label :title
       - if @issue.new_record?
-        = ff.text_field :title, {class: 'form-control'}
-        = ff.hidden_field :sender_id
-        = ff.hidden_field :reciever_id
-        = ff.hidden_field :offer_id
-      - else
-        = ff.text_field :title, {class: 'form-control', id: 'disabledInput', disabled: 'disabled'}
+        = ff.hidden_field :sender_id, value: @current_user.id
+        = ff.hidden_field :reciever_id, value: @offer.owner.id
+        = ff.hidden_field :offer_id, value: @offer.id
   
   .form-field
     = f.label :content
     = f.text_area :content, class: 'form-control'
   
-  = f.hidden_field :author_id
+  = f.hidden_field :author_id, value: @current_user.id
   = hidden_field_tag :offer_id, @offer.id
     
-  = f.submit params[:action] == 'new' ? t('links.message.new') : |
-  t('links.edit'),  class: 'btn btn-default'                     |
+  = f.submit t('links.message.new'), class: 'btn btn-default'
   = link_to t('elements.cancel'), @offer, class: 'btn btn-danger pull-right'

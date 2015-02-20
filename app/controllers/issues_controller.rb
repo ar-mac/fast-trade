@@ -1,13 +1,27 @@
 class IssuesController < ApplicationController
   
-  before_action :get_issue
+  #gets issue which is object of the action
+  before_action :get_issue, only: [:show, :deactivate]
+  
+  #allows only logged user to take action
+  before_action :logged_user, only: [:create]
+  
+  #allows only active current_user to do action
+  before_action :active_account, only: [:create]
+  
+  #owner of offer cannot send messages to himself
+  before_action :not_owner, only: [:create]
   
   def show
-    
+    @title = I18n.t('links.crumbs.issue.title')
     @offer = @issue.offer
-    @message = @issue.messages.new()
-    @message.author_id = @current_user.id
+    @message = @issue.messages.new(author_id: @current_user.id)
     
+  end
+  
+  def create
+    @issue = Issue.create(issue_params)
+    redirect_to @issue
   end
   
   def deactivate
@@ -21,7 +35,6 @@ class IssuesController < ApplicationController
       flash[:danger] = I18n.t('flash.error.issue.not_owner')
       redirect_back and return
     end
-    
     if @issue.both_deactivate?
       @issue.destroy
     end
@@ -32,6 +45,18 @@ class IssuesController < ApplicationController
     
     def get_issue
       @issue = Issue.find(params[:id])
+    end
+    
+    def issue_params
+      params.require(:issue).permit(:sender_id, :reciever_id, :offer_id)
+    end
+    
+    def not_owner
+      @sender = User.find_by(id: params[:sender_id])
+      if owner?(@sender)
+        flash[:danger] = I18n.t('flash.error.issue.owner')
+        redirect_back
+      end
     end
   
 end
