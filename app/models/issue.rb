@@ -36,5 +36,10 @@ class Issue < ActiveRecord::Base
     return true if !active_for_sender? && !active_for_reciever?
   end
   
+  def activate_all
+    self.update_attribute(:active_for_sender, true)
+    self.update_attribute(:active_for_reciever, true)
+  end
+  
   
 end

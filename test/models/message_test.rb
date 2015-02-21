@@ -19,9 +19,9 @@ class MessageTest < ActiveSupport::TestCase
   test 'content validations' do
     @message1.update(content: nil )
     assert_not @message1.valid?
-    @message1.update(content: 'too short' )
+    @message1.update(content: 'sho' )
     assert_not @message1.valid?
-    @message1.update(content: 'a' * 20 )
+    @message1.update(content: 'a' * 5 )
     assert @message1.valid?, "invalid because: #{@message1.errors.full_messages}"
   end
   

@@ -186,6 +186,8 @@ pl:
       title: 'Skrzynka wiadomości'
       recieved: 'Otrzymane'
       send: 'Wysłane'
+      recieved_archieve: 'Archiwum otrzymanych'
+      send_archieve: 'Archiwum wysłanych'
     issue:
       title: 'Przejdź do wątku'
       deactivate: 'Deaktywuj'

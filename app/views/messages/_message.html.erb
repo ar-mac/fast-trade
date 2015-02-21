@@ -2,14 +2,10 @@
 
   <div class='message'>
     
-    <p class='author'><b><%= t('activerecord.attributes.offer.owner') %>:</b> <%= message.author.name %></p>
+    <p class='author'><%= message.author.name %></p>
     <div class=<%= message.issue.sender == message.author ? 'message-sender' : 'message-reciever' %>>
       <p class='content'><%= message.content %></p>
     </div>
-    
-    <% if @current_user != message.author %>
-      <p class='read_at'><%= t('elements.message.read_at')%><%= message.read_at %></p>
-    <% end %>
     
   </div>
 <% end %>

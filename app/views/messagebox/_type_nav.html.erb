@@ -1,9 +1,17 @@
 <ul class="nav nav-tabs">
-  <li role="presentation" class=<%= @type == 'recieved' ? 'active' : '' %>>
+  <li role="presentation" class=<%= @type2 == 'recieved' ? 'active' : '' %>>
     <%= link_to t('links.messagebox.recieved'), messagebox_path(type: 'recieved')  %>
   </li>
   
-  <li role="presentation" class=<%= @type == 'send' ? 'active' : '' %>>
+  <li role="presentation" class=<%= @type2 == 'send' ? 'active' : '' %>>
     <%= link_to t('links.messagebox.send'), messagebox_path(type: 'send')  %>
+  </li>
+  
+  <li role="presentation" class=<%= @type2 == 'recieved_archieve' ? 'active' : '' %>>
+    <%= link_to t('links.messagebox.recieved_archieve'), messagebox_path(type: 'recieved', status: '0')  %>
+  </li>
+  
+  <li role="presentation" class=<%= @type2 == 'send_archieve' ? 'active' : '' %>>
+    <%= link_to t('links.messagebox.send_archieve'), messagebox_path(type: 'send', status: '0')  %>
   </li>
 </ul>
