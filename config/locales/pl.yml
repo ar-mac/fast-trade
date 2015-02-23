@@ -113,6 +113,8 @@ pl:
       title: 'Skrzynka wiadomości'
       no_send_messages: 'Nie masz żadnych wysłanych wiadomości'
       no_recieved_messages: 'Nie masz żadnych otrzymanych wiadomości'
+      no_send_archieve_messages: 'Archiwum wysłanych jest puste'
+      no_recieved_archieve_messages: 'Archiwum otrzymanych jest puste'
     
     
     
