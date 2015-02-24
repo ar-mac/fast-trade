@@ -24,7 +24,6 @@ group :development, :test do
   gem 'web-console', '2.0.0.beta3'
   gem 'spring'
   gem 'byebug',      '3.4.0'
-  gem 'better_errors'
   gem 'sextant'
   gem 'thin'
 end
