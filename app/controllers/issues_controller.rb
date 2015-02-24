@@ -37,9 +37,6 @@ class IssuesController < ApplicationController
       flash[:danger] = I18n.t('flash.error.issue.not_owner')
       redirect_back and return
     end
-    if @issue.both_deactivate?
-      @issue.destroy
-    end
     redirect_back and return
   end
   

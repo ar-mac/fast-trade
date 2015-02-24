@@ -37,6 +37,7 @@ class MessageboxController < ApplicationController
     def clear_old
       @issues.each do |issue|
         issue.destroy if issue.messages.last.created_at < 30.days.ago
+        issue.destroy if issue.both_deactivate? && issue.messages.last.created_at < 3.days.ago
       end
     end
     
