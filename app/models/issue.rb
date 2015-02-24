@@ -41,5 +41,11 @@ class Issue < ActiveRecord::Base
     self.update_attribute(:active_for_reciever, true)
   end
   
-  
+  def active_for?(user)
+    if self.reciever == user
+      return true if active_for_reciever?
+    else
+      return true if active_for_sender?
+    end
+  end  
 end

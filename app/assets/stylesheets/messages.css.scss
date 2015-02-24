@@ -30,7 +30,29 @@
   float: right;
 }
 
-.read_at {
-  clear: both;
+.spacer-block {
+  overflow: auto;
+}
+
+.send_at {
+  margin: 0;
+  font-size: 0.75em;
+  float: right;
+}
+
+.author-reciever {
+  display: block;
+  .author {
+    float: right;
+  }
+  .read_at {
+    float: right;
+    font-size: 0.75em;
+  }
+  overflow: auto;
+}
+
+.is_new {
+  font-weight: normal;
 }
 

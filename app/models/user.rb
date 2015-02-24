@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :recieved_issues, class_name: 'Issue', foreign_key: 'reciever_id',
     dependent: :destroy
   has_many :send_messages, class_name: 'Message', foreign_key: 'author_id'
+  has_many :new_messages, class_name: 'Message', foreign_key: 'new_for_user_id'
   
   
   scope :from_newest, ->{ order(created_at: :desc) }

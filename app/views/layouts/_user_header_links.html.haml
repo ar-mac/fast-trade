@@ -1,10 +1,15 @@
 %ul.nav.navbar-nav.navbar-right
   - if inactive?
     %p.navbar-text#text-danger= t('elements.user.inactive')
-  
+    
   
   - if logged_in?
   
+    - if new_messages?
+      
+      %li
+        = link_to issue_path(@current_user.new_messages.first.issue), {id: 'text-info'} do
+          = t('links.user.new_messages', count: @current_user.new_messages.count)
     - if admin?
       
       %li.dropdown

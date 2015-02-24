@@ -1,7 +1,8 @@
 .list-group-item
   .row
     .col-md-1
-      = link_to t('links.issue.deactivate'), deactivate_issue_path(id: issue.id), method: :patch, class: "btn btn-default btn-xs"
+      - if issue.active_for?(@current_user)
+        = link_to t('links.issue.deactivate'), deactivate_issue_path(id: issue.id), method: :patch, class: "btn btn-default btn-xs"
     .col-md-4
       = link_to issue.offer.title, offer_path(issue.offer)
       %br

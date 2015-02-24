@@ -105,10 +105,14 @@ pl:
       status: 'Stan'
       
       
+      messages_from: 'Wiadomości od: %{user}'
       owner: 'Autor ogłoszenia'
     message:
       history: 'Wiadomości w tym wątku'
       read_at: 'Przeczytano: '
+      send_at: 'Wysłano:'
+      not_read_yet: 'Jeszcze nie przeczytano'
+      is_new: '(Nowa)'
     messagebox:
       title: 'Skrzynka wiadomości'
       no_send_messages: 'Nie masz żadnych wysłanych wiadomości'
@@ -136,7 +140,6 @@ pl:
         new: 'Rejestracja'
         login: 'Logowanie'
         
-        
       message:
         new: 'Nowa wiadomość'
       messagebox:
@@ -156,6 +159,14 @@ pl:
       delete_account: 'Usuń konto'
       deactivate_account: 'Zawieś konto'
       activate_account: 'Aktywuj konto'
+      
+      
+      new_messages:
+        one: 'Masz nową wiadomość'
+        few: 'Masz (%{count}) nowe wiadomości'
+        other: 'Masz (%{count}) nowych wiadomości'
+          
+          
     offer:
       info: 'Informacje o ofercie'
       all: 'Wszystkie'
@@ -184,6 +195,7 @@ pl:
       send: 'Wyślij wiadomość'
       new: 'Utwórz'
       go_to_issue: 'Przejdź do wątku'
+      show: 'Wyświetl'
     messagebox:
       title: 'Skrzynka wiadomości'
       recieved: 'Otrzymane'
@@ -532,4 +544,6 @@ pl:
       default: ! '%a, %d %b %Y %H:%M:%S %z'
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
+      message_send: ! 'Napisano: %-d.%b %k:%M'
+      message_read: ! 'Przeczytano: %-d.%b %k:%M'
     pm: po południu

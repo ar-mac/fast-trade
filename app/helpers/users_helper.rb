@@ -14,4 +14,8 @@ module UsersHelper
     end
   end
   
+  def new_messages?
+    true if @current_user.new_messages.count > 0
+  end
+  
 end

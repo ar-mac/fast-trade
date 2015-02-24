@@ -12,11 +12,13 @@ class IssuesController < ApplicationController
   #owner of offer cannot send messages to himself
   before_action :not_owner, only: [:create]
   
+  #clears new messages for current_user which were in shown issue
+  after_action :dismiss_new, only: [:show]
+  
   def show
     @title = I18n.t('links.crumbs.issue.title')
     @offer = @issue.offer
     @message = @issue.messages.new(author_id: @current_user.id)
-    
   end
   
   def create
@@ -57,6 +59,10 @@ class IssuesController < ApplicationController
         flash[:danger] = I18n.t('flash.error.issue.owner')
         redirect_back
       end
+    end
+    
+    def dismiss_new
+      @issue.messages.each { |msg| msg.clear_being_new_for(@current_user) }
     end
   
 end

@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
     if @message = @issue.messages.create(message_params)
       #if message updates properly it succesfully ends
       @issue.activate_all
+      @message.set_as_new
       redirect_to @issue.offer, flash: {success: I18n.t('flash.successful.message.creation')}
     else
       back_to_message
