@@ -42,11 +42,11 @@
               %i.fa.fa-stop.fa-fw
               = t('links.offer.status2')
               
-  - if active?
-    %li
-      = link_to new_offer_path do
-        %i.fa.fa-plus.fa-fw
-        = t('links.offer.add')
+    - if active?
+      %li
+        = link_to new_offer_path do
+          %i.fa.fa-plus.fa-fw
+          = t('links.offer.add')
         
     %li.dropdown
       %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", |
