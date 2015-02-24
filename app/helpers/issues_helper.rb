@@ -8,4 +8,8 @@ module IssuesHelper
     return true if @current_user == issue.reciever
   end
   
+  def new_in_issue?(issue)
+    return true if @current_user == issue.messages.last.new_for_user
+  end
+  
 end

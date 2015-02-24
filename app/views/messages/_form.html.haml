@@ -2,17 +2,11 @@
 
   = render 'shared/error_messages', object: f.object
   
-  = fields_for @issue do |ff|
-    .form-field
-      - if @issue.new_record?
-        = ff.hidden_field :sender_id, value: @current_user.id
-        = ff.hidden_field :reciever_id, value: @offer.owner.id
-        = ff.hidden_field :offer_id, value: @offer.id
-  
   .form-field
     = f.label :content
     = f.text_area :content, class: 'form-control'
   
+  = f.hidden_field :issue_id, value: @issue.id
   = f.hidden_field :author_id, value: @current_user.id
   = hidden_field_tag :offer_id, @offer.id
     

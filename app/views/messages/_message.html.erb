@@ -4,7 +4,7 @@
     
     <div class=<%= message.issue.sender == message.author ? '' : 'author-reciever' %>>
     <p class='author'>
-      <%= message.author.name %>
+      <%= link_to message.author.name, user_path(message.author) %>
       <% if is_new?(message) %>
         <span class='is_new'><%= t('elements.message.is_new') %></span>
       <% end %>
@@ -12,10 +12,8 @@
     </div>
     <div class='spacer-block'>
       <div class=<%= message.issue.sender == message.author ? 'message-sender' : 'message-reciever' %>>
-        <p class="content<%= is_new?(message) ? ' content-new' : '' %>">
-          <%= message.content %>
+          <div><%= message.content %></div>
           <p class='send_at'><%= message.created_datetime %></p>
-        </p>
       </div>
     </div>
     

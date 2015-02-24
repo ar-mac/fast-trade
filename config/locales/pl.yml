@@ -119,6 +119,8 @@ pl:
       no_recieved_messages: 'Nie masz żadnych otrzymanych wiadomości'
       no_send_archieve_messages: 'Archiwum wysłanych jest puste'
       no_recieved_archieve_messages: 'Archiwum otrzymanych jest puste'
+    issue:
+      has_new_message: 'Nowa odpowiedź'
     
     
     
@@ -193,6 +195,7 @@ pl:
       
     message:
       send: 'Wyślij wiadomość'
+      to_issue: 'Przejdź do wątku'
       new: 'Utwórz'
       go_to_issue: 'Przejdź do wątku'
       show: 'Wyświetl'

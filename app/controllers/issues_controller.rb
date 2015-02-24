@@ -18,7 +18,7 @@ class IssuesController < ApplicationController
   def show
     @title = I18n.t('links.crumbs.issue.title')
     @offer = @issue.offer
-    @message = @issue.messages.new(author_id: @current_user.id)
+    @message = Message.new()
   end
   
   def create

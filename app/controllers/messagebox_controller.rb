@@ -4,6 +4,9 @@ class MessageboxController < ApplicationController
   before_action :logged_user
   before_action :get_issues
   
+  #deletes issues without messages
+  before_action :clean_empty, only: [:box]
+  
   def box
     
   end
@@ -19,6 +22,16 @@ class MessageboxController < ApplicationController
       @issues = @current_user.send("#{@type}_issues")
       .where("active_for_#{user_type} = ?", status)
       .paginate(page: params[:page])
+    end
+    
+    def clean_empty
+      #empty issue is created when user hits 'new message', 
+      #but actually didn't create message.
+      @issues.each do |issue|
+        if issue.messages.empty?
+          issue.destroy
+        end
+      end
     end
   
 end

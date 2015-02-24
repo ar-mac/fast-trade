@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   	
   	resources :issues, only: [:show, :create]
   	patch 'issues/:id/deactivate' => 'issues#deactivate', as: :deactivate_issue
-  	resources :messages, only: [:new, :create]
+  	resources :messages, only: [:create]
   	
   	get 'messagebox/:type' => 'messagebox#box', as: :messagebox
 	end

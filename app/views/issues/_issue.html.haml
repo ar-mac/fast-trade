@@ -11,6 +11,10 @@
       - else
         = link_to issue.sender.name, issue.sender
     .col-md-7
-      = link_to t('links.issue.title'), issue_path(issue)
-      %br
-      = truncate(issue.messages.last.content, length: 80, separator: ' ')
+      .issue-header
+        = link_to t('links.issue.title'), issue_path(issue)
+        - if new_in_issue?(issue)
+          %span.badge= t('elements.issue.has_new_message')
+          
+      .content-showup
+        = truncate(issue.messages.last.content, length: 160, separator: ' ')
