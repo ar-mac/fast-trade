@@ -49,7 +49,7 @@ pl:
     
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
-    jumbo: 'Możesz tu wystawiać ogłoszenia... itd.'
+    jumbo: 'Możesz tu wystawiać oferty z wybranych kategorii ... itd.'
     or: 'albo'
     remember_me: 'Zapamiętaj mnie na tym komputerze'
     users_by_region: 'Wyświetl użytkowników z danego regionu'
@@ -57,15 +57,15 @@ pl:
     inactive_users: 'Konta nieaktywne'
     all_regions: 'Cała Polska'
     no_users: 'Brak użytkowników z podanymi właściwościami'
-    no_offers: 'Brak offert'
+    no_offers: 'Brak ofert'
     user:
       info: 'Dane konta'
       offers: 'Oferty użytkownika'
       choose_region: 'Wybierz region'
       delete_confirmation: 'Jesteś pewny, że chcesz usunąć konto?'
-      delete_description: "Aby usunąć konto, użyj poniższego przycisku pamiętaj jednak, że ta operacja jest nieodwracalna. Usunięte zostaną również ogłoszenia."
-      activate_description: 'Aktywne konto może normalnie wystawiać ogłoszenia.'
-      deactivate_description: 'Deaktywując konto zablokowana zostanie możliwość tworzenia nowych ogłoszeń, a obecne zostaną zakończone.'
+      delete_description: "Aby usunąć konto, użyj poniższego przycisku pamiętaj jednak, że ta operacja jest nieodwracalna. Usunięte zostaną również oferty."
+      activate_description: 'Aktywne konto może normalnie tworzyć oferty.'
+      deactivate_description: 'Deaktywując konto zablokowana zostanie możliwość tworzenia nowych ofert, a obecne zostaną zakończone.'
       old_password: 'Dotychczasowe hasło'
       new_password: 'Nowe hasło'
       new_password_confirm: 'Potwierdzenie nowego hasła'
@@ -82,31 +82,39 @@ pl:
       new_offer: 'Nowa oferta'
       
       
+      edit_offer: 'Edycja oferty'
       new_message: 'Nowa wiadomość'
-      
-      
     category:
-      main: 'Główna'
-      music: 'Muzyka'
+      estates: 'Nieruchomości'
       automotive: 'Motoryzacja'
+      electronics: 'Elektronika'
       sport: 'Sport'
       food: 'Kulinaria'
-      it: 'Informatyka'
-      business: 'Biznes'
-      money: 'Finanse'
-      news: 'Wiadomości'
-      science: 'Nauka'
+      hobby: 'Zainteresowania'
+      for_children: 'Dla dzieci'
+      animals: 'Zoologiczne'
+      services: 'Usługi'
+      music: 'Muzyka'
       fashion: 'Moda'
       other: 'Pozostałe'
+      
+      
     offer:
-      confirm_close: 'Zamknąć ogłoszenie?'
-      confirm_destroy: 'Usunąć ogłoszenie?'
-      search: 'Wyszukaj ofert'
+      confirm_close: 'Zamknąć ofertę? (operacja jest odwracalna)'
+      confirm_destroy: 'Usunąć ofertę? (nieodwracalne)'
+      search: 'Wyszukaj oferty'
       status: 'Stan'
       
       
+      price: 'Cena:'
+      price_free: 'Oferta darmowa'
+      cost:
+        one: "%{count} Złoty"
+        few: "%{count} Złote"
+        many: "%{count} Złotych"
+        other: "%{count} Złotych"
       messages_from: 'Wiadomości od: %{user}'
-      owner: 'Autor ogłoszenia'
+      owner: 'Autor oferty'
     message:
       history: 'Wiadomości w tym wątku'
       read_at: 'Przeczytano: '
@@ -226,7 +234,7 @@ pl:
     cancel: 'Odrzuć'
     admin_options: 'Administracyjne'
     locale:
-      choose: 'Wybierz język'
+      choose: 'język, language, linguo'
       polish: 'Polski'
       english: 'English'
       spanish: 'Español'
@@ -246,6 +254,7 @@ pl:
         content: 'Treść'
         category: 'Kategoria'
         category_id: 'Numer kategorii'
+        price: 'Cena'
         created: 'Utworzono'
         updated: 'Zmieniono'
         valid_until: 'Termin ważności'

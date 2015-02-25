@@ -16,9 +16,6 @@ User.create(name: 'Beziq',
   admin: false)
 end
 
-inactive_users = User.where(active: false)
-inactive_users.each { |user| user.deactivate_offers }
-
 # categories creation
 Category::NAME_CODES.each do |name_c|
   Category.create(name_code: name_c )
@@ -29,10 +26,11 @@ User.all.each do |user|
   50.times do |n|
     user.offers.create(
       title: "#{Faker::Commerce.product_name} #{Faker::Lorem.word}",
-      content: Faker::Lorem.sentence(rand(3..9)),
-      valid_until: (Time.zone.today + rand(1..90).days),
-      status_id: ( n % 3 ),
-      category_id: rand(1..12)
+      content: Faker::Lorem.sentence(6),
+      valid_until: ( Time.zone.today + rand(1..90).days ),
+      status_id: ( user.active? ? (n % 3) : (2) ),
+      category_id: ( n % 12 + 1 ),
+      price: ( n % 4 == 0 ? nil : ((n + 2) * 4) )
       )
   end
 end

@@ -58,11 +58,15 @@ class IssuesControllerTest < ActionController::TestCase
   end
   
   test 'issue destroy' do
-    assert_difference 'Issue.count', -1 do
+    assert_no_difference 'Issue.count' do
       log_in_as @reciever
       patch :deactivate, id: @issue.id
+      @issue.reload
       log_in_as @sender
       patch :deactivate, id: @issue.id
+      @issue.reload
+      assert_not @issue.active_for_reciever
+      assert_not @issue.active_for_sender
       assert_not_nil flash[:success]
     end
   end

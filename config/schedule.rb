@@ -16,7 +16,7 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-every 1.day, at: '00:01 AM' do
+every 1.day, at: '11:42 PM' do
   runner "Offer.update_expiration"
 end
 

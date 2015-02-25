@@ -38,8 +38,8 @@
         = link_to t('links.message.send'), issues_path(), {method: :post, class: 'btn btn-success btn-lg btn-block'}
     
     - if owner?(@user)
-      .well
-        - @offer.issues.each do |issue|
+      - @offer.issues.each do |issue|
+        .well
           = t('elements.offer.messages_from', user: issue.sender.name)
           = link_to t('links.message.show'), issue_path(issue), class: 'btn btn-success btn-lg btn-block'
           
@@ -63,4 +63,11 @@
     %h2.custom-h2= @offer.title
     .offer-content
       = raw(@offer.content)
+    .price-main
+      %span.price-right
+        - if @offer.price.nil?
+          = t('elements.offer.price_free')
+        - else
+          = t('elements.offer.price')
+          %span.price-num= t('elements.offer.cost', count: @offer.price)
   

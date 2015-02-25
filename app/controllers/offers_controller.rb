@@ -30,6 +30,9 @@ class OffersController < ApplicationController
   #allows only admin to do action
   before_action :admin_auth, only: :accept
   
+  #updates status to closed if offer is expired
+  after_action :update_expired, only: [:index]
+  
   def show
     @title = I18n.t('links.crumbs.offer.offer', title: @offer.short_title)
   end
@@ -46,7 +49,7 @@ class OffersController < ApplicationController
   
   def create
     @offer = @current_user.offers.new(offer_params)
-    @offer.status_id = 0
+    @offer.prepare_to_save
     if @offer.save
       redirect_to @offer, flash: {success: I18n.t('flash.successful.offer.creation')}
     else
@@ -60,7 +63,8 @@ class OffersController < ApplicationController
   
   def update
     if @offer.update(offer_params)
-      @offer.status_id = 0
+      @offer.prepare_to_save
+      @offer.save
       redirect_to @offer, flash: {success: I18n.t('flash.successful.offer.edition')}
     else
       render 'edit'
@@ -91,7 +95,7 @@ class OffersController < ApplicationController
   private
   
     def offer_params
-      params.require(:offer).permit(:title, :valid_until, :category_id, :content)
+      params.require(:offer).permit(:title, :valid_until, :category_id, :content, :price)
     end
     
     def params_for_issue
@@ -134,5 +138,9 @@ class OffersController < ApplicationController
     
     def get_user
       @user = @offer.owner
+    end
+    
+    def update_expired
+      @offers.each { |o| o.expired? ? o.close : nil }
     end
 end

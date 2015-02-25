@@ -9,6 +9,7 @@
   border-left: 1px solid $gray-light;
   border-bottom: 4px solid $gray;
   border-right: 5px solid $gray;
+  -webkit-border-radius: 20px;
   border-radius: 20px;
   padding: 20px 18px;
 }
@@ -19,4 +20,21 @@
 
 #offer_for_message {
   display: none;
+}
+
+.price-main {
+  overflow: auto;
+  .price-right {
+    float: right;
+    border-bottom: 1px solid $gray-lighter;
+    margin: 5px 15px 0 0;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: $brand-success;
+    .price-num {
+      font-size: 1.35em;
+    }
+  }
+  
 }

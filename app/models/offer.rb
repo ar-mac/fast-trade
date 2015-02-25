@@ -130,8 +130,19 @@ class Offer < ActiveRecord::Base
     status_id == 2
   end
   
+  def expired?
+    valid_until < Time.zone.today
+  end
+  
   def short_title
     truncate(title, length: 25 , separator: ' ')
+  end
+  
+  def prepare_to_save
+    self.status_id = 0
+    if price == 0 || price == ''
+      self.price = nil
+    end
   end
   
 end
