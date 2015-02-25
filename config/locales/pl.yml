@@ -127,8 +127,11 @@ pl:
       no_recieved_messages: 'Nie masz żadnych otrzymanych wiadomości'
       no_send_archieve_messages: 'Archiwum wysłanych jest puste'
       no_recieved_archieve_messages: 'Archiwum otrzymanych jest puste'
+      last_message: "Ostatnia wiadomość: ( %{message} )"
     issue:
       has_new_message: 'Nowa odpowiedź'
+      sender: 'Zainteresowany:'
+      reciever: 'Autor ogłoszenia:'
     
     
     
@@ -154,7 +157,9 @@ pl:
         new: 'Nowa wiadomość'
       messagebox:
         recieved: 'Otrzymane wiadomości'
+        recieved_archieve: 'Archiwum otrzymanych'
         send: 'Wysłane wiadomości'
+        send_archieve: 'Archiwum wysłanych'
       issue:
         issue: 'Wątek: %{msg}'
         title: 'Wątek'

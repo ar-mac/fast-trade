@@ -85,10 +85,35 @@
   
 }
 
+//-----cleaner below--------
+
 .well {
   overflow: auto;
 }
 
 .navbar.navbar-static-bottom {
-  margin: 20px 0 0 0;
+  margin-top: 20px;
+}
+
+.nav-tabs {
+  a {
+    @include link-style($gray);
+    font-weight: normal;
+  }
+  .active {
+    a {
+      @include link-style($gray);
+      
+    }
+  }
+}
+
+.issue {
+  .title {
+    font-size: 1.2em;
+  }
+  
+  a {
+    @include link-style($gray)
+  }
 }

@@ -10,7 +10,7 @@ class MessageboxController < ApplicationController
   before_action :clear_old, only: [:box]
   
   def box
-    
+    @title = I18n.t("links.crumbs.messagebox.#{@type2}")
   end
   
   private

@@ -1,14 +1,15 @@
-.list-group-item
+.list-group-item.issue
   .row
     .col-md-1
       - if issue.active_for?(@current_user)
         = link_to t('links.issue.deactivate'), deactivate_issue_path(id: issue.id), method: :patch, class: "btn btn-default btn-xs"
     .col-md-4
-      = link_to issue.offer.title, offer_path(issue.offer)
-      %br
+      .title= link_to issue.offer.title, offer_path(issue.offer)
       - if sender?(issue)
+        = t('elements.issue.reciever')
         = link_to issue.reciever.name, issue.reciever
       - else
+        = t('elements.issue.sender')
         = link_to issue.sender.name, issue.sender
     .col-md-7
       .issue-header
@@ -17,4 +18,4 @@
           %span.badge= t('elements.issue.has_new_message')
           
       .content-showup
-        = truncate(issue.messages.last.content, length: 160, separator: ' ')
+        = t('elements.messagebox.last_message', message: (truncate(issue.messages.last.content, length: 160, separator: ' ')))
