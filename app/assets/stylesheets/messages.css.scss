@@ -3,57 +3,67 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
-@mixin message-inside {
-  display: inline-block;
-  max-width: 80%;
-  background-color: $gray-lighter;
-  border: 1px solid $gray-darker;
-  border-radius: 6px;
-  padding: 3px 5px;
-  clear: left;
+@mixin link-style($color) {
+  color: $color;
+  font-style: italic;
+  font-weight: bold;
+  &:hover {
+    color: $color;
+  }
 }
 
 .message {
-  overflow: auto;
-  margin: 5px 0;
-  .author {
-    margin: 0 auto -4px auto;
-    font-weight: bold;
+  .spacer {
+    overflow: auto;
+    
+    .author {
+      margin: 0 5px -2px 5px;
+      color: $gray-light;
+      
+      a {
+        @include link-style($gray);
+      }
+      
+      .is_new {
+        font-weight: normal;
+      }
+    }
+    
+    .content {
+      overflow: auto;
+      width: 75%;
+      background-color: $gray-lighter;
+      border: 1px solid $gray-darker;
+      border-radius: 6px;
+      padding: 3px 5px;
+        
+      .send_at {
+        margin: 0;
+        font-size: 0.75em;
+      }
+    }
+    
+    .read_at {
+      margin: 0;
+    }
   }
 }
-.message-sender {
-  @include message-inside;
-}
 
-.message-reciever {
-  @include message-inside;
-  float: right;
-}
 
-.spacer-block {
+.reciever {
   overflow: auto;
-}
-
-.send_at {
-  margin: 0;
-  font-size: 0.75em;
-  float: right;
-}
-
-.author-reciever {
-  display: block;
-  .author {
-    float: right;
+  
+  .spacer {
+    overflow: auto;
+    
+    .author, .content, .read_at {
+      float: right;
+      .send_at {
+        float: right;
+      }
+    }
   }
-  .read_at {
-    float: right;
-    font-size: 0.75em;
-    margin: 0;
-  }
-  overflow: auto;
 }
 
-.is_new {
-  font-weight: normal;
-}
+
 

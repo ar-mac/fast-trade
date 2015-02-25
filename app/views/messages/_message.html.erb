@@ -1,24 +1,30 @@
 <% unless message.content.nil? %>
 
-  <div class='message'>
+  <div class='message <%= message.issue.sender == message.author ? 'sender' : 'reciever' %>'>
     
-    <div class=<%= message.issue.sender == message.author ? '' : 'author-reciever' %>>
-    <p class='author'>
-      <%= link_to message.author.name, user_path(message.author) %>
-      <% if is_new?(message) %>
-        <span class='is_new'><%= t('elements.message.is_new') %></span>
-      <% end %>
-    </p>
+    <div class='spacer'>
+      <p class='author'>
+        <%= t('activerecord.attributes.message.author') %>
+        <%= link_to message.author.name, user_path(message.author) %>
+        <% if is_new?(message) %>
+          <span class='is_new'><%= t('elements.message.is_new') %></span>
+        <% end %>
+      </p>
     </div>
-    <div class='spacer-block'>
-      <div class=<%= message.issue.sender == message.author ? 'message-sender' : 'message-reciever' %>>
-          <div><%= message.content %></div>
-          <p class='send_at'><%= message.created_datetime %></p>
+    
+    <div class='spacer'>
+      <div class='content'>
+          <p>
+            <%= message.content %>
+          </p>
+          <p class='send_at'>
+            <%= message.created_datetime %>
+          </p>
       </div>
     </div>
     
     <% if @current_user == message.author %>
-      <div class=<%= message.issue.sender == message.author ? '' : 'author-reciever' %>>
+      <div class='spacer'>
         <p class='read_at'><%= message.read_datetime %></p>
       </div>
     <% end %>

@@ -2,30 +2,8 @@
 
 .row
   .col-md-4
-    %h2.custom-h2= t('links.offer.info')
-    %ul.list-group
-      %li.list-group-item
-        %b= t('activerecord.attributes.offer.owner')
-        %span.list-group-item-author= link_to @offer.owner.name, @offer.owner
-      %li.list-group-item
-        %b= t('activerecord.attributes.offer.region')
-        = @offer.owner.region
-      %li.list-group-item
-        %b= t('activerecord.attributes.offer.category')
-        = @offer.category
-      %li.list-group-item
-        %b= t('activerecord.attributes.offer.valid_until')
-        = @offer.valid_date
-      %li.list-group-item
-        %b= t('activerecord.attributes.offer.created')
-        = @offer.created_date
-      - if current_or_admin?(@offer.owner)
-        %li.list-group-item
-          %b= t('activerecord.attributes.offer.updated')
-          = @offer.updated_date
-        %li.list-group-item
-          %b= t('activerecord.attributes.offer.status')
-          = t(@offer.status)
+    = render 'offers/offer_info', offer: @offer
+    
     - if @offer.active? && !owner?(@user) && logged_in?
       .well
         - if @issue.nil?
@@ -60,14 +38,5 @@
   
   
   .col-md-8
-    %h2.custom-h2= @offer.title
-    .offer-content
-      = raw(@offer.content)
-    .price-main
-      %span.price-right
-        - if @offer.price.nil?
-          = t('elements.offer.price_free')
-        - else
-          = t('elements.offer.price')
-          %span.price-num= t('elements.offer.cost', count: @offer.price)
+    = render 'offers/offer_content', offer: @offer
   

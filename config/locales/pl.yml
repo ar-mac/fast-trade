@@ -269,6 +269,7 @@ pl:
       
       message:
         content: 'Treść'
+        author: 'Autor'
         
       issue:
         title: 'Tytuł wątku'

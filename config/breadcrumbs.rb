@@ -53,11 +53,6 @@ crumb :login do
   parent :home
 end
 
-crumb :new_message do |offer|
-  link I18n.t('links.crumbs.message.new')
-  parent :offer, offer
-end
-
 crumb :messagebox do |type, current_user|
   link I18n.t("links.crumbs.messagebox.#{type}"), messagebox_path(type: type)
   parent :user, current_user
