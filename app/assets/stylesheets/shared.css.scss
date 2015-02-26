@@ -48,6 +48,9 @@
 
 .list-group-item-data {
   color: $gray-light;
+  b {
+    color: #000;
+  }
   a {
     @include link-style(inherit);
   }
@@ -114,6 +117,6 @@
   }
   
   a {
-    @include link-style($gray)
+    @include link-style($gray);
   }
 }

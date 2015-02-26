@@ -11,12 +11,13 @@
     = link_to offer.owner.name, offer.owner
     .empty-newline
     - if offer.price.nil?
-      = t('elements.offer.price_free')
+      %b= t('elements.offer.price_free')
     - else
       = t('elements.offer.price')
       %b= t('elements.offer.cost', count: offer.price)
       
     - if admin?
+      .empty-newline
       = "#{t('elements.offer.status')}: #{t(offer.status)}"
     .empty-newline
     = t('activerecord.attributes.offer.valid_until')

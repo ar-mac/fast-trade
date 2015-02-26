@@ -1,14 +1,14 @@
 %h2.custom-h2= t('links.offer.info')
 %ul.list-group
-  %li.list-group-item
+  %li.list-group-item.list-group-item-data
     %b= t('activerecord.attributes.offer.owner')
-    %span.list-group-item-author= link_to offer.owner.name, offer.owner
-  %li.list-group-item
+    %span= link_to offer.owner.name, offer.owner
+  %li.list-group-item.list-group-item-data
     %b= t('activerecord.attributes.offer.region')
-    = offer.owner.region
-  %li.list-group-item
+    = link_to offer.owner.region, offers_path(region: offer.owner.region)
+  %li.list-group-item.list-group-item-data
     %b= t('activerecord.attributes.offer.category')
-    = offer.category
+    = link_to offer.category, offers_path(c_id: offer.category.id)
   %li.list-group-item
     %b= t('activerecord.attributes.offer.valid_until')
     = offer.valid_date
