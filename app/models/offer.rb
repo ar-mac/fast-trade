@@ -49,7 +49,7 @@ class Offer < ActiveRecord::Base
   def self.update_expiration
     #this method is triggered at 00:00 am by whenever config/scheldule.rb
     #sets status 2 - closed, when offer expires
-    self.update_all('status = 2', ['valid_until < ?', Time.zone.today])
+    self.where('valid_until < ?', Time.zone.today).update_all('status_id = 2')
   end
   
   

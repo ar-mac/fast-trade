@@ -16,8 +16,14 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-every 1.day, at: '11:42 PM' do
+
+set :output, '../log/cron.log'
+set :environment, "development"
+
+
+every 1.day, at: '0:01 AM' do
   runner "Offer.update_expiration"
 end
+
 
 # Learn more: http://github.com/javan/whenever

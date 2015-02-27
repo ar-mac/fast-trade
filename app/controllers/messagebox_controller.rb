@@ -7,6 +7,7 @@ class MessageboxController < ApplicationController
   #deletes issues without messages
   before_action :clear_empty, only: [:box]
   
+  #deletes old issues
   before_action :clear_old, only: [:box]
   
   def box
