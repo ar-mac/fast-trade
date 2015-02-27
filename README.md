@@ -1,28 +1,21 @@
-== README
+# Fast trade
+In this website users can create offers, for items/services in different categories
+and find somone who want to buy or use it.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Functionalities
+1. Visitors
+  - Non logged in guests of the site can:
+    - Show offer index
+    - Show active offers
+2. Users
+  - Registration, edition deletion of account
+    - Administrators can edit and delete account, but cannot change user password
+  - User account can be activated/deactivated by admin.
+    - All offers that belongs to deactivated user become closed
+  - User with deactivated account cannot:
+    - Create offers
+    - Send messages
+  - User with deactivated account still can:
+    - Show users profile
