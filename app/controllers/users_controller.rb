@@ -103,7 +103,7 @@ class UsersController < ApplicationController
     
     def owner_or_admin
       if !current_or_admin? @user
-        flash[:danger] = I18n.t('flash.error.user.not_owner')
+        flash[:danger] = I18n.t('flash.error.user.cant_do_that')
         redirect_back
       end
     end

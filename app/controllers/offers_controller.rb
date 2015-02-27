@@ -24,6 +24,9 @@ class OffersController < ApplicationController
   #allows only owner to do action
   before_action :only_owner, only: :renew
   
+  #allows only admin and owner to see pending and closed offers
+  before_action :protect_pending_closed, only: :show
+  
   #allows only active current_user to do action
   before_action :active_account, only: [:new, :create, :edit, :update, :renew, :close]
   
@@ -124,14 +127,14 @@ class OffersController < ApplicationController
     
     def owner_or_admin
       if !current_or_admin?
-        flash[:danger] = I18n.t('flash.error.user.not_owner')
+        flash[:danger] = I18n.t('flash.error.user.cant_do_that')
         redirect_back
       end
     end
     
     def only_owner
       if !owner? @user
-        flash[:danger] = I18n.t('flash.error.user.not_owner')
+        flash[:danger] = I18n.t('flash.error.user.cant_do_that')
         redirect_back
       end
     end
@@ -143,4 +146,12 @@ class OffersController < ApplicationController
     def update_expired
       @offers.each { |o| o.expired? ? o.close : nil }
     end
+    
+    def protect_pending_closed
+      if !current_or_admin?(@user) && !@offer.active?
+        flash[:danger] = I18n.t('flash.error.user.cant_do_that')
+        redirect_back
+      end
+    end
+    
 end

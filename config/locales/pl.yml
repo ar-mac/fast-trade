@@ -5,12 +5,11 @@ pl:
         not_exist: 'Wybrany użytkownik nie istnieje'
         non_logged: 'Musisz być zalogowany'
         logged: 'Nie możesz być zalogowany'
-        not_admin: 'Nie możesz tego zrobić'
         login_credentials: 'Niepoprawny login/hasło'
-        not_owner: 'Tylko właściciel konta może to zrobić'
         non_active: 'Nie możesz tego zrobić, ponieważ Twoje konto jest zablokowane.'
         
         
+        cant_do_that: 'Nie możesz tego zrobić'
       issue:
         not_owner: 'Nie możesz tego zrobić'
         owner: 'Nie możesz wysłać wiadomości do samego siebie'

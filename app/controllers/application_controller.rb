@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   
   def admin_auth
     if !admin?
-      flash[:danger] = I18n.t('flash.error.user.not_admin')
+      flash[:danger] = I18n.t('flash.error.user.cant_do_that')
       redirect_back
     end
   end
