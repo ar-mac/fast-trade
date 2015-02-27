@@ -41,9 +41,9 @@ pl:
       
       
       message:
-        creation: 'Wiadomość została wysłana.'
+        creation: 'Wiadomość została wysłana'
       issue:
-        deactivation: 'Wątek usunięty'
+        deactivation: 'Wątek przeniesiony do archiwum, jego usunięcie nastąpi automatycznie'
     
     
   elements:
@@ -100,7 +100,7 @@ pl:
       
     offer:
       confirm_close: 'Zamknąć ofertę? (operacja jest odwracalna)'
-      confirm_destroy: 'Usunąć ofertę? (nieodwracalne)'
+      confirm_destroy: 'Usunąć ofertę? (operacja jest nieodwracalna)'
       search: 'Wyszukaj oferty'
       status: 'Stan'
       
@@ -116,7 +116,7 @@ pl:
       owner: 'Autor oferty'
     message:
       history: 'Wiadomości w tym wątku'
-      read_at: 'Przeczytano: '
+      read_at: 'Przeczytano:'
       send_at: 'Wysłano:'
       not_read_yet: 'Jeszcze nie przeczytano'
       is_new: '(Nowa)'
@@ -131,7 +131,6 @@ pl:
       has_new_message: 'Nowa odpowiedź'
       sender: 'Zainteresowany:'
       reciever: 'Autor ogłoszenia:'
-    
     
     
   links:
@@ -152,6 +151,7 @@ pl:
         new: 'Rejestracja'
         login: 'Logowanie'
         
+        
       message:
         new: 'Nowa wiadomość'
       messagebox:
@@ -162,7 +162,6 @@ pl:
       issue:
         issue: 'Wątek: %{msg}'
         title: 'Wątek'
-        
         
         
     user:
@@ -209,7 +208,6 @@ pl:
       send: 'Wyślij wiadomość'
       to_issue: 'Przejdź do wątku'
       new: 'Utwórz'
-      go_to_issue: 'Przejdź do wątku'
       show: 'Wyświetl'
     messagebox:
       title: 'Skrzynka wiadomości'
@@ -220,7 +218,6 @@ pl:
     issue:
       title: 'Przejdź do wątku'
       deactivate: 'Deaktywuj'
-      
       
       
     show: 'Wyświetl'
@@ -274,9 +271,6 @@ pl:
       message:
         content: 'Treść'
         author: 'Autor'
-        
-      issue:
-        title: 'Tytuł wątku'
       
       
     errors:
@@ -318,7 +312,7 @@ pl:
               
               
         issue:
-          exist_for_sender_offer: 'Wątek dla tej oferty już istnieje.'
+          exist_for_sender_offer: 'Wątek dla tej oferty już istnieje'
           
         
   will_paginate:

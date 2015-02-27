@@ -5,10 +5,16 @@ en:
         not_exist: "Selected user doesn't exist."
         non_logged: "You must be logged in ."
         logged: "You mustn't be logged in."
-        not_admin: "You mustn't do it."
         login_credentials: 'Incorrect login or password.'
-        not_owner: 'Only the owner of the account can do it'
         non_active: "You mustn't do it, because your account is blocked."
+        
+        
+        cant_do_that: 'You cannot do that'
+      issue:
+        not_owner: 'You cannot do that'
+        owner: 'You cannot send message to yourself'
+        
+        
     successful:
       user:
         creation: 'Your account has been created'
@@ -20,6 +26,11 @@ en:
         login: 'You are logged in'
         logout: 'You logged out'
         redirect_forward: 'You are now on the page, you previously wanted to open. ' 
+        
+        
+        force_logged_out: 'You were automatically logged out, because it\'s required to perform current action'
+      
+      
       offer:
         renewation: 'Your offer is active again, waiting for acceptance'
         close: 'Your offer is closed'
@@ -27,7 +38,14 @@ en:
         deletion: 'Your offer is totally removed'
         creation: 'Your offer is created, waiting for acceptance'
         edition: "Changes have been made, your offer is waiting for acceptance"
-    
+      
+      
+      message:
+        creation: 'Nessage send'
+      issue:
+        deactivation: 'Issue moved to archive, it\'ll be deleted automatically'
+  
+  
   elements:
     welcome: 'Welcome to "Fast Trade".'
     jumbo: 'You can place offers here... etc.'
@@ -61,25 +79,60 @@ en:
       edit_user: "Edit user's profile"
       create_user: 'Create user'
       new_offer: 'New offer'
+      
+      
+      edit_offer: 'Edit offer'
+      new_message: 'New message'
     category:
-      main: 'Main'
-      music: 'Music'
+      estates: 'Estates'
       automotive: 'Automotive'
+      electronics: 'Electronics'
       sport: 'Sport'
       food: 'Food'
-      it: 'It'
-      business: 'Business'
-      money: 'Finance'
-      news: 'News'
-      science: 'Science'
-      fashion: 'Fashion'
-      other: 'Others'
+      hobby: 'Hobby'
+      for_children: 'For children'
+      animals: 'Animals'
+      services: 'Services'
+      music: 'Music'
+      fashion: 'Fashon'
+      other: 'Other'
+    
+    
     offer:
-      confirm_close: 'Do you want to close the offer?'
-      confirm_destroy: 'Do you want to remove offer?'
+      confirm_close: 'Do you want to close the offer? (it\'s non destructive action)'
+      confirm_destroy: 'Do you want to remove offer? (it\'s destructive action)'
       search: 'Search for the offer'
       status: 'Status'
-    
+      
+      
+      price: 'Price:'
+      price_free: 'Offer is free'
+      cost:
+        one: "%{count} Złoty"
+        few: "%{count} Złote"
+        many: "%{count} Złotych"
+        other: "%{count} Złotych"
+      messages_from: 'Messages from: %{user}'
+      owner: 'Offer owner'
+    message:
+      history: 'Messages in this issue'
+      read_at: 'Read at:'
+      send_at: 'Send at:'
+      not_read_yet: 'Not read yet'
+      is_new: '(New)'
+    messagebox:
+      title: 'Messagebox'
+      no_send_messages: 'Send messages empty'
+      no_recieved_messages: 'Recieved messages empty'
+      no_send_archieve_messages: 'Archieve of send messages empty'
+      no_recieved_archieve_messages: 'Archieve of recieved messages empty'
+      last_message: "Last message: ( %{message} )"
+    issue:
+      has_new_message: 'Has new message'
+      sender: 'Sender:'
+      reciever: 'Offer owner:'
+      
+      
   links:
     fast_trade: 'Fast Trade'
     crumbs:
@@ -97,6 +150,20 @@ en:
         edit_user: 'Edit user: %{name}'
         new: 'Registration'
         login: 'Log in'
+        
+        
+      message:
+        new: 'New message'
+      messagebox:
+        recieved: 'Recieved messages'
+        recieved_archieve: 'Archieve of recieved messages'
+        send: 'Send messages'
+        send_archieve: 'Archieve of send messages'
+      issue:
+        issue: 'Issue: %{msg}'
+        title: 'Issue'
+    
+    
     user:
       register: 'Sign up'
       login: 'Log in'
@@ -105,6 +172,13 @@ en:
       delete_account: 'Remove account'
       deactivate_account: 'Deactivate account'
       activate_account: 'Activate account'
+      
+      
+      new_messages:
+        one: 'You have new message'
+        other: 'You have (%{count}) new messages'
+        
+        
     offer:
       info: 'Information about offers'
       all: 'All'
@@ -114,6 +188,11 @@ en:
       status0: 'Waiting'
       status1: 'Active'
       status2: 'Closed'
+      
+      
+      show_content: 'Show offer content and info'
+      
+      
     search:
       by_more_than_valid: 'Valid longer than:'
       by_less_than_valid: 'Valid shorter than:'
@@ -122,6 +201,24 @@ en:
       by_status: 'According to status'
       submit: 'Search'
       submit_users: 'Search users'
+      
+      
+    message:
+      send: 'Send message'
+      to_issue: 'Go to issue'
+      new: 'Create'
+      show: 'Show'
+    messagebox:
+      title: 'Messagebox'
+      recieved: 'Recieved messages'
+      recieved_archieve: 'Archieve of recieved messages'
+      send: 'Send messages'
+      send_archieve: 'Archieve of send messages'
+    issue:
+      title: 'Go to issue'
+      deactivate: 'Deactivate'
+      
+      
     show: 'Show'
     add: 'Add'
     settings: 'Settings'
@@ -137,7 +234,7 @@ en:
     cancel: 'Cancel'
     admin_options: 'Administration'
     locale:
-      choose: 'Choose language'
+      choose: 'język, language, linguo'
       polish: 'Polski'
       english: 'English'
       spanish: 'Español'
@@ -167,6 +264,9 @@ en:
           pending: 'Waiting for acceptance'
           active: 'Active'
           closed: 'Closed'
+      message:
+        content: 'Content'
+        author: 'Author'
     errors:
       models:
         user:
@@ -203,7 +303,8 @@ en:
               blank: 'must be assigned'
             valid_until:
               in_the_past: 'must be in the future'
-              
+        issue:
+          exist_for_sender_offer: 'Issue for that offer already exist'
         
   will_paginate:
     previous_label: "&#8592; Previous"
