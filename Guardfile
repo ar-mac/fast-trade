@@ -14,12 +14,13 @@ guard :minitest, spring: true, all_on_start: false do
   watch(%r{^app/views/(.+)_mailer/.+})                    { |m| "test/mailers/#{m[1]}_mailer_test.rb" }
   watch(%r{^lib/(.+)\.rb$})                               { |m| "test/lib/#{m[1]}_test.rb" }
   watch(%r{^test/.+_test\.rb$})
-  watch(%r{^test/test_helper\.rb$}) { 'test' }
+  watch(%r{^test/test_helper\.rb$})                       { 'test' }
   
   #my custom
-  watch(%r{^app/controllers}) {"test/integration"}
-  watch(%r{^app/helpers}) {"test/integration"}
-  watch(%r{^app/views}) {"test/integration"}
+  watch(%r{^app/controllers})               {"test/integration"}
+  watch(%r{^app/helpers})                   {"test/integration"}
+  watch(%r{^app/views})                     {"test/integration"}
   watch(%r{^app/helpers/(.+)_helper\.rb$})  {|m| "test/helpers/#{m[1]}_test"}
+  watch(%r{^config/routes.rb})              {'test'}
   
 end
