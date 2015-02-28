@@ -2,7 +2,7 @@
   .row
     .col-md-1
       - if issue.active_for?(@current_user)
-        = link_to t('links.issue.deactivate'), deactivate_issue_path(id: issue.id), method: :patch, class: "btn btn-default btn-xs"
+        = link_to t('links.issue.deactivate'), issue_path(id: issue.id), method: :patch, class: "btn btn-default btn-xs"
     .col-md-4
       .title= link_to issue.offer.title, offer_path(issue.offer)
       - if sender?(issue)

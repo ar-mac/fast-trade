@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   
   #finds user who is object of the action
-  before_action :get_user, only: [:show, :edit, :update, :destroy, :activate, :deactivate]
+  before_action :get_user, only: [:show, :edit, :update, :destroy]
   
   #allows only logged users to do action
-  before_action :logged_user, only: [:show, :edit, :update, :destroy, :index, :activate, :deactivate]
+  before_action :logged_user, only: [:show, :edit, :update, :destroy, :index]
   
   #allows only admin to do action
-  before_action :admin_auth, only: [:index, :activate, :deactivate]
+  before_action :admin_auth, only: [:index]
   
   #allows only owner of the account (and admin) to do action
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
@@ -71,16 +71,6 @@ class UsersController < ApplicationController
     log_out
     @user.destroy
     redirect_to root_path, flash: {info: I18n.t('flash.successful.user.deletion')}
-  end
-  
-  def activate
-    @user.activate
-    redirect_to @user, flash: {info: I18n.t('flash.successful.user.activation')}
-  end
-  
-  def deactivate
-    @user.deactivate
-    redirect_to @user, flash: {info: I18n.t('flash.successful.user.deactivation')}
   end
   
   private

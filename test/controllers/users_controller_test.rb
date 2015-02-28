@@ -232,51 +232,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_select 'b.text-danger', count: @inactive.count
   end
   
-  test 'activate permissions' do
-    patch :activate, id: @user.id
-    assert_redirected_to login_path
-    assert flash[:danger]
-    
-    log_in_as @other
-    patch :activate, id: @user.id
-    assert_redirected_to root_path
-    assert flash[:danger]
-    
-    log_in_as @user
-    patch :activate, id: @user.id
-    assert_redirected_to root_path
-    assert flash[:danger]
-    
-    log_in_as @admin
-    patch :activate, id: @user.id
-    assert_redirected_to user_path @user
-    assert flash[:info]
-  end
-  
-  test 'deactivate permissions' do
-    patch :deactivate, id: @user.id
-    assert_redirected_to login_path
-    assert flash[:danger]
-    
-    log_in_as @other
-    patch :deactivate, id: @user.id
-    assert_redirected_to root_path
-    assert flash[:danger]
-    
-    log_in_as @user
-    patch :deactivate, id: @user.id
-    assert_redirected_to root_path
-    assert flash[:danger]
-    
-    log_in_as @admin
-    patch :deactivate, id: @user.id
-    assert_redirected_to user_path @user
-    assert flash[:info]
-    @user.offers.each do |offer|
-      assert offer.status_id == 2
-    end
-  end
-  
   test 'user destroy permissions' do
     assert_no_difference 'User.count' do
       delete :destroy, id: @user.id

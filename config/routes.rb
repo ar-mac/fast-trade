@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     get 'locale/change' => 'statics#locale', as: :locale
     resources :users, except: [:index, :new]
     get 'register' => 'users#new', as: :new_user
-    patch 'users/:id/activate' => 'users#activate', as: :activate_user
-    patch 'users/:id/deactivate' => 'users#deactivate', as: :deactivate_user
+    
+    patch 'activations/:id/create' => 'activations#create', as: :activate_user
+    patch 'activations/:id/destroy' => 'activations#destroy', as: :deactivate_user
     
     resources :offers
     patch 'offers/:id/close' => 'offers#close', as: :close_offer
