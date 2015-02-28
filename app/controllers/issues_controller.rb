@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
   
   #gets issue which is object of the action
-  before_action :get_issue, only: [:show, :deactivate]
+  before_action :get_issue, only: [:show, :update]
   
   #allows only logged user to take action
   before_action :logged_user, only: [:create]
@@ -9,7 +9,7 @@ class IssuesController < ApplicationController
   #allows only active current_user to do action
   before_action :active_account, only: [:create]
   
-  #owner of offer cannot send messages to himself
+  #owner of offer cannot create issue to his own offer
   before_action :not_owner, only: [:create]
   
   #clears new messages for current_user which were in shown issue
@@ -26,7 +26,7 @@ class IssuesController < ApplicationController
     redirect_to @issue
   end
   
-  def deactivate
+  def update
     if owner?(@issue.sender)
       @issue.sender_deactivate
       flash[:success] = I18n.t('flash.successful.issue.deactivation')

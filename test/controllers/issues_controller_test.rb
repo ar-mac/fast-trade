@@ -11,7 +11,7 @@ class IssuesControllerTest < ActionController::TestCase
   
   test 'issue deactivation fail' do
     assert_no_difference 'Issue.count' do
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       assert @issue.active_for_reciever
       assert @issue.active_for_sender
@@ -19,7 +19,7 @@ class IssuesControllerTest < ActionController::TestCase
     end
     assert_no_difference 'Issue.count' do
       log_in_as @other
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       assert @issue.active_for_reciever
       assert @issue.active_for_sender
@@ -27,7 +27,7 @@ class IssuesControllerTest < ActionController::TestCase
     end
     assert_no_difference 'Issue.count' do
       log_in_as @admin
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       assert @issue.active_for_reciever
       assert @issue.active_for_sender
@@ -38,7 +38,7 @@ class IssuesControllerTest < ActionController::TestCase
   test 'issue reciever deactivation' do
     assert_no_difference 'Issue.count' do
       log_in_as @reciever
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       assert_not @issue.active_for_reciever
       assert @issue.active_for_sender
@@ -49,7 +49,7 @@ class IssuesControllerTest < ActionController::TestCase
   test 'issue sender deactivation' do
     assert_no_difference 'Issue.count' do
       log_in_as @sender
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       assert @issue.active_for_reciever
       assert_not @issue.active_for_sender
@@ -60,10 +60,10 @@ class IssuesControllerTest < ActionController::TestCase
   test 'issue destroy' do
     assert_no_difference 'Issue.count' do
       log_in_as @reciever
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       log_in_as @sender
-      patch :deactivate, id: @issue.id
+      patch :update, id: @issue.id
       @issue.reload
       assert_not @issue.active_for_reciever
       assert_not @issue.active_for_sender
