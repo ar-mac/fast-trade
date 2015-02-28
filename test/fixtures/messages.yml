@@ -71,3 +71,17 @@ msg_12:
   issue_id: 3
   read_at: 2015-02-13 11:32:04
   author_id: 1
+  
+#---------
+msg_13:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 4
+  read_at: 2015-02-12 11:32:04
+  author_id: 2
+  
+#---------
+msg_14:
+  content: <%= Faker::Lorem.sentence(4) %>
+  issue_id: 5
+  read_at: 2015-02-13 11:32:04
+  author_id: 1

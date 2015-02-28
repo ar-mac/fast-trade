@@ -35,7 +35,6 @@ class IssuesController < ApplicationController
       flash[:success] = I18n.t('flash.successful.issue.deactivation')
     else
       flash[:danger] = I18n.t('flash.error.issue.not_owner')
-      redirect_back and return
     end
     redirect_back and return
   end

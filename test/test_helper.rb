@@ -25,6 +25,14 @@ class ActiveSupport::TestCase
     end
   end
   
+  def model_error_explain(object)
+    "Invalid because: #{object.errors.full_messages}"
+  end
+  
+  def failing_value(val)
+    "Value causing fail: #{val}"
+  end
+  
     private
     
     # Returns true inside an integration test.

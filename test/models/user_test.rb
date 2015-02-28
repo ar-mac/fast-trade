@@ -12,18 +12,17 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test 'name validations' do
+    incorrect_statements = [
+      ['', 'user name is blank'],
+      [@user.name, 'user name is not unique'],
+      ['aa',  'user name is less than 3 letters'],
+      [('a' * 36), 'user name is more than 20 letters']
+    ]
     
-    @user2.update(name: '')
-    assert_not @user2.valid?, 'user name is blank'
-    
-    @user2.update(name: @user.name)
-    assert_not @user2.valid?, 'user name is not unique'
-    
-    @user2.update(name: 'aa')
-    assert_not @user2.valid?, 'user name is less than 3 letters'
-    
-    @user2.update(name: 'a' * 36 )
-    assert_not @user2.valid?, 'user name is more than 20 letters'
+    incorrect_statements.each do |statement|
+      @user2.update(name: statement[0])
+      assert_not @user2.valid?, statement[1]
+    end
     
     @user2.update(name: 'Mark999')
     assert @user2.valid?, 'user name is correct'
@@ -47,16 +46,35 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test 'password validations' do
+    incorrect_passw = [
+      ['asdfasdf','qwerqwer','wrong password confirmation'],
+      ['','','passwords empty'],
+      ['asdfas','asdfas','passwords too short']
+    ]
+    incorrect_passw.each do |incorrect|
+      @user2.update(password: incorrect[0], password_confirmation: incorrect[1])
+      assert_not @user2.valid?, incorrect[2]
+    end
     
-    @user2.update( password: 'asdfasdf',
-                  password_confirmation: 'qwerqwer')
-    assert_not @user2.valid?, 'wrong password confirmation'
+    @user2.update(password: 'proper-passw', password_confirmation: 'proper-passw')
+      assert @user2.valid?, 'password is invalid'
     
-    @user2.update(password: '', password_confirmation: '')
-    assert_not @user2.valid?, 'passwords empty'
+  end
+  
+  test 'user activation/deactivation' do
+    assert @user.active?
+    assert_not_nil @user.offers.where(status_id: 1)
+    @user.deactivate
+    @user.reload
+    assert @user.inactive?
+    assert_equal @user.offers.count, @user.offers.where(status_id: 2).count, 
+      'Not all user offers were closed'
     
-    @user2.update(password: 'asdfas', password_confirmation: 'asdfas')
-    assert_not @user2.valid?, 'password too short'
+    @user.activate
+    @user.reload
+    assert @user.active?
+    assert_equal @user.offers.count, @user.offers.where(status_id: 2).count, 
+      "When user was activated offers didn't stayed closed"
   end
   
 end

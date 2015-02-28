@@ -86,6 +86,7 @@ class Offer < ActiveRecord::Base
   end
   
   def self.by_show_params(params, current_or_admin)
+    #used in users#show action
     params[:status] = '1' unless current_or_admin
     
     from_newest.

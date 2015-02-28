@@ -1,5 +1,7 @@
 class Message < ActiveRecord::Base
   
+  after_create :set_as_new
+  
   belongs_to :issue
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   belongs_to :new_for_user, class_name: 'User', foreign_key: 'new_for_user_id'

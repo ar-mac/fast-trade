@@ -11,31 +11,20 @@ class UsersControllerTest < ActionController::TestCase
   
   test "show action validations" do
     get :show, id: @user.id
-    assert_response :redirect
+    assert_redirected_to login_path
     
-    log_in_as @user
-    get :show, id: @user.id
-    assert_response :success
-    
-    log_in_as @other
-    get :show, id: @user.id
-    assert_response :success
-    
-    log_in_as @admin
-    get :show, id: @user.id
-    assert_response :success
+    [@user, @other, @admin].each do |watcher|
+      log_in_as watcher
+      get :show, id: @user.id
+      assert_response :success
+      assert_not_nil assigns(:user)
+    end
   end
   
   test 'redirect for inexisting user' do
     log_in_as @user
     get :show, id: 0
-    assert_response :redirect
-    get :edit, id: 0
-    assert_response :redirect
-    post :update, id: 0
-    assert_response :redirect
-    delete :destroy, id: 0
-    assert_response :redirect
+    assert_redirected_to root_path
   end
 
   test "index authorization" do
@@ -58,6 +47,8 @@ class UsersControllerTest < ActionController::TestCase
     log_in_as @user
     get :new
     assert_response :success
+    assert_nil assigns(:current_user)
+    assert_not_nil flash[:info]
   end
 
   test "edit authorization" do

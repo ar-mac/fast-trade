@@ -15,6 +15,7 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
   - User account can be activated/deactivated by admin.
     - All offers that belongs to deactivated user become closed
   - User with deactivated account cannot:
+    - Edit his account
     - Create offers
     - Send messages
   - User with deactivated account still can:
@@ -56,3 +57,5 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
   - Not most OO solution, but for the first project it works.
 3. Automatic events, based on time, are handled by gem whenever
   - Currently not working :/, but probably it's the case of Rails.env (need to be production)
+4. This app has full (?) test suite for main functionalities
+  - Tests are automatically connected with files by gem guard

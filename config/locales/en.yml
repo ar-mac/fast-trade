@@ -3,7 +3,7 @@ en:
     error:
       user:
         not_exist: "Selected user doesn't exist."
-        non_logged: "You must be logged in ."
+        non_logged: "You must be logged in."
         logged: "You mustn't be logged in."
         login_credentials: 'Incorrect login or password.'
         non_active: "You mustn't do it, because your account is blocked."
@@ -28,7 +28,7 @@ en:
         redirect_forward: 'You are now on the page, you previously wanted to open. ' 
         
         
-        force_logged_out: 'You were automatically logged out, because it\'s required to perform current action'
+        force_logged_out: "You were automatically logged out, because it's required to perform current action"
       
       
       offer:
@@ -43,7 +43,7 @@ en:
       message:
         creation: 'Nessage send'
       issue:
-        deactivation: 'Issue moved to archive, it\'ll be deleted automatically'
+        deactivation: "Issue moved to archive, it'll be deleted automatically"
   
   
   elements:
@@ -99,8 +99,8 @@ en:
     
     
     offer:
-      confirm_close: 'Do you want to close the offer? (it\'s non destructive action)'
-      confirm_destroy: 'Do you want to remove offer? (it\'s destructive action)'
+      confirm_close: "Do you want to close the offer? (it's non destructive action)"
+      confirm_destroy: "Do you want to remove offer? (it's destructive action)"
       search: 'Search for the offer'
       status: 'Status'
       

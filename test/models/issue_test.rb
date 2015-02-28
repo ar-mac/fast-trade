@@ -14,7 +14,7 @@ class IssueTest < ActiveSupport::TestCase
   end
   
   test 'a valid creation' do
-    assert @issue.valid?, "fail because #{@issue.errors.messages}"
+    assert @issue.valid?, model_error_explain(@issue)
   end
   
   test 'invalid sender' do
@@ -37,8 +37,27 @@ class IssueTest < ActiveSupport::TestCase
       reciever_id: @user.id,
       offer_id: @offer.id
     )
-    assert_not @issue_x.valid?, "fail because #{@issue_x.errors.messages}"
-    assert_not_nil @issue_x.errors.messages
+    assert_not @issue_x.valid?, model_error_explain(@issue_x)
+  end
+  
+  test 'checking deactivation' do
+    assert_not @issue.both_deactivate?
+    
+    @issue.sender_deactivate
+    @issue.reload
+    assert_not @issue.active_for?(@user2)
+    assert_not @issue.both_deactivate?
+    
+    @issue.reciever_deactivate
+    @issue.reload
+    assert_not @issue.active_for?(@user)
+    assert @issue.both_deactivate?
+    
+    @issue.activate_all
+    @issue.reload
+    assert @issue.active_for?(@user)
+    assert @issue.active_for?(@user2)
+    
   end
   
 end

@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
   
   def inactive?
-    true unless self.active?
+    !self.active?
   end
   
 end

@@ -23,6 +23,22 @@ class MessageboxControllerTest < ActionController::TestCase
     @issues.each do |issue|
       assert @user.recieved_issues.include?(issue)
     end
+    
+    get :box, type: 'send', status: '0'
+    assert_response :success
+    @issues = assigns(:issues)
+    assert_not_nil @issues
+    @issues.each do |issue|
+      assert @user.send_issues.include?(issue)
+    end
+    
+    get :box, type: 'recieved', status: '0'
+    assert_response :success
+    @issues = assigns(:issues)
+    assert_not_nil @issues
+    @issues.each do |issue|
+      assert @user.recieved_issues.include?(issue)
+    end
   end
   
   

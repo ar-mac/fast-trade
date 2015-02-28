@@ -15,53 +15,43 @@ class OfferTest < ActiveSupport::TestCase
     )
   end
   
-  test 'title should be present' do
-    @o_new.update( title: '' )
-    assert_not @o_new.valid?
+  test 'title validations' do
+    statements = [
+      ['Brand new snowmobile', true],
+      ['Other title', true],
+      [('a' * 25), true],
+      [''],
+      [(' ' * 20)],
+      [('a' * 4)],
+      [('a' * 41)]
+    ]
     
-    @o_new.update( title: ' ' * 20 )
-    assert_not @o_new.valid?
-    
-    @o_new.update( title: 'Brand new snowmobile' )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
-  end
-  
-  test 'title should be unique' do
-    @o_new.update( title: @o_1.title )
-    assert_not @o_new.valid?
-    
-    @o_new.update( title: 'Other title' )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
-  end
-  
-  test 'title should have proper length' do
-    @o_new.update( title: 'a' * 4 )
-    assert_not @o_new.valid?
-    
-    @o_new.update( title: 'a' * 41 )
-    assert_not @o_new.valid?
-    
-    @o_new.update( title: 'a' * 25 )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
+    statements.each do |statement|
+      @o_new.update( title: statement[0] )
+      if statement[1]
+        assert @o_new.valid?, model_error_explain(@o_new)
+      else
+        assert_not @o_new.valid?, failing_value(statement[0])
+      end
+    end
   end
   
   test 'content should be present' do
-    @o_new.update( content: '' )
-    assert_not @o_new.valid?
+    statements = [
+      [('text' * 10), true],
+      [''],
+      [(' ' * 40)],
+      [('a' * 19)]
+    ]
     
-    @o_new.update( content: ' ' * 40 )
-    assert_not @o_new.valid?
-    
-    @o_new.update( content: 'text' * 10 )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
-  end
-  
-  test 'content should have proper length' do
-    @o_new.update( content: 'a' * 19 )
-    assert_not @o_new.valid?
-    
-    @o_new.update( content: 'a' * 41 )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
+    statements.each do |statement|
+      @o_new.update( content: statement[0] )
+      if statement[1]
+        assert @o_new.valid?, model_error_explain(@o_new)
+      else
+        assert_not @o_new.valid?, failing_value(statement[0])
+      end
+    end
   end
   
   test 'valid_until should be in the future' do
@@ -69,49 +59,67 @@ class OfferTest < ActiveSupport::TestCase
     assert_not @o_new.valid?
     
     @o_new.update( valid_until: Time.zone.today )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
+    assert @o_new.valid?, model_error_explain(@o_new)
   end
   
   test 'status_id should be number in range' do
-    @o_new.update( status_id: '' )
-    assert_not @o_new.valid?
-    
-    @o_new.update( status_id: 'f' )
-    assert_not @o_new.valid?
-    
-    @o_new.update( status_id: 5 )
-    assert_not @o_new.valid?
-    
-    @o_new.update( status_id: '2' )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
-    
-    @o_new.update( status_id: 1 )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
+    statements = [
+      [''],
+      ['f'],
+      [5],
+      ['2', true],
+      [1, true]
+    ]
+    statements.each do |statement|
+      @o_new.update( status_id: statement[0] )
+      if statement[1]
+        assert @o_new.valid?, model_error_explain(@o_new)
+      else
+        assert_not @o_new.valid?, failing_value(statement[0])
+      end
+    end
   end
   
   test 'category_id should be number in range' do
-    @o_new.update( category_id: '' )
-    assert_not @o_new.valid?
-    
-    @o_new.update( category_id: 'f' )
-    assert_not @o_new.valid?
-    
-    @o_new.update( category_id: Category::NAME_CODES.count )
-    assert_not @o_new.valid?
-    
-    @o_new.update( category_id: '12' )
-    assert_not @o_new.valid?
-    
-    @o_new.update( category_id: (Category::NAME_CODES.count - 1) )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
+    statements = [
+      [''],
+      ['f'],
+      [Category::NAME_CODES.count],
+      ['12'],
+      [(Category::NAME_CODES.count - 1), true],
+    ]
+    statements.each do |statement|
+      @o_new.update( category_id: statement[0] )
+      if statement[1]
+        assert @o_new.valid?, model_error_explain(@o_new)
+      else
+        assert_not @o_new.valid?, failing_value(statement[0])
+      end
+    end
   end
   
   test 'user_id should be present' do
-    @o_new.update( user_id: '' )
-    assert_not @o_new.valid?
-    
-    @o_new.update( user_id: 2 )
-    assert @o_new.valid?, "Invalid because: #{@o_new.errors.full_messages}"
+    statements = [
+      [''],
+      [nil],
+      [2, true],
+    ]
+    statements.each do |statement|
+      @o_new.update( user_id: statement[0] )
+      if statement[1]
+        assert @o_new.valid?, model_error_explain(@o_new)
+      else
+        assert_not @o_new.valid?, failing_value(statement[0])
+      end
+    end
+  end
+  
+  test 'mass expiration update' do
+    expired_and_active = Offer.where('status_id = ? AND valid_until < ?', 1, Time.zone.now).count
+    assert 0 < expired_and_active, "expired and active #{expired_and_active}"
+    Offer.update_expiration
+    expired_and_active = Offer.where('status_id = ? AND valid_until < ?', 1, Time.zone.now).count
+    assert_equal 0, expired_and_active, "still expired and active #{expired_and_active}"
   end
   
 end

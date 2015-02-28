@@ -57,3 +57,34 @@ offer_51:
   status_id: 1 #active
   category_id: 2
   user_id: 2
+  
+offer_52:
+  id: 52
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 1 #active
+  category_id: 2
+  user_id: 2
+  
+offer_53:
+  id: 53
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today + 5.days %>
+  status_id: 1 #active
+  category_id: 2
+  user_id: 1
+  
+# expired but active offers
+<% 10.times do |n| %>
+offer_<%= n + 54 %>:
+  id: <%= n + 54 %>
+  title: <%= Faker::Commerce.product_name + Faker::Lorem.word %>
+  content: <%= Faker::Lorem.sentence(5) %>
+  valid_until: <%= Time.zone.today - 3.days %>
+  status_id: 1
+  category_id: 1
+  user_id: <%= ( ( n % 4 ) + 1 ) %>
+  price: 33
+<% end %>

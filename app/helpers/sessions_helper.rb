@@ -31,35 +31,30 @@ module SessionsHelper
     
     def current_user?
       return false if @current_user.nil?
-      return true if @current_user == @user
+      @current_user == @user
     end
     
     def owner?(owner)
       return false if @current_user.nil?
-      return true if @current_user == owner
-      return false
+      @current_user == owner
     end
     
     def admin?
-      return true if @current_user.try(:admin?)
-      return false
+      @current_user.try(:admin?)
     end
     
     def current_or_admin?(owner=nil)
       return false if @current_user.nil?
       return true if @current_user == owner
-      return true if current_user? || admin?
-      return false
+      true if current_user? || admin?
     end
     
     def inactive?
-      return true if @current_user.try(:inactive?)
-      return false
+      @current_user.try(:inactive?)
     end
     
     def active?
-      return true if @current_user.try(:active?)
-      return false
+      @current_user.try(:active?)
     end
     
     def store_location
@@ -82,7 +77,4 @@ module SessionsHelper
       redirect_to path and return
     end
     
-    
-    
-  
 end
