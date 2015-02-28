@@ -2,6 +2,8 @@ class MessageboxController < ApplicationController
   
   #allows only logged_in users to do action
   before_action :logged_user
+  
+  #gets proper set of issues send/recieved/archieved for given params
   before_action :get_issues
   
   #deletes issues without messages
@@ -17,8 +19,8 @@ class MessageboxController < ApplicationController
   private
     
     def get_issues
-      ['recieved', 'send'].include?(params[:type]) ? @type = params[:type] : @type = 'recieved'
-      user_type = (@type == 'recieved' ?  'reciever' : 'sender')
+      @type = (params[:type] == 'send' ? 'send' : 'recieved')
+      user_type = (@type == 'send' ? 'sender' : 'reciever')
       status = (params[:status] == '0' ? false : true)
       @type2 = (status == false ? "#{@type}_archieve" : @type)
       
