@@ -41,7 +41,7 @@ class OffersRedirectionsTest < ActionDispatch::IntegrationTest
     log_in_as @user1
     assert_redirected_to user_path(@user1)
     follow_redirect!
-    patch accept_offer_path(@o_pending)
+    post accept_offer_path(@o_pending)
     assert_redirected_to user_path(@user1)
   end
   

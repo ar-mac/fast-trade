@@ -1,8 +1,5 @@
 class OffersController < ApplicationController
   
-  #finds out who is current and sets to @current_user
-  before_action :get_current
-  
   #allows only logged user to take action
   before_action :logged_user, only: [:new, :create, :edit, :update, :destroy, :renew, :close, :accept]
   
@@ -77,21 +74,6 @@ class OffersController < ApplicationController
   def destroy
     @offer.destroy
     redirect_to @user, flash: {info: I18n.t('flash.successful.offer.deletion')}
-  end
-  
-  def renew
-    @offer.make_pending
-    redirect_to @offer, flash: {info: I18n.t('flash.successful.offer.renewation')}
-  end
-  
-  def close
-    @offer.close
-    redirect_to @offer, flash: {info: I18n.t('flash.successful.offer.close')}
-  end
-  
-  def accept
-    @offer.accept
-    redirect_to @offer, flash: {info: I18n.t('flash.successful.offer.acceptation')}
   end
 
   
