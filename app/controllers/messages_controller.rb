@@ -15,10 +15,6 @@ class MessagesController < ApplicationController
   end
   
   private
-  
-    def issue_params
-      params.require(:issue).permit(:sender_id, :reciever_id, :offer_id)
-    end
     
     def message_params
       params.require(:message).permit(:content, :author_id, :issue_id)

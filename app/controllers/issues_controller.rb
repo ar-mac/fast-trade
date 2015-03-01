@@ -22,8 +22,8 @@ class IssuesController < ApplicationController
   end
   
   def create
-    @issue = Issue.create(issue_params)
-    redirect_to @issue
+    @issue = @reciever.recieved_issues.create(issue_params)
+    redirect_to issue_path(id: @issue)
   end
   
   def update
@@ -36,7 +36,7 @@ class IssuesController < ApplicationController
     else
       flash[:danger] = I18n.t('flash.error.issue.not_owner')
     end
-    redirect_back and return
+    redirect_back
   end
   
   private
@@ -46,12 +46,12 @@ class IssuesController < ApplicationController
     end
     
     def issue_params
-      params.require(:issue).permit(:sender_id, :reciever_id, :offer_id)
+      params.require(:issue).permit(:sender_id, :offer_id)
     end
     
     def not_owner
-      @sender = User.find_by(id: params[:sender_id])
-      if owner?(@sender)
+      @reciever = User.find_by(id: params[:issue][:reciever_id])
+      if owner?(@reciever)
         flash[:danger] = I18n.t('flash.error.issue.owner')
         redirect_back
       end

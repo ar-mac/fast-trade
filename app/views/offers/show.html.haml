@@ -7,19 +7,13 @@
     - if @offer.active? && !owner?(@user) && logged_in?
       .well
         - if @issue.nil?
-          = link_to t('links.message.send'), issues_path(@params_for_issue), method: :post, class: 'btn btn-success btn-lg btn-block'
+          = link_to t('links.message.send'), issues_path(@params_for_issue), {method: :post, class: 'btn btn-success btn-lg btn-block'}
         - else
           = link_to t('links.message.to_issue'), issue_path(@issue), class: 'btn btn-success btn-lg btn-block'
     
     - if !logged_in?
       .well
-        = link_to t('links.message.send'), issues_path(), {method: :post, class: 'btn btn-success btn-lg btn-block'}
-    
-    - if owner?(@user)
-      - @offer.issues.each do |issue|
-        .well
-          = t('elements.offer.messages_from', user: issue.sender.name)
-          = link_to t('links.message.show'), issue_path(issue), class: 'btn btn-success btn-lg btn-block'
+        = link_to t('links.message.login_to_send'), issues_path(), {method: :post, class: 'btn btn-success btn-lg btn-block'}
           
     - if current_or_admin?(@offer.owner)
       .well

@@ -102,7 +102,7 @@ class OffersController < ApplicationController
     end
     
     def params_for_issue
-      if logged_in?
+      if logged_in? && active? && !owner?(@user)
         @params_for_issue = 
           {
             issue: 
