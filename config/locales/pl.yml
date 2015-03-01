@@ -175,7 +175,7 @@ pl:
       
       
       new_messages:
-        one: 'Masz nową wiadomość'
+        one: 'Masz (%{count}) nową wiadomość'
         few: 'Masz (%{count}) nowe wiadomości'
         other: 'Masz (%{count}) nowych wiadomości'
           
@@ -206,6 +206,7 @@ pl:
       
     message:
       send: 'Wyślij wiadomość'
+      login_to_send: "Zaloguj aby wysłać"
       to_issue: 'Przejdź do wątku'
       new: 'Utwórz'
       show: 'Wyświetl'

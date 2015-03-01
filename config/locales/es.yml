@@ -205,6 +205,7 @@ es:
       
     message:
       send: 'Wyślij wiadomość'
+      login_to_send: 'Iniciar sesión para enviar'
       to_issue: 'Przejdź do wątku'
       new: 'Utwórz'
       show: 'Wyświetl'
