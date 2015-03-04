@@ -21,6 +21,7 @@ guard :minitest, spring: true, all_on_start: false do
   watch(%r{^app/helpers})                   {"test/integration"}
   watch(%r{^app/views})                     {"test/integration"}
   watch(%r{^app/helpers/(.+)_helper\.rb$})  {|m| "test/helpers/#{m[1]}_test"}
-  watch(%r{^config/routes.rb})              {'test'}
+  watch(%r{^config/routes\.rb})             {'test'}
+  watch(%r{^app/models/offer\.rb})          {"test/integration/search_forms_test.rb"}
   
 end
