@@ -74,7 +74,7 @@ module SessionsHelper
         session[:forward_url] ||= root_path
         path = session[:forward_url]
       end
-      redirect_to path and return
+      redirect_to path
     end
     
 end

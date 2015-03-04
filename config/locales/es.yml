@@ -7,14 +7,10 @@ es:
         logged: 'No se puede iniciar sesión'
         login_credentials: 'Inválido nombre de usuario / contraseña'
         non_active: 'Usted no puede hacer esto porque su cuenta está bloqueada.'
-        
-        
-        cant_do_that: 'Nie możesz tego zrobić'
+        cant_do_that: 'No puedes hacer esto'
       issue:
-        not_owner: 'Nie możesz tego zrobić'
-        owner: 'Nie możesz wysłać wiadomości do samego siebie'
-        
-        
+        not_owner: 'No puedes hacer esto'
+        owner: 'No se puede enviar mensajes a ti mismo'
     successful:
       user:
         creation: 'La cuenta ha sido creada'
@@ -26,11 +22,7 @@ es:
         login: 'Conectado'
         logout: 'Desconectado'
         redirect_forward: 'Ahora te encuentras en el sitio web que previamente querías abrir'
-        
-        
-        force_logged_out: 'Zostałeś automatycznie wylogowany, ponieważ jest to konieczne do wykonania wybranej akcji'
-        
-        
+        force_logged_out: "Estas automáticamente desconectado, ya que es necesario para llevar a cabo la acción seleccionada"
       offer:
         renewation: 'Oferta reactivada, aceptación a la espera'
         close: 'Oferta esta cerrada'
@@ -38,14 +30,10 @@ es:
         deletion: 'Oferta esta eliminada por completo'
         creation: 'Oferta creada, a la espera de la aceptación'
         edition: 'Se guardan los cambios, la oferta está a la espera para su aprobación "'
-    
-    
       message:
-        creation: 'Wiadomość została wysłana'
+        creation: 'Su mensaje ha sido enviado'
       issue:
-        deactivation: 'Wątek przeniesiony do archiwum, jego usunięcie nastąpi automatycznie'
-    
-    
+        deactivation: 'El hilo ha sido movido al archivo, su retirada occure automáticamente'
   elements:
     welcome: 'Bienvenido a "Fast Trade".'
     jumbo: 'Se puede exponer los anuncios aqui... etc.'
@@ -79,91 +67,77 @@ es:
       edit_user: 'Edicion del perfil'
       create_user: 'Registrarte'
       new_offer: 'La oferta nueva'
-      
-      
-      edit_offer: 'Edycja oferty'
-      new_message: 'Nowa wiadomość'
+      edit_offer: 'Edición de las ofertas'
+      new_message: 'El mensaje nuevo'
     category:
-      estates: 'Nieruchomości'
-      automotive: 'Motoryzacja'
-      electronics: 'Elektronika'
-      sport: 'Sport'
-      food: 'Kulinaria'
-      hobby: 'Zainteresowania'
-      for_children: 'Dla dzieci'
-      animals: 'Zoologiczne'
-      services: 'Usługi'
-      music: 'Muzyka'
+      estates: 'Propiedades'
+      automotive: 'Automotor'
+      electronics: 'Electrónica'
+      sport: 'Deporte'
+      food: 'Culinario'
+      hobby: 'Hobby'
+      for_children: 'Para los ninos'
+      animals: 'Zoologia'
+      services: 'Servicios'
+      music: 'Musica'
       fashion: 'Moda'
-      other: 'Pozostałe'
-      
-      
+      other: 'Otros'
     offer:
       confirm_close: 'Cerrar el anuncio? (operacja jest odwracalna)'
       confirm_destroy: 'Borrar el anuncio? (operacja jest nieodwracalna)'
       search: 'Buscar los anuncios'
       status: 'Estado'
-    
-    
-      price: 'Cena:'
-      price_free: 'Oferta darmowa'
+      price: 'Precio:'
+      price_free: 'Oferta gratuita'
       cost:
-        one: "%{count} Złoty"
-        few: "%{count} Złote"
-        many: "%{count} Złotych"
-        other: "%{count} Złotych"
-      messages_from: 'Wiadomości od: %{user}'
-      owner: 'Autor oferty'
+        one: "%{count} Zloty"
+        other: "%{count} Zlotych"
+      messages_from: 'Mensajes de: %{user}'
+      owner: 'El autor  del anuncio'
     message:
-      history: 'Wiadomości w tym wątku'
-      read_at: 'Przeczytano:'
-      send_at: 'Wysłano:'
-      not_read_yet: 'Jeszcze nie przeczytano'
-      is_new: '(Nowa)'
+      history: 'Mensajes en este temat'
+      read_at: 'Leido:'
+      send_at: 'Enviado:'
+      not_read_yet: 'Todavia no se ha leido'
+      is_new: '(Nuevo)'
     messagebox:
-      title: 'Skrzynka wiadomości'
-      no_send_messages: 'Nie masz żadnych wysłanych wiadomości'
-      no_recieved_messages: 'Nie masz żadnych otrzymanych wiadomości'
-      no_send_archieve_messages: 'Archiwum wysłanych jest puste'
-      no_recieved_archieve_messages: 'Archiwum otrzymanych jest puste'
-      last_message: "Ostatnia wiadomość: ( %{message} )"
+      title: 'Cuadro de mensajes'
+      no_send_messages: 'No tienes ningunos mensajes enviados'
+      no_recieved_messages: 'No tienes ningunos mensajes recibidos'
+      no_send_archieve_messages: 'Arichvo de enviados esta vacio'
+      no_recieved_archieve_messages: 'Archivo de recibidos esta vacio'
+      last_message: "El ultimo mensaje: ( %{message} )"
     issue:
-      has_new_message: 'Nowa odpowiedź'
-      sender: 'Zainteresowany:'
-      reciever: 'Autor ogłoszenia:'
-    
-    
+      has_new_message: 'La respuesta nueva'
+      sender: 'Interesado:'
+      reciever: 'El autor del anuncio:'
   links:
     fast_trade: 'Fast Trade'
     crumbs:
       home: 'Pagina principal'
-      offers:
+      offer:
         index: 'Anuncios'
         offer: "El anuncio: %{title}"
         edit: 'Edicion'
         edit_offer: 'Edicion del anuncio: %{title}'
         new: 'El nuevo'
-      users:
+      user:
         index: 'Usuarios'
         user: "Perfil: %{name}"
         edit: 'Ajustes'
         edit_user: 'Edicion del usuario: %{name}'
         new: 'Registro'
         login: 'Inición de la sesión'
-        
-        
       message:
-        new: 'Nowa wiadomość'
+        new: 'El mensaje nuevo'
       messagebox:
-        recieved: 'Otrzymane wiadomości'
-        recieved_archieve: 'Archiwum otrzymanych'
-        send: 'Wysłane wiadomości'
-        send_archieve: 'Archiwum wysłanych'
+        recieved: 'Los mensajes recibidos'
+        recieved_archieve: 'El archivo de los recibidos'
+        send: 'Los mensajes enviados'
+        send_archieve: 'El archivo de los enviados'
       issue:
-        issue: 'Wątek: %{msg}'
-        title: 'Wątek'
-        
-        
+        issue: 'El tema: %{msg}'
+        title: 'El tema'
     user:
       register: 'Registrarte'
       login: 'Entrar'
@@ -172,13 +146,9 @@ es:
       delete_account: 'Borrar la cuenta'
       deactivate_account: 'Suspender la cuenta'
       activate_account: 'Activar la cuenta'
-      
-      
       new_messages:
-        one: 'Masz nową wiadomość'
-        other: 'Masz (%{count}) nowych wiadomości'
-        
-        
+        one: 'Tienes un mensaje nuevo'
+        other: 'Tienes (%{numero}) mensajes nuevos'
     offer:
       info: 'Informaciones sobre el anuncio'
       all: 'Todos'
@@ -188,11 +158,7 @@ es:
       status0: 'Pendientes'
       status1: 'Activos'
       status2: 'Terminados'
-      
-      
-      show_content: 'Wyświetl treść i informacje o ofercie'
-      
-      
+      show_content: 'Mostrar el contenido y la información sobre el anuncio'
     search:
       by_more_than_valid: 'Valido mas que:'
       by_less_than_valid: 'Valido mas corto que'
@@ -201,25 +167,21 @@ es:
       by_status: 'De estado'
       submit: 'Buscar'
       submit_users: 'Buscar usuarios'
-      
-      
     message:
-      send: 'Wyślij wiadomość'
+      send: 'Envias el mensaje'
       login_to_send: 'Iniciar sesión para enviar'
-      to_issue: 'Przejdź do wątku'
-      new: 'Utwórz'
-      show: 'Wyświetl'
+      to_issue: 'Vas al tema'
+      new: 'Creas'
+      show: 'Muestras'
     messagebox:
-      title: 'Skrzynka wiadomości'
-      recieved: 'Otrzymane'
-      send: 'Wysłane'
-      recieved_archieve: 'Archiwum otrzymanych'
-      send_archieve: 'Archiwum wysłanych'
+      title: 'El cuadro de mensajes'
+      recieved: 'Recibidos'
+      send: 'Enviados'
+      recieved_archieve: 'El archivo de los recibidos'
+      send_archieve: 'El archivo de los enviados'
     issue:
-      title: 'Przejdź do wątku'
-      deactivate: 'Deaktywuj'
-      
-      
+      title: 'Vas al tema'
+      deactivate: 'Desactivas'
     show: 'Mostrar'
     add: 'Anadir'
     settings: 'Ajustes'
@@ -265,12 +227,9 @@ es:
           pending: 'Espero a la aceptactión'
           active: 'Activado'
           closed: 'Cerrado'
-          
-          
       message:
-        content: 'Treść'
-        author: 'Autor'
-        
+        content: 'El contenido'
+        author: 'El autor'
         
     errors:
       models:
@@ -308,11 +267,8 @@ es:
               blank: 'Debe ser asignado'
             valid_until:
               in_the_past: 'Debe ser en el futuro'
-              
-              
         issue:
-          exist_for_sender_offer: 'Wątek dla tej oferty już istnieje'
-        
+          exist_for_sender_offer: 'El tema para este anuncio ya existe'
         
   will_paginate:
     previous_label: "&#8592; Anterior"

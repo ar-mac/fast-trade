@@ -7,14 +7,10 @@ en:
         logged: "You mustn't be logged in."
         login_credentials: 'Incorrect login or password.'
         non_active: "You mustn't do it, because your account is blocked."
-        
-        
         cant_do_that: 'You cannot do that'
       issue:
         not_owner: 'You cannot do that'
         owner: 'You cannot send message to yourself'
-        
-        
     successful:
       user:
         creation: 'Your account has been created'
@@ -26,11 +22,7 @@ en:
         login: 'You are logged in'
         logout: 'You logged out'
         redirect_forward: 'You are now on the page, you previously wanted to open. ' 
-        
-        
         force_logged_out: "You were automatically logged out, because it's required to perform current action"
-      
-      
       offer:
         renewation: 'Your offer is active again, waiting for acceptance'
         close: 'Your offer is closed'
@@ -38,14 +30,10 @@ en:
         deletion: 'Your offer is totally removed'
         creation: 'Your offer is created, waiting for acceptance'
         edition: "Changes have been made, your offer is waiting for acceptance"
-      
-      
       message:
         creation: 'Nessage send'
       issue:
         deactivation: "Issue moved to archive, it'll be deleted automatically"
-  
-  
   elements:
     welcome: 'Welcome to "Fast Trade".'
     jumbo: 'You can place offers here... etc.'
@@ -79,8 +67,6 @@ en:
       edit_user: "Edit user's profile"
       create_user: 'Create user'
       new_offer: 'New offer'
-      
-      
       edit_offer: 'Edit offer'
       new_message: 'New message'
     category:
@@ -96,15 +82,11 @@ en:
       music: 'Music'
       fashion: 'Fashon'
       other: 'Other'
-    
-    
     offer:
       confirm_close: "Do you want to close the offer? (it's non destructive action)"
       confirm_destroy: "Do you want to remove offer? (it's destructive action)"
       search: 'Search for the offer'
       status: 'Status'
-      
-      
       price: 'Price:'
       price_free: 'Offer is free'
       cost:
@@ -131,8 +113,6 @@ en:
       has_new_message: 'Has new message'
       sender: 'Sender:'
       reciever: 'Offer owner:'
-      
-      
   links:
     fast_trade: 'Fast Trade'
     crumbs:
@@ -150,8 +130,6 @@ en:
         edit_user: 'Edit user: %{name}'
         new: 'Registration'
         login: 'Log in'
-        
-        
       message:
         new: 'New message'
       messagebox:
@@ -162,8 +140,6 @@ en:
       issue:
         issue: 'Issue: %{msg}'
         title: 'Issue'
-    
-    
     user:
       register: 'Sign up'
       login: 'Log in'
@@ -172,13 +148,9 @@ en:
       delete_account: 'Remove account'
       deactivate_account: 'Deactivate account'
       activate_account: 'Activate account'
-      
-      
       new_messages:
         one: 'You have (%{count}) new message'
         other: 'You have (%{count}) new messages'
-        
-        
     offer:
       info: 'Information about offers'
       all: 'All'
@@ -188,11 +160,7 @@ en:
       status0: 'Waiting'
       status1: 'Active'
       status2: 'Closed'
-      
-      
       show_content: 'Show offer content and info'
-      
-      
     search:
       by_more_than_valid: 'Valid longer than:'
       by_less_than_valid: 'Valid shorter than:'
@@ -201,8 +169,6 @@ en:
       by_status: 'According to status'
       submit: 'Search'
       submit_users: 'Search users'
-      
-      
     message:
       send: 'Send message'
       login_to_send: "Log in to send"
@@ -218,8 +184,6 @@ en:
     issue:
       title: 'Go to issue'
       deactivate: 'Deactivate'
-      
-      
     show: 'Show'
     add: 'Add'
     settings: 'Settings'

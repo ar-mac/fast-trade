@@ -7,14 +7,10 @@ pl:
         logged: 'Nie możesz być zalogowany'
         login_credentials: 'Niepoprawny login/hasło'
         non_active: 'Nie możesz tego zrobić, ponieważ Twoje konto jest zablokowane.'
-        
-        
         cant_do_that: 'Nie możesz tego zrobić'
       issue:
         not_owner: 'Nie możesz tego zrobić'
         owner: 'Nie możesz wysłać wiadomości do samego siebie'
-        
-        
     successful:
       user:
         creation: 'Konto zostało utworzone'
@@ -26,11 +22,7 @@ pl:
         login: 'Zalogowano'
         logout: 'Wylogowano'
         redirect_forward: 'Jestes teraz na stronie którą wcześniej chciałeś otworzyć'
-        
-        
         force_logged_out: 'Zostałeś automatycznie wylogowany, ponieważ jest to konieczne do wykonania wybranej akcji'
-        
-        
       offer:
         renewation: 'Oferta ponownie aktywowana, oczekuje na akceptację'
         close: 'Oferta została zamknięta'
@@ -38,14 +30,10 @@ pl:
         deletion: 'Oferta została całkowicie usunięta'
         creation: 'Oferta utworzona, oczekuje na akceptację'
         edition: 'Zmiany zostały zapisane, oferta oczekuje teraz na akceptację'
-      
-      
       message:
         creation: 'Wiadomość została wysłana'
       issue:
         deactivation: 'Wątek przeniesiony do archiwum, jego usunięcie nastąpi automatycznie'
-    
-    
   elements:
     welcome: 'Witaj w serwisie "Fast Trade".'
     jumbo: 'Możesz tu wystawiać oferty z wybranych kategorii ... itd.'
@@ -79,8 +67,6 @@ pl:
       edit_user: 'Edycja profilu'
       create_user: 'Rejestracja'
       new_offer: 'Nowa oferta'
-      
-      
       edit_offer: 'Edycja oferty'
       new_message: 'Nowa wiadomość'
     category:
@@ -96,15 +82,11 @@ pl:
       music: 'Muzyka'
       fashion: 'Moda'
       other: 'Pozostałe'
-      
-      
     offer:
       confirm_close: 'Zamknąć ofertę? (operacja jest odwracalna)'
       confirm_destroy: 'Usunąć ofertę? (operacja jest nieodwracalna)'
       search: 'Wyszukaj oferty'
       status: 'Stan'
-      
-      
       price: 'Cena:'
       price_free: 'Oferta darmowa'
       cost:
@@ -131,8 +113,6 @@ pl:
       has_new_message: 'Nowa odpowiedź'
       sender: 'Zainteresowany:'
       reciever: 'Autor ogłoszenia:'
-    
-    
   links:
     fast_trade: 'Fast Trade'
     crumbs:
@@ -150,8 +130,6 @@ pl:
         edit_user: 'Edycja użytkownika: %{name}'
         new: 'Rejestracja'
         login: 'Logowanie'
-        
-        
       message:
         new: 'Nowa wiadomość'
       messagebox:
@@ -162,8 +140,6 @@ pl:
       issue:
         issue: 'Wątek: %{msg}'
         title: 'Wątek'
-        
-        
     user:
       register: 'Zarejestruj się'
       login: 'Zaloguj'
@@ -172,14 +148,10 @@ pl:
       delete_account: 'Usuń konto'
       deactivate_account: 'Zawieś konto'
       activate_account: 'Aktywuj konto'
-      
-      
       new_messages:
         one: 'Masz (%{count}) nową wiadomość'
         few: 'Masz (%{count}) nowe wiadomości'
         other: 'Masz (%{count}) nowych wiadomości'
-          
-          
     offer:
       info: 'Informacje o ofercie'
       all: 'Wszystkie'
@@ -189,11 +161,7 @@ pl:
       status0: 'Oczekujące'
       status1: 'Aktywne'
       status2: 'Zakończone'
-      
-      
       show_content: 'Wyświetl treść i informacje o ofercie'
-      
-      
     search:
       by_more_than_valid: 'Ważne dłużej niż:'
       by_less_than_valid: 'Ważne krócej niż:'
@@ -202,8 +170,6 @@ pl:
       by_status: 'Według statusu'
       submit: 'Wyszukaj'
       submit_users: 'Wyszukaj użytkowników'
-      
-      
     message:
       send: 'Wyślij wiadomość'
       login_to_send: "Zaloguj aby wysłać"
@@ -219,8 +185,6 @@ pl:
     issue:
       title: 'Przejdź do wątku'
       deactivate: 'Deaktywuj'
-      
-      
     show: 'Wyświetl'
     add: 'Dodaj'
     settings: 'Ustawienia'
@@ -267,12 +231,9 @@ pl:
           pending: 'Oczekuje na akceptację'
           active: 'Aktywna'
           closed: 'Zakończona'
-      
-      
       message:
         content: 'Treść'
         author: 'Autor'
-      
       
     errors:
       models:
@@ -310,11 +271,8 @@ pl:
               blank: 'musi być przypisany'
             valid_until:
               in_the_past: 'musi być w przyszłości'
-              
-              
         issue:
           exist_for_sender_offer: 'Wątek dla tej oferty już istnieje'
-          
         
   will_paginate:
     previous_label: "&#8592; Poprzednia"
