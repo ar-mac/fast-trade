@@ -3,7 +3,7 @@
   = raw(offer.content)
 .price-main
   %span.price-right
-    - if offer.price.nil?
+    - if offer.price == 0
       = t('elements.offer.price_free')
     - else
       = t('elements.offer.price')

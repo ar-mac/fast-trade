@@ -1,5 +1,6 @@
 class Offer < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
+  
   STATUS = [
     'activerecord.attributes.offer.status_type.pending', 
     'activerecord.attributes.offer.status_type.active',
@@ -33,6 +34,8 @@ class Offer < ActiveRecord::Base
   scope :by_region, ->(region) { joins(:owner).where('region = ?', region) if region && !region.empty? }
   scope :by_max_valid_date, ->(date) { where('valid_until <= ?', date) if date }
   scope :by_min_valid_date, ->(date) { where('valid_until >= ?', date) if date }
+  scope :by_min_price, ->(min) { where('price >= ?', min.to_i) if min && !min.empty? }
+  scope :by_max_price, ->(max) { where('price <= ?', max.to_i) if max && !max.empty? }
   scope :by_category, ->(c_id) { where('category_id = ?', c_id) if c_id && !c_id.empty? }
   scope :from_newest, ->{ order(created_at: :desc)}
   
@@ -56,31 +59,16 @@ class Offer < ActiveRecord::Base
   def self.by_search_params(params, admin)
     #create quite complex search query from sended params.
     params[:status] = '1' if !admin
-    begin
-      min_date = Date.civil(
-        params[:d_min][:"(1i)"].to_i,
-        params[:d_min][:"(2i)"].to_i,
-        params[:d_min][:"(3i)"].to_i
-      )
-    rescue
-      min_date = nil
-    end
-    begin
-      max_date = Date.civil(
-        params[:d_max][:"(1i)"].to_i,
-        params[:d_max][:"(2i)"].to_i,
-        params[:d_max][:"(3i)"].to_i
-      )
-    rescue
-      max_date = nil
-    end
-      
+    min_date = self.civilize_date(params[:d_min])
+    max_date = self.civilize_date(params[:d_max])
     from_newest.
     by_status(params[:status]).
     by_region(params[:region]).
     by_min_valid_date(min_date).
     by_max_valid_date(max_date).
     by_category(params[:c_id]).
+    by_min_price(params[:price_min]).
+    by_max_price(params[:price_max]).
     includes(:owner, :category).
     paginate(page: params[:page])
   end
@@ -141,9 +129,14 @@ class Offer < ActiveRecord::Base
   
   def prepare_to_save
     self.status_id = 0
-    if price == 0 || price == ''
-      self.price = nil
+    if price == ''
+      self.price = 0
     end
+  end
+  
+  def self.civilize_date(par)
+    civilizer = DateCivilization.new(par)
+    return civilizer.civilize
   end
   
 end

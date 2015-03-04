@@ -1,6 +1,12 @@
 .form-search
   = form_tag("/#{I18n.locale}/offers", method: :get) do
     .form-field
+      = label_tag :price_min, t('links.search.by_more_than_price'), class: 'full-width-label'
+      = number_field_tag :price_min, nil, min: 0, step: 1, class: 'form-control'
+    .form-field
+      = label_tag :price_max, t('links.search.by_less_than_price'), class: 'full-width-label'
+      = number_field_tag :price_max, nil, min: 0, step: 1, class: 'form-control'
+    .form-field
       = label_tag :d_min, t('links.search.by_more_than_valid'), class: 'full-width-label'
       = date_select :d_min, nil, start_year: Date.today.year, include_blank: true, class: 'form-control'
     .form-field

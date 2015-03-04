@@ -54,6 +54,15 @@ class SearchFormsTest < ActionDispatch::IntegrationTest
       assert offer.status_id == 1, "offer.status: #{offer.status} should be equal to 1"
     end
     
+    get "/#{I18n.locale}/offers",
+      price_min: 15,
+      price_max: 40
+      
+    @offers = assigns :offers
+    @offers.each do |offer|
+      assert offer.price >= 15 && offer.price <= 40, "offer.price: #{offer.price} should be within range 15..40"
+    end
+    
     log_in_as @admin
     get "/#{I18n.locale}/offers",
       status: 0

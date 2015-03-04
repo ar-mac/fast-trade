@@ -10,7 +10,7 @@
     = t('activerecord.attributes.offer.owner')
     = link_to offer.owner.name, offer.owner
     .empty-newline
-    - if offer.price.nil?
+    - if offer.price == 0
       %b= t('elements.offer.price_free')
     - else
       = t('elements.offer.price')

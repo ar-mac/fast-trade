@@ -164,6 +164,8 @@ en:
     search:
       by_more_than_valid: 'Valid longer than:'
       by_less_than_valid: 'Valid shorter than:'
+      by_more_than_price: 'With price higher than:'
+      by_less_than_price: 'With price lower than:'
       by_category: 'From given category'
       by_region: 'From given region'
       by_status: 'According to status'

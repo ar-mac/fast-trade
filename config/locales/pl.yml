@@ -165,6 +165,8 @@ pl:
     search:
       by_more_than_valid: 'Ważne dłużej niż:'
       by_less_than_valid: 'Ważne krócej niż:'
+      by_more_than_price: 'Droższe niż:'
+      by_less_than_price: 'Tańsze niż:'
       by_category: 'Z podanej kategorii'
       by_region: 'Z podanego regionu'
       by_status: 'Według statusu'

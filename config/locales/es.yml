@@ -162,6 +162,8 @@ es:
     search:
       by_more_than_valid: 'Valido mas que:'
       by_less_than_valid: 'Valido mas corto que'
+      by_more_than_price: 'Más caros que:'
+      by_less_than_price: 'Más barato que:'
       by_category: 'De categoria especificada'
       by_region: 'De region especificado'
       by_status: 'De estado'
