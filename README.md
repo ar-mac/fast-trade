@@ -46,7 +46,22 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
 5. Offers
   - Have expiration date
   - When the date is passed, offer becomes closed (due to whenever trouble it is hancled by after_action clearing in offers index)
-
+6. Languages
+  - Site has full support for translations
+  - Is avalible in polish(default), english, and spanish version
+  - All site users/visitors can change language in which site will be presented
+7. If this project will be continnued, I would like to implement:
+  - Resetting password and using mailers to confirm account etc.
+  - Reporting administration inproper contents, names, behaviours
+  - Contatct with administration
+  - Change Issues schema - issue.reciever == issue.offer.owner (unnecessacry duplication)
+  - Inspect search querries in all places, to decide is there need to add/remove index on columns
+  - Optimalize and refactor css and views templates
+  - Add offer tags (I didn't understand the idea written in the exerecise)
+  - Add selecting date in search form by gem date selectors
+  - Different currencies, which are automatically converted to currency connected with chosen language. Exchange rate would be obtained from other page (National Bank of Poland?) 
+  - Links use offer.title, user.name etc. rather than :id
+8. 
 
 ## Other info
 1. Site is not based on gem devise
