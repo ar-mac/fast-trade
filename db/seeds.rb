@@ -30,7 +30,7 @@ User.all.each do |user|
       valid_until: ( Time.zone.today + rand(1..90).days ),
       status_id: ( user.active? ? (n % 3) : (2) ),
       category_id: ( n % 12 + 1 ),
-      price: ( n % 4 == 0 ? nil : ((n + 2) * 4) )
+      price: ( n % 4 == 0 ? 0 : ((n + 2) * 4) )
       )
   end
 end
