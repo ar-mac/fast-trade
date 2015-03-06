@@ -7,23 +7,23 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
 ## Functionalities
 1. Visitors
     - Non logged in guests of the site can:
-      - Show offer index
-      - Show only active offers
+        - Show offer index
+        - Show only active offers
 2. Users
     - Registration
-      - Administrators can edit and delete account, but cannot change user password
+        - Administrators can edit and delete account, but cannot change user password
     - User account can be activated/deactivated by admin.
-      - All offers that belongs to deactivated user become closed
+        - All offers that belongs to deactivated user become closed
     - User with deactivated account cannot:
-      - Edit his account
-      - Create offers
-      - Send messages
+        - Edit his account
+        - Create offers
+        - Send messages
     - User with deactivated account still can:
-      - Show users profile
+        - Show users profile
     - User normally can:
       - Edit account
-        - Change regular data (admins can)
-        - Change password when old password is provided (admins cannot)
+          - Change regular data (admins can)
+          - Change password when old password is provided (admins cannot)
       - Delete account (admins can)
       - Create offers
       - Close their offers (admins can)
@@ -40,8 +40,8 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
     - Individual for each user (cannot be look up by admins)
     - Sending first message creates issue for that offer between owner and specific user
     - Issues are deleted automatically after:
-      - 30 days from last send message
-      - 3 days if __both__ users deactivate it
+        - 30 days from last send message
+        - 3 days if __both__ users deactivate it
     - Issue is automatically activated when message is posted in it
 5. Offers
     - Have expiration date
@@ -61,7 +61,6 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
     - Add selecting date in search form by gem date selectors
     - Different currencies, which are automatically converted to currency connected with chosen language. Exchange rate would be obtained from other page (National Bank of Poland?) 
     - Links use offer.title, user.name etc. rather than :id
-8. 
 
 ## Other info
 1. Site is not based on gem devise
