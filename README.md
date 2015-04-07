@@ -54,7 +54,6 @@ This site is hosted on [Heroku](https://fast-trade-8844.herokuapp.com/)
     - Resetting password and using mailers to confirm account etc.
     - Reporting administration inproper contents, names, behaviours
     - Contatct with administration
-    - Change Issues schema - issue.reciever == issue.offer.owner (unnecessacry duplication)
     - Inspect search querries in all places, to decide is there need to add/remove index on columns
     - Optimalize and refactor css and views templates
     - Add offer tags (I didn't understand the idea written in the exerecise)
