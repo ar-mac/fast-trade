@@ -236,6 +236,12 @@ pl:
       message:
         content: 'Treść'
         author: 'Autor'
+      project:
+        progress: 'Poziom zaawansowania'
+        level_1: 'Składanie szkieletu'
+        level_2: 'Budowa podstaw'
+        level_3: 'Implementacja funkcjonalności'
+        level_4: 'Optymalizacja i refactoring'
       
     errors:
       models:
@@ -275,6 +281,11 @@ pl:
               in_the_past: 'musi być w przyszłości'
         issue:
           exist_for_sender_offer: 'Wątek dla tej oferty już istnieje'
+        project:
+          attributes:
+            progress:
+              not_a_number: 'musi być liczbą'
+              inclusion: 'musi należeć do zakresu 0 .. 100'
         
   will_paginate:
     previous_label: "&#8592; Poprzednia"

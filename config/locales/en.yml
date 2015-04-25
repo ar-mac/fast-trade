@@ -234,6 +234,13 @@ en:
       message:
         content: 'Content'
         author: 'Author'
+      project:
+        progress: 'Progress level'
+        level_1: 'Scaffolding'
+        level_2: 'Building main elements'
+        level_3: 'Implementation of features'
+        level_4: 'Optimalization and refactoring'
+
     errors:
       models:
         user:
@@ -272,6 +279,11 @@ en:
               in_the_past: 'must be in the future'
         issue:
           exist_for_sender_offer: 'Issue for that offer already exist'
+        project:
+          attributes:
+            progress:
+              not_a_number: 'is not a number'
+              inclusion: 'must be between 0 .. 100'
         
   will_paginate:
     previous_label: "&#8592; Previous"

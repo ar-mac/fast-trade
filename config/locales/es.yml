@@ -232,6 +232,12 @@ es:
       message:
         content: 'El contenido'
         author: 'El autor'
+      project:
+        progress: 'Grado de complejidad'
+        level_1: 'La construcción del esqueleto'
+        level_2: 'Construcción de los principales'
+        level_3: 'Implementación de características'
+        level_4: 'Optimización y refactorización'
         
     errors:
       models:
@@ -271,6 +277,11 @@ es:
               in_the_past: 'Debe ser en el futuro'
         issue:
           exist_for_sender_offer: 'El tema para este anuncio ya existe'
+        project:
+          attributes:
+            progress:
+              not_a_number: 'no es el numero'
+              inclusion: 'tiene que partenecer al alcance desde  0 .. 100'
         
   will_paginate:
     previous_label: "&#8592; Anterior"

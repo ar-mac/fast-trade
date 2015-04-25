@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224220251) do
+ActiveRecord::Schema.define(version: 20150425103319) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 20150224220251) do
   add_index "offers", ["category_id"], name: "index_offers_on_category_id"
   add_index "offers", ["status_id"], name: "index_offers_on_status_id"
   add_index "offers", ["valid_until"], name: "index_offers_on_valid_until"
+
+  create_table "projects", force: true do |t|
+    t.integer  "progress",   default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
