@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
   #sets locale according to 
   before_action :set_locale
   
+  #sets @project
+  before_action :set_project
+  
   def set_locale
     I18n.locale = params[:locale]
   end
@@ -22,6 +25,10 @@ class ApplicationController < ActionController::Base
   def get_current
     @current_user = current_user
     store_location
+  end
+  
+  def set_project
+    @project = Project.first
   end
   
   def no_user

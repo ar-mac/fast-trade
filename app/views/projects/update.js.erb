@@ -1,0 +1,17 @@
+var prog = <%= @project.progress %>
+var bar = $('#progress-form .progressbar')
+bar.css('width': prog+'%')
+switch (prog) {
+  case prog >= 80:
+    bar.addClass('progress-bar-success');
+    break;
+  case prog >=50:
+    bar.addClass('progress-bar-info');
+    break;
+  case prog >=30:
+    bar.addClass('progress-bar-warning');
+    break;
+  else:
+    bar.addClass('progress-bar-danger');
+    break;
+}

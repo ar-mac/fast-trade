@@ -23,7 +23,7 @@
           = fa_for_msg(msg_type)
           
       = breadcrumbs display_single_fragment: true, style: :bootstrap, delimiter: ''
-      
+      = render 'shared/progress_form'
       = yield
       = debug(params) if Rails.env.development?
     = render 'layouts/footer'

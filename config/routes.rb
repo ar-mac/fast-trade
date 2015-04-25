@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'projects/update'
+
   get '/:locale' => 'statics#home'
   root 'statics#home'
   
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
   	
   	resources :issues, only: [:show, :create, :update]
   	resources :messages, only: [:create]
-  	
+  	resources :projects, only: [:update]
   	get 'messagebox/:type' => 'messagebox#box', as: :messagebox
 	end
 	

@@ -1,0 +1,19 @@
+
+<div id='progress-form' class='row'>
+  <div class='col-md-10'>
+    <div class='progress'>
+      <div class='progress-bar' role='progressbar' style='width: <%= @project.progress %>%;' aria-valuemax='100' aria-valuemin='0' aria-valuenow=<%= @project.progress %>>
+        <%= @project.progress %>
+      </div>
+    </div>
+  </div>
+    <div class='col-md-2'>
+      <%= form_for(@project, remote: :true) do |f|%>
+        <div class='form-field-narrow'>
+          <%= f.label :progress, I18n.t('activerecord.attributes.project.progress') %>
+          <%= f.number_field :progress, class: 'form-control' %>
+        </div>
+        <%= f.submit t('links.accept'),  class: 'btn btn-default' %>
+      <% end %>
+    </div>
+</div>
