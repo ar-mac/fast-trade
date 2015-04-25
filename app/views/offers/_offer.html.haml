@@ -1,4 +1,4 @@
-.list-group-item
+.list-group-item.offer-list-item
 
   %h4.list-group-item-heading
     = link_to truncate(offer.title, length: 50, separator:  ' '), offer
@@ -26,7 +26,9 @@
     
   - if current_or_admin?(offer.owner)
     
-    = render 'offers/offer_buttons', offer: offer
+    %span.offer-button
+      .empty-newline
+      = render 'offers/offer_buttons', offer: offer
       
   .list-group-item-region
     = t('activerecord.attributes.offer.region')
