@@ -4,10 +4,10 @@
 
 $(document).ready ->
   $('.offer-list-item').on('mouseenter', ->
-    $(this).find('.offer-button').fadeIn 'fast'
+    $(this).find('.offer-buttons').fadeIn 'fast'
     return
   ).on('mouseleave', ->
-    $(this).find('.offer-button').fadeOut 'fast'
+    $(this).find('.offer-buttons').fadeOut 'fast'
     return
   )
 return

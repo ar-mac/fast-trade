@@ -1,12 +1,12 @@
-<div class="btn-group btn-group-xs btn-group-offer">
-  <% if @current_user.active? %>
-    <%= link_to edit_offer_path(offer), class: 'btn btn-default' do %>
-      <i class="fa fa-pencil fa-fw" data-description=<%= t('links.edit') %>></i>
-    <% end %>
-  <% end %>
+<div class="btn-group btn-group-sm">
   <% if admin? && offer.pending? %>
     <%= link_to accept_offer_path(offer), method: :patch, class: 'btn btn-success' do %>
       <i class="fa fa-check fa-fw" data-description=<%= t('links.accept') %>></i>
+    <% end %>
+  <% end %>
+  <% if @current_user.active? %>
+    <%= link_to edit_offer_path(offer), class: 'btn btn-default' do %>
+      <i class="fa fa-pencil fa-fw" data-description=<%= t('links.edit') %>></i>
     <% end %>
   <% end %>
   <% if offer.active? || offer.pending? %>

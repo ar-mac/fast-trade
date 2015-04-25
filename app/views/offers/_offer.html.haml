@@ -1,35 +1,44 @@
 .list-group-item.offer-list-item
+  .row
+    .col-md-8
+      %h4.list-group-item-heading
+        = link_to truncate(offer.title, length: 50, separator:  ' '), offer
+    .col-md-4
+      = link_to t(offer.category.name_code), offers_path(c_id: offer.category_id), class: 'category'
+  
+  .row
+    .col-md-5
+      .list-data
+        .list-data-element
+          = t('activerecord.attributes.offer.owner')
+          = link_to offer.owner.name, offer.owner
+        .list-data-element
+          - if offer.price == 0
+            %b= t('elements.offer.price_free')
+          - else
+            = t('elements.offer.price')
+            %b= t('elements.offer.cost', count: offer.price)
+          
+        - if admin?
+          .list-data-element
+            = "#{t('elements.offer.status')}: "
+            %b= t(offer.status)
+        
+    
+    .col-md-7
+      .row.offer-buttons
+        - if current_or_admin?(offer.owner)
+          .col-md-6
+            = render 'offers/offer_buttons', offer: offer
+          .col-md-6
+            opis :D
 
-  %h4.list-group-item-heading
-    = link_to truncate(offer.title, length: 50, separator:  ' '), offer
-  %span
-    = link_to t(offer.category.name_code), offers_path(c_id: offer.category_id), class: 'category'
-    
-  %span.list-group-item-data
-    .empty-newline
-    = t('activerecord.attributes.offer.owner')
-    = link_to offer.owner.name, offer.owner
-    .empty-newline
-    - if offer.price == 0
-      %b= t('elements.offer.price_free')
-    - else
-      = t('elements.offer.price')
-      %b= t('elements.offer.cost', count: offer.price)
-      
-    - if admin?
-      .empty-newline
-      = "#{t('elements.offer.status')}: #{t(offer.status)}"
-    .empty-newline
-    = t('activerecord.attributes.offer.valid_until')
-    %b= offer.valid_date
-    
-    
-  - if current_or_admin?(offer.owner)
-    
-    %span.offer-button
-      .empty-newline
-      = render 'offers/offer_buttons', offer: offer
-      
-  .list-group-item-region
-    = t('activerecord.attributes.offer.region')
-    = link_to offer.owner.region, offers_path(region: offer.owner.region)
+  .row
+    .col-md-5
+      .list-data-element
+        = t('activerecord.attributes.offer.valid_until')
+        %b= offer.valid_date
+    .col-md-7
+      .list-data
+        = t('activerecord.attributes.user.region')
+        = link_to offer.owner.region, offers_path(region: offer.owner.region)
