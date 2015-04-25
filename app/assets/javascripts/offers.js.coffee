@@ -10,4 +10,17 @@ $(document).ready ->
     $(this).find('.offer-buttons').fadeOut 'fast'
     return
   )
+  $('.offer-buttons').on('mouseenter','.btn', ->
+    descrText = $(this).data('description')
+    descrItem = $(this).closest('.offer-buttons').find('.description')
+    descrItem.html(descrText)
+    descrItem.addClass('alert alert-info alert-narrow')
+    return
+  )
+  $('.btn-group').on('mouseleave', ->
+    descrItem = $(this).closest('.offer-buttons').find('.description')
+    descrItem.text('')
+    descrItem.removeClass('alert alert-info alert-narrow')
+    return
+  )
 return

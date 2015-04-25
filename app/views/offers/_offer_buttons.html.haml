@@ -1,0 +1,15 @@
+.btn-group.btn-group-sm
+  - if admin? && offer.pending?
+    = link_to accept_offer_path(offer), method: :patch, class: 'btn btn-success', data: {description: t('links.accept')} do
+      %i.fa.fa-check.fa-fw
+  - if @current_user.active?
+    = link_to edit_offer_path(offer), class: 'btn btn-default', data: {description: t('links.edit')} do
+      %i.fa.fa-pencil.fa-fw
+  - if offer.active? || offer.pending?
+    = link_to close_offer_path(offer), method: :patch, class: 'btn btn-warning', data: {confirm: t('elements.offer.confirm_close'),description: t('links.close')} do
+      %i.fa.fa-times.fa-fw
+  - if owner?(offer.owner) && offer.owner.active? && offer.closed?
+    = link_to renew_offer_path(offer), method: :patch, class: 'btn btn-primary', data: {description: t('links.renew')} do
+      %i.fa.fa-refresh.fa-fw
+  = link_to offer_path(offer), method: :delete, class: 'btn btn-danger', data: {confirm: t('elements.offer.confirm_destroy'),description: t('links.destroy')} do
+    %i.fa.fa-trash.fa-fw
