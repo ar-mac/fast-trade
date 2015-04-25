@@ -1,14 +1,15 @@
 .list-group-item
-
-  %h4.list-group-item-heading
-    = link_to user.name, user_path(user)
-  .category= "#{t('elements.user.offer_count')} (#{user.active_offers_count})"
+  .row
+    .col-md-8
+      %h4.list-group-item-heading
+        = link_to user.name, user_path(user)
+      .list-data
+        .list-data-item
+          = account_status_text(user)
+      
+        .list-data-item
+          = t('activerecord.attributes.user.region')
+          = link_to user.region, admin_users_path(region: user.region )
+    .col-md-4
+      .category= "#{t('elements.user.offer_count')} (#{user.active_offers_count})"
   
-  %span.list-group-item-author
-    .empty-newline
-    = account_status_text(user)
-  
-  .empty-newline
-  .list-group-item-region
-    = t('activerecord.attributes.user.region')
-    = link_to user.region, admin_users_path(region: user.region )
