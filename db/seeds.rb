@@ -1,37 +1,50 @@
+def msg(desciption, time)
+  "-- #{desciption}\n   -> #{(Time.now - time).seconds.round(4)}s"
+end
+puts "\n---- SEEDS ----\n"
 total_start = Time.now
 User.delete_all
 Category.delete_all
 Offer.delete_all
-puts "Database cleared (in #{(Time.now - total_start).seconds.round(2)}s)"
+puts msg('Database cleared', total_start)
+
+#project creation
+operation_start = Time.now
+Project.create
+puts msg('Project created', operation_start)
 
 # admin creation
 operation_start = Time.now
-User.create(name: 'Beziq',
+User.create(
+  name: 'Beziq',
   password: 'asdfasdf',
   password_confirmation: 'asdfasdf',
   region: 'Śląskie',
   active: true,
-  admin: true)
-puts "Admin user created - Beziq (in #{(Time.now - operation_start).seconds.round(2)}s)"
+  admin: true
+)
+puts msg('Admin user created', operation_start)
 
 # users creation
 operation_start = Time.now
 32.times do |n| 
-  User.create(name: Faker::Name.name,
+  User.create(
+    name: Faker::Name.name,
   password: 'asdfasdf',
   password_confirmation: 'asdfasdf',
   region: User::REGIONS[n % 16],
   active: n % 2 == 0 ? true : false,
-  admin: false)
+  admin: false
+)
 end
-puts "Users created (in #{(Time.now - operation_start).seconds.round(2)}s)"
+puts msg('Users created', operation_start)
 
 # categories creation
 operation_start = Time.now
 Category::NAME_CODES.each do |name_c|
-  Category.find_or_create_by(name_code: name_c )
+  Category.find_or_create_by(name_code: name_c)
 end
-puts "Categories created (in #{(Time.now - operation_start).seconds.round(2)}s)"
+puts msg('Categories created', operation_start)
 
 # offers creation
 operation_start = Time.now
@@ -47,6 +60,7 @@ User.all.each do |user|
       )
   end
 end
-puts "Offers created (in #{(Time.now - operation_start).seconds.round(2)}s)"
+puts msg('Offers created', operation_start)
+
 puts "-" * 25
-puts "Total time (#{(Time.now - total_start).seconds.round(2)}s)"
+puts msg('Total time', total_start)
