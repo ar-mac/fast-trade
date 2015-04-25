@@ -11,24 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks.js
 //= require jquery_ujs
 //= require froala_editor.min.js
 //= require langs/pl.js
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-
-function toggle()
-{       
-var e = document.getElementById("offer_for_message");
-if(e.style.display == 'block')
-   e.style.display = 'none';
-else
-   e.style.display = 'block';
-}
-
-function dismiss()
-{       
-var e = document.getElementById("notice");
-e.style.display = 'none';
-}
