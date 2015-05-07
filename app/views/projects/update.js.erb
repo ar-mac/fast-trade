@@ -1,17 +1,5 @@
-var prog = <%= @project.progress %>
-var bar = $('#progress-form .progressbar')
-bar.css('width': prog+'%')
-switch (prog) {
-  case prog >= 80:
-    bar.addClass('progress-bar-success');
-    break;
-  case prog >=50:
-    bar.addClass('progress-bar-info');
-    break;
-  case prog >=30:
-    bar.addClass('progress-bar-warning');
-    break;
-  else:
-    bar.addClass('progress-bar-danger');
-    break;
-}
+var barClass = <%= @project.bar_class %>;
+
+var bar = $('#p-bar');
+bar.attr({"aria-valuenow":<%= @project.progress %>, "style":"width: <%= @project.progress %>%"});
+bar.removeClass().addClass(barClass).text("<%= @project.progress %>%");

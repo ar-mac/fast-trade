@@ -1,17 +1,17 @@
 def msg(desciption, time)
-  "-- #{desciption}\n   -> #{(Time.now - time).seconds.round(4)}s"
+  puts "-- #{desciption}\n   -> #{(Time.now - time).seconds.round(4)}s"
 end
 puts "\n---- SEEDS ----\n"
 total_start = Time.now
 User.delete_all
 Category.delete_all
 Offer.delete_all
-puts msg('Database cleared', total_start)
+msg('Database cleared', total_start)
 
 #project creation
 operation_start = Time.now
 Project.create
-puts msg('Project created', operation_start)
+msg('Project created', operation_start)
 
 # admin creation
 operation_start = Time.now
@@ -23,7 +23,7 @@ User.create(
   active: true,
   admin: true
 )
-puts msg('Admin user created', operation_start)
+msg('Admin user created', operation_start)
 
 # users creation
 operation_start = Time.now
@@ -37,14 +37,14 @@ operation_start = Time.now
   admin: false
 )
 end
-puts msg('Users created', operation_start)
+msg('Users created', operation_start)
 
 # categories creation
 operation_start = Time.now
 Category::NAME_CODES.each do |name_c|
   Category.find_or_create_by(name_code: name_c)
 end
-puts msg('Categories created', operation_start)
+msg('Categories created', operation_start)
 
 # offers creation
 operation_start = Time.now
@@ -60,7 +60,7 @@ User.all.each do |user|
       )
   end
 end
-puts msg('Offers created', operation_start)
+msg('Offers created', operation_start)
 
 puts "-" * 25
-puts msg('Total time', total_start)
+msg('Total time', total_start)
