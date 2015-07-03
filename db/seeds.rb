@@ -23,7 +23,15 @@ User.create(
   active: true,
   admin: true
 )
-msg('Admin user created', operation_start)
+User.create(
+  name: 'Guest_admin',
+  password: 'asdf;lkj',
+  password_confirmation: 'asdf;lkj',
+  region: 'Wielkopolskie',
+  active: true,
+  admin: true
+)
+msg('Admin users created', operation_start)
 
 # users creation
 operation_start = Time.now
